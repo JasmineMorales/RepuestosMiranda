@@ -5,12 +5,14 @@
  */
 package interaz;
 
+import Excepciones.NoSePuedeConectar;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-
+import clases.*;
+import java.sql.SQLException;
 /**
  *
  * 
@@ -20,6 +22,9 @@ public class Factura extends javax.swing.JPanel {
     /**
      * Creates new form Factura
      */
+    
+    private final Conexion Conexion_DB = new Conexion();
+    private selectorSucursal Selector;
     private String numeroCotizacion;
     private String[] Sucursal;
     private int id = 0;
@@ -32,13 +37,19 @@ public class Factura extends javax.swing.JPanel {
     public Factura(String Numero) {
         initComponents();
         this.numeroCotizacion = Numero;
-        setCotizacion();
+        setFactura();
         selector();
         inicializarTabla();
         Productos.addRow(new String[] {});
         tabla_detalle.setModel(Productos);
         panel_Coti.setVisible(false);
         numeroLineas=0;
+        try {
+            lbl_Fecha.setText(Conexion_DB.fecha());
+        } catch (SQLException|NoSePuedeConectar ex) {
+            DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+            dialogo.setVisible(true);
+        }
         
     }
      private DefaultTableModel Productos;
@@ -54,19 +65,19 @@ public class Factura extends javax.swing.JPanel {
         };
     }
     private void selector(){
+         Selector = new selectorSucursal(null, true);
+        Selector.setVisible(true);
+        Sucursal = Selector.getSucursal();
         
-    }
-    private void setCotizacion(){
-        lbl_Nombre.setText("COTIZACION NO:");
-        lbl_Correlativo.setText(numeroCotizacion);
-        btn_Cotizacion.setBackground(Color.RED);
-        btn_Factura.setBackground(Color.BLACK);
-        btn_Guardar.setText("GUARDAR");
+        btn_Sucursal.setText(Sucursal[0].toUpperCase() + ((Sucursal[2].equals("")) ? "" : " SERIE: " + Sucursal[2]));
+        if (btn_Factura.getBackground() == Color.RED) {
+            lbl_Correlativo.setText(Sucursal[1]);
+        }
+        
     }
     private void setFactura(){
         lbl_Nombre.setText("FACTURA NO:");
-        lbl_Correlativo.setText(Sucursal[1]);
-        btn_Cotizacion.setBackground(Color.BLACK);
+        lbl_Correlativo.setText(numeroCotizacion);
         btn_Factura.setBackground(Color.RED);
         btn_Guardar.setText("FACTURAR");
     }
@@ -87,7 +98,6 @@ public class Factura extends javax.swing.JPanel {
         panel_cotizacion = new javax.swing.JPanel();
         btn_Maximizar = new javax.swing.JLabel();
         lbl_Nombre = new javax.swing.JLabel();
-        btn_Cotizacion = new javax.swing.JLabel();
         btn_Sucursal = new javax.swing.JLabel();
         btn_Factura = new javax.swing.JLabel();
         lbl_Fecha = new javax.swing.JLabel();
@@ -203,21 +213,6 @@ public class Factura extends javax.swing.JPanel {
         lbl_Nombre.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lbl_Nombre.setText("FACTURA NO:");
         jPanel1.add(lbl_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 220, -1));
-
-        btn_Cotizacion.setBackground(new java.awt.Color(0, 0, 0));
-        btn_Cotizacion.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        btn_Cotizacion.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Cotizacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Cotizacion.setText("COTIZACION");
-        btn_Cotizacion.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btn_Cotizacion.setName(""); // NOI18N
-        btn_Cotizacion.setOpaque(true);
-        btn_Cotizacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_CotizacionMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btn_Cotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 160, 50));
 
         btn_Sucursal.setBackground(new java.awt.Color(255, 0, 0));
         btn_Sucursal.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -899,21 +894,9 @@ public class Factura extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_CotizacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CotizacionMouseClicked
-         setCotizacion();
-    }//GEN-LAST:event_btn_CotizacionMouseClicked
-
     private void btn_SucursalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SucursalMouseClicked
         selector();
     }//GEN-LAST:event_btn_SucursalMouseClicked
-
-    private void btn_FacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FacturaMouseClicked
-        setFactura();
-    }//GEN-LAST:event_btn_FacturaMouseClicked
-
-    private void btn_FacturaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FacturaMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_FacturaMouseEntered
 
     private void txt_NitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NitFocusGained
         if (txt_Nit.getText().equals("INGRESE EL NIT DEL CLIENTE")) txt_Nit.setText("");
@@ -922,17 +905,71 @@ public class Factura extends javax.swing.JPanel {
     private void txt_NitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NitFocusLost
         if (txt_Nit.getText().equals("")) txt_Nit.setText("INGRESE EL NIT DEL CLIENTE");
         else{
-            
+            try {
+                existeCliente = Conexion_DB.existeCliente(txt_Nit.getText());
+                if (existeCliente) {
+                    Cliente(txt_Nit.getText());
+                }else{
+                    txt_Nombre.setText("");
+                    txt_Nombre.setEditable(true);
+                    txt_Apellido.setText("");
+                    txt_Apellido.setEditable(true);
+                    txt_Direccion.setText("");
+                    txt_Direccion.setEditable(true);
+                    txt_Descuento.setText("0");
+                }
+            } catch (SQLException|NoSePuedeConectar ex) {
+                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+                dialogo.setVisible(true);
+            }
         }
         
     }//GEN-LAST:event_txt_NitFocusLost
     private boolean credito = false;
     private void Cliente(int id){
-        
+        try {
+            String[] Cliente = Conexion_DB.obtenerCliente(id);
+            if (Cliente != null) {              
+                txt_Nit.setText(Cliente[1]);
+                txt_Nombre.setText(Cliente[2]);
+                txt_Apellido.setText(Cliente[3]);
+                txt_Descuento.setText(Cliente[4]);
+                txt_Direccion.setText(Cliente[5]);
+                if (Float.parseFloat(Cliente[6]) > 0) {
+                    rbtn_Credito.setSelected(true);
+                    credito = true;
+                }else {
+                    rbtn_Credito.setSelected(false);
+                    credito = false;
+                }
+            }  
+            
+        } catch (SQLException|NoSePuedeConectar ex) {
+            DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+            dialogo.setVisible(true);
+        }
     }
     private String[] Cliente;
     private void Cliente(String nit){
-        
+        try {
+            Cliente = Conexion_DB.obtenerCliente(nit);
+            txt_Nit.setText(Cliente[1]);
+            txt_Nombre.setText(Cliente[2]);
+            txt_Apellido.setText(Cliente[3]);
+            txt_Descuento.setText(Cliente[4]);
+            txt_Direccion.setText(Cliente[5]);
+            if (Float.parseFloat(Cliente[6]) > 0) {
+                rbtn_Credito.setEnabled(true);
+                rbtn_Credito.setSelected(true);
+            }else {
+                rbtn_Credito.setEnabled(false);
+                rbtn_Credito.setSelected(false);
+            }
+            
+        } catch (SQLException|NoSePuedeConectar ex) {
+            DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+            dialogo.setVisible(true);
+        }
     }
     private void txt_NitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_NitMousePressed
         // TODO add your handling code here:
@@ -943,7 +980,8 @@ public class Factura extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_NitActionPerformed
 
     private void btn_SeleccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeleccionMouseClicked
-        
+        Telefonos tel = new Telefonos(null, true, id);
+        tel.setVisible(true);
     }//GEN-LAST:event_btn_SeleccionMouseClicked
 
     private void btn_SeleccionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeleccionMouseEntered
@@ -1032,15 +1070,97 @@ public class Factura extends javax.swing.JPanel {
         panel_cotizacion.repaint();
     }
     private void btn_GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_GuardarMouseClicked
-        
+        int traba = new Integer(txt_Codigotrab.getText().trim());
+        if (btn_Guardar.getText().equals("GUARDAR")) {
+            try {
+            existeCliente = Conexion_DB.existeCliente(txt_Nit.getText());
+            if (existeCliente) {
+                Cliente = Conexion_DB.obtenerCliente(txt_Nit.getText());
+                nuevoPanel = Conexion_DB.insertarCotizacion(Integer.parseInt(Cliente[0]), traba);
+               
+                insertarDetalles(Integer.parseInt(nuevoPanel.get(0).toString()));
+                Conexion_DB.modificarCotizacion(Integer.parseInt(nuevoPanel.get(0).toString()), 10, Float.parseFloat(txt_Total.getValue().toString()));
+                añadir_panel(txt_Total.getValue().toString());
+
+                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "INFORMACION", "LA COTIZACION FUE "
+                         + "GUARDADA EXITOSAMENTE CON EL NUMERO DE COTIZACION: " + nuevoPanel.get(1).toString());
+                dialogo.setVisible(true);
+              
+            }else {
+                credito = false;
+                Conexion_DB.crearCliente(txt_Nombre.getText(), txt_Apellido.getText(), 0, txt_Direccion.getText(), 0, 0, txt_Nit.getText(), false);
+                Cliente = Conexion_DB.obtenerCliente(txt_Nit.getText());
+                nuevoPanel = Conexion_DB.insertarCotizacion(Integer.parseInt(Cliente[0]), traba);
+                insertarDetalles(Integer.parseInt(nuevoPanel.get(0).toString()));
+                añadir_panel(txt_Total.getValue().toString());
+                Conexion_DB.modificarCotizacion(Integer.parseInt(nuevoPanel.get(0).toString()), 10, Float.parseFloat(txt_Total.getValue().toString()));
+                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "INFORMACION", "LA COTIZACION FUE "
+                         + "GUARDADA EXITOSAMENTE CON EL NUMERO DE COTIZACION: " + nuevoPanel.get(1).toString());
+                dialogo.setVisible(true);
+            }
+              } catch (SQLException|NoSePuedeConectar ex) {
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+                    dialogo.setVisible(true);
+              }
+        }else {            
+            try {
+                existeCliente = Conexion_DB.existeCliente(txt_Nit.getText());
+                if (existeCliente) {
+                    Cliente = Conexion_DB.obtenerCliente(txt_Nit.getText());
+                    nuevoPanel = Conexion_DB.insertarCotizacion(Integer.parseInt(Cliente[0]), traba);
+                    insertarDetalles(Integer.parseInt(nuevoPanel.get(0).toString()));
+                    Conexion_DB.modificarCotizacion(Integer.parseInt(nuevoPanel.get(0).toString()), 10, Float.parseFloat(txt_Total.getValue().toString()));
+                }else {
+                    Conexion_DB.crearCliente(txt_Nombre.getText(), txt_Apellido.getText(), 0, txt_Direccion.getText(), 0, 0, txt_Nit.getText(), false);
+                    Cliente = Conexion_DB.obtenerCliente(txt_Nit.getText());
+                    nuevoPanel = Conexion_DB.insertarCotizacion(Integer.parseInt(Cliente[0]), traba);
+                    credito = false;
+                    insertarDetalles(Integer.parseInt(nuevoPanel.get(0).toString()));
+                    Conexion_DB.modificarCotizacion(Integer.parseInt(nuevoPanel.get(0).toString()), 10, Float.parseFloat(txt_Total.getText()));
+                }
+                String[] Sucu = Conexion_DB.obtenerSucursal(Sucursal[0]);
+                String numeroFac = Conexion_DB.obtenerNumeroFac(Integer.parseInt(Sucu[0]));
+                Pago metodos  = new Pago(null, true, Conexion_DB, Float.parseFloat(txt_Total.getValue().toString()), credito, traba);
+                metodos.setLocationRelativeTo(null);
+                metodos.setVisible(true);
+                if (metodos.isSeleccionado()) {                 
+                    Conexion_DB.crearFactura(numeroFac, Sucu[2], Float.parseFloat(txt_SubTotal.getValue().toString()), Float.parseFloat(txt_IVA.getValue().toString()), Integer.parseInt(Cliente[0]), traba, Integer.parseInt(Sucu[0]), Integer.parseInt(nuevoPanel.get(0).toString()), (txt_Comentario.getText().equals("INGRESE UN NUMERO DE ORDEN O UN COMENTARIO"))?"":txt_Comentario.getText());
+                    Conexion_DB.facturar(Integer.parseInt(nuevoPanel.get(0).toString()));
+                    int Fac_id = Conexion_DB.obtenerFacid(numeroFac, Sucu[2], Conexion_DB.sucursalId(Sucursal[0]));
+                    if (metodos.getCredito() != 0) Conexion_DB.insertarFormaPagoFac(metodos.getCredito(), "", 1, Fac_id);
+                    if (metodos.getEfectivo()!= 0) Conexion_DB.insertarFormaPagoFac(metodos.getEfectivo(), "", 2, Fac_id);
+                    if (metodos.getCheque1()!= 0) Conexion_DB.insertarFormaPagoFac(metodos.getCheque1(), metodos.getDesCheque1(), 3, Fac_id);
+                    if (metodos.getCheque2()!= 0) Conexion_DB.insertarFormaPagoFac(metodos.getCheque2(), metodos.getDesCheque1(), 3, Fac_id);
+                    if (metodos.getCheque3()!= 0) Conexion_DB.insertarFormaPagoFac(metodos.getCheque3(), metodos.getDesCheque1(), 3, Fac_id);
+                    if (metodos.getOtros()!= 0) Conexion_DB.insertarFormaPagoFac(metodos.getOtros(), metodos.getDesOtros(), 4, Fac_id);
+                    Conexion_DB.insertarPartidaVentas(Fac_id,Integer.parseInt(Sucu[0]),
+                            Double.parseDouble(txt_SubTotal.getValue().toString()),
+                           Double.parseDouble(txt_IVA.getValue().toString()),metodos.getEfectivo(),metodos.getCredito(),
+                           metodos.getCheque1()+metodos.getCheque2()+metodos.getCheque3(),metodos.getOtros());
+                    lbl_Correlativo.setText(Conexion_DB.obtenerNumeroFac(Integer.parseInt(Sucu[0])));
+                }
+            } catch (SQLException|NoSePuedeConectar ex) {
+                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+                    dialogo.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_btn_GuardarMouseClicked
-   
+   private void insertarDetalles(int Ventas_id) throws SQLException{
+        for (int i = 0; i < tabla_detalle.getRowCount() - 1; i++) {
+            try {
+                Conexion_DB.insertarDetalleCompra(Conexion_DB.obtenerProductoID(tabla_detalle.getValueAt(i, 0).toString()), Ventas_id, Float.parseFloat(tabla_detalle.getValueAt(i, 2).toString()), Float.parseFloat(tabla_detalle.getValueAt(i, 4).toString()), Float.parseFloat(tabla_detalle.getValueAt(i, 3).toString()));
+            } catch (NoSePuedeConectar ex) {
+                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+                    dialogo.setVisible(true);
+            }
+        }
+    }
     private void btn_GuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_GuardarMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_GuardarMouseEntered
 
     private void tabla_detalleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_detalleMousePressed
-
+        
     }//GEN-LAST:event_tabla_detalleMousePressed
 
     private void tabla_detalleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabla_detalleKeyPressed
@@ -1048,9 +1168,91 @@ public class Factura extends javax.swing.JPanel {
     }//GEN-LAST:event_tabla_detalleKeyPressed
 
     private void tabla_detalleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabla_detalleKeyReleased
-      
+      if (evt.getKeyCode() == 112) {
+            selectorProductofac selector = new selectorProductofac(null, true, Sucursal[0]);            
+            selector.setVisible(true);
+            if (selector.isAceptar()) {
+                String Codigo = selector.getCodigo();float Cantidad = selector.getCantidad();
+                try {  
+                    int seleccion = tabla_detalle.getRowCount() - 1;
+                    String [] Producto = Conexion_DB.obtenerProducto(Codigo);
+                    tabla_detalle.setValueAt(Producto[1], seleccion, 0);
+                    tabla_detalle.setValueAt(Producto[2], seleccion, 1);
+                    tabla_detalle.setValueAt(Cantidad, seleccion, 2);
+                    float descuento = Float.parseFloat(((!Producto[4].equals("0"))? Producto[4]: txt_Descuento.getText()));
+                    tabla_detalle.setValueAt(descuento + "", seleccion, 3);
+                    float precio = Float.parseFloat(Producto[3]);                    
+                    float PrecioDes = (precio - (precio * (descuento/100)));
+                    float total = Cantidad * PrecioDes;                    
+                    tabla_detalle.setValueAt(PrecioDes + "", seleccion, 4);
+                    tabla_detalle.setValueAt(total + "", seleccion, 5);
+                    numeroLineas++;
+                    if (numeroLineas < 14) Productos.addRow(new String[]{});
+                    total();
+                } catch (SQLException|NoSePuedeConectar ex) {
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+                    dialogo.setVisible(true);
+                }                
+            }
+        }
+        if (evt.getKeyCode() == 113 && tabla_detalle.getSelectedRow() != tabla_detalle.getRowCount() - 1) {
+            selectorProductofac selector = new selectorProductofac(null, true, Sucursal[0]);            
+            selector.setVisible(true);
+            if (selector.isAceptar()) {
+                String Codigo = selector.getCodigo();float Cantidad = selector.getCantidad();
+                try {  
+                    int seleccion = tabla_detalle.getSelectedRow();
+                    String [] Producto = Conexion_DB.obtenerProducto(Codigo);
+                    tabla_detalle.setValueAt(Producto[1], seleccion, 0);
+                    tabla_detalle.setValueAt(Producto[2], seleccion, 1);
+                    tabla_detalle.setValueAt(Cantidad, seleccion, 2);
+                    float descuento = Float.parseFloat(((!Producto[4].equals("0"))? Producto[4]: txt_Descuento.getText()));
+                    tabla_detalle.setValueAt(descuento + "", seleccion, 3);
+                    float precio = Float.parseFloat(Producto[3]);                    
+                    float PrecioDes = (precio - (precio * (descuento/100)));
+                    float total = Cantidad * PrecioDes;                    
+                    tabla_detalle.setValueAt(PrecioDes + "", seleccion, 4);
+                    tabla_detalle.setValueAt(total + "", seleccion, 5);
+                }catch (NoSePuedeConectar | SQLException ex){
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+                    dialogo.setVisible(true);
+                }
+            }
+        }
+         if (evt.getKeyCode() == 114) {
+                if (Productos.getRowCount()>1) {
+                    Productos.removeRow(tabla_detalle.getSelectedRow());
+                    total();
+                    numeroLineas--;
+                }
+
+            }
+        if (evt.getKeyCode() == 115) {
+            if (Productos.getRowCount()>1) {
+                try {
+                    int seleccion = tabla_detalle.getSelectedRow();
+                    Descuento desc = new Descuento(null, true, Float.parseFloat(tabla_detalle.getValueAt(seleccion, 2).toString()), Float.parseFloat(tabla_detalle.getValueAt(seleccion, 3).toString()));
+                    desc.setLocationRelativeTo(null);
+                    desc.setVisible(true);
+                    if (desc.isSeleccion()){
+                        float cantidad = desc.getCantidad(), descuento = desc.getDescuento();
+                        String [] Producto = Conexion_DB.obtenerProducto(tabla_detalle.getValueAt(seleccion, 0).toString());
+                        tabla_detalle.setValueAt(cantidad, seleccion, 2);
+                        tabla_detalle.setValueAt(descuento + "", seleccion, 3);
+                        float precio = Float.parseFloat(Producto[3]);
+                        float PrecioDes = (precio - (precio * (descuento/100)));
+                        float total = cantidad * PrecioDes;
+                        tabla_detalle.setValueAt(PrecioDes + "", seleccion, 4);
+                        tabla_detalle.setValueAt(total + "", seleccion, 5);
+                    }
+                } catch (SQLException | NoSePuedeConectar ex) {
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", ex.getMessage());
+                    dialogo.setVisible(true);
+                }
+            }
+        }
     }//GEN-LAST:event_tabla_detalleKeyReleased
-    public void total(){
+   public void total(){
         float total = 0;
         for (int i = 0; i < tabla_detalle.getRowCount() - 1; i++) {
             total += Float.parseFloat(tabla_detalle.getValueAt(i, 5).toString());
@@ -1078,7 +1280,10 @@ public class Factura extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_CodigotrabActionPerformed
 
     private void btn_SeleccionclienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeleccionclienteMouseClicked
-        
+        selectorCliente selector = new selectorCliente(null, true);
+        selector.setVisible(true);
+        id = selector.getCodigo();
+        Cliente(id);
     }//GEN-LAST:event_btn_SeleccionclienteMouseClicked
 
     private void btn_SeleccionclienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeleccionclienteMouseEntered
@@ -1144,20 +1349,19 @@ public class Factura extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_ComentarioActionPerformed
 
     private void btn_Seleccion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Seleccion3MouseClicked
-      
+      SelectorTrabajador trabajador = new SelectorTrabajador(null, true);
+        trabajador.setVisible(true);
+        if (trabajador.isSeleccionada()) {
+            String[] trab = trabajador.getTrab();
+            this.txt_Codigotrab.setText(trab[0]);
+            this.txt_Nombretrab.setText(trab[1]);
+            
+        }
     }//GEN-LAST:event_btn_Seleccion3MouseClicked
 
     private void btn_Seleccion3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Seleccion3MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_Seleccion3MouseEntered
-
-    private void btn_MaximizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MaximizarMouseClicked
-        //panel_Coti.setVisible(true);
-    }//GEN-LAST:event_btn_MaximizarMouseClicked
-
-    private void btn_MaximizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MaximizarMouseEntered
-        panel_Coti.setVisible(true);
-    }//GEN-LAST:event_btn_MaximizarMouseEntered
 
     private void btn_GuardarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_GuardarKeyPressed
          // TODO add your handling code here:
@@ -1166,10 +1370,6 @@ public class Factura extends javax.swing.JPanel {
     private void panel_CotiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_CotiMouseExited
         panel_Coti.setVisible(false);
     }//GEN-LAST:event_panel_CotiMouseExited
-
-    private void scroll_cotiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scroll_cotiMouseExited
-        panel_Coti.setVisible(false);
-    }//GEN-LAST:event_scroll_cotiMouseExited
 
     private void txt_TotalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_TotalFocusGained
 
@@ -1263,9 +1463,28 @@ public class Factura extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_Nombretrab4ActionPerformed
 
+    private void btn_FacturaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FacturaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_FacturaMouseEntered
+
+    private void btn_FacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FacturaMouseClicked
+        setFactura();
+    }//GEN-LAST:event_btn_FacturaMouseClicked
+
+    private void btn_MaximizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MaximizarMouseEntered
+        panel_Coti.setVisible(true);
+    }//GEN-LAST:event_btn_MaximizarMouseEntered
+
+    private void btn_MaximizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MaximizarMouseClicked
+        //panel_Coti.setVisible(true);
+    }//GEN-LAST:event_btn_MaximizarMouseClicked
+
+    private void scroll_cotiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scroll_cotiMouseExited
+        panel_Coti.setVisible(false);
+    }//GEN-LAST:event_scroll_cotiMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btn_Cotizacion;
     private javax.swing.JLabel btn_Factura;
     private javax.swing.JLabel btn_Guardar;
     private javax.swing.JLabel btn_Maximizar;
@@ -1294,7 +1513,7 @@ public class Factura extends javax.swing.JPanel {
     private javax.swing.JPanel panel_Coti;
     private javax.swing.JPanel panel_cotizacion;
     private javax.swing.JRadioButton rbtn_Credito;
-    public static javax.swing.JScrollPane scroll_coti;
+    private javax.swing.JScrollPane scroll_coti;
     private javax.swing.JSeparator sep_Nombre;
     private javax.swing.JSeparator sep_Nombre1;
     private javax.swing.JSeparator sep_Nombre10;
