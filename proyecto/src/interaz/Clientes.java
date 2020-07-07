@@ -5,23 +5,55 @@
  */
 package interaz;
 
+import Excepciones.NoSePuedeConectar;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import clases.*;
+import java.sql.SQLException;
+import java.text.ParseException;
 
 /**
  *
  * 
  */
 public class Clientes extends javax.swing.JPanel {
+    Conexion conexion;
     /**
      * Creates new form Clientes
      */
     public Clientes() {
         initComponents();
     }
-   
+   public Clientes(Conexion conexion){
+        initComponents();
+        this.conexion=conexion;
+        //Inicia los paneles invisibles, para que se seleccione una opcion
+        listadoPanel.setVisible(false);
+        generalPanel.setVisible(false);
+        telefonosButton.setVisible(false);//CAMBIAR AL FINALIZAR
+        //Limpia el formulario
+        limpiar();
+        switch(conexion.getUsuario().getIdPermisos()){
+            case 3:
+                modificarButton.setEnabled(false);
+                eliminarButton.setEnabled(false);
+                break;
+            case 4:
+                modificarButton.setEnabled(false);
+                eliminarButton.setEnabled(false);
+                break;
+            case 5:
+                modificarButton.setEnabled(false);
+                eliminarButton.setEnabled(false);
+                break;
+            case 6:
+                modificarButton.setEnabled(false);
+                eliminarButton.setEnabled(false);
+                break;
+        }
+    }
     /**
      * Limpia el formulario
      */
@@ -45,7 +77,6 @@ public class Clientes extends javax.swing.JPanel {
         //Setea un modelo vacio a la tabla
         listadoTable.setModel(new DefaultTableModel());
         listadoPanel.setEnabled(true);
-        
     }
     /**
      * Carga los datos de la fila seleccionada en los campos, si se esta en modo modificación
@@ -422,46 +453,67 @@ public class Clientes extends javax.swing.JPanel {
 
     private void modificarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarButtonMouseClicked
         if(modificarButton.isEnabled()){
-            //limpia el formulario
-            limpiar();
-            //Setea el color del boton a rojo
-            modificarButton.setBackground(Color.RED);
-            //Muestra los paneles
-            listadoPanel.setVisible(true);
-            generalPanel.setVisible(true);
-            //Setea el texto del boton
-            generalButton.setText("Actualizar Datos");
-            generalButton.setEnabled(true);
-            //Pone el foco en la tabla
-            listadoTable.requestFocus();
+            try {
+                //limpia el formulario
+                limpiar();
+                //Setea el color del boton a rojo
+                modificarButton.setBackground(Color.RED);
+                //Muestra los paneles
+                listadoPanel.setVisible(true);
+                generalPanel.setVisible(true);
+                //Obtiene la lista de clientes y la setea en la tabla
+                listadoTable.setModel(conexion.obtenerClientesJP());
+                //Setea el texto del boton
+                generalButton.setText("Actualizar Datos");
+                generalButton.setEnabled(true);
+                //Pone el foco en la tabla
+                listadoTable.requestFocus();
+            } catch (SQLException|NoSePuedeConectar ex) {
+                DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Modificación", "Error:\n"+ex.toString());
+                dialogo.setVisible(true);
+            }
         }
     }//GEN-LAST:event_modificarButtonMouseClicked
 
     private void eliminarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarButtonMouseClicked
         if(eliminarButton.isEnabled()){
-            //Limpia el formulario
-            limpiar();
-            //Pone el color del boton en rojo y muestra los paneles
-            eliminarButton.setBackground(Color.RED);
-            listadoPanel.setVisible(true);
-            generalPanel.setVisible(true);
-            //Cambia el texto del botón
-            generalButton.setText("Eliminar Selección");
-            generalButton.setEnabled(true);
-            listadoTable.requestFocus();
+            try {
+                //Limpia el formulario
+                limpiar();
+                //Pone el color del boton en rojo y muestra los paneles
+                eliminarButton.setBackground(Color.RED);
+                listadoPanel.setVisible(true);
+                generalPanel.setVisible(true);
+                //Cambia el texto del botón
+                generalButton.setText("Eliminar Selección");
+                generalButton.setEnabled(true);
+                //Obtiene la lista de clientes y la pone en la tabla, pone el foco en la misma
+                listadoTable.setModel(conexion.obtenerClientesJP());
+                listadoTable.requestFocus();
+            } catch (SQLException|NoSePuedeConectar ex) {
+                DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Eliminación", "Error:\n"+ex.toString());
+                dialogo.setVisible(true);
+            }
         }
     }//GEN-LAST:event_eliminarButtonMouseClicked
 
     private void verButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verButtonMouseClicked
-        //Limpia el formulario
-        limpiar();
-        //Cambia el color del boton a rojo
-        verButton.setBackground(Color.RED);
-        //Muestra los paneles
-        listadoPanel.setVisible(true);
-        generalPanel.setVisible(true);
-        //Inhabilita el botón
-        generalButton.setEnabled(false);
+        try {
+            //Limpia el formulario
+            limpiar();
+            //Cambia el color del boton a rojo
+            verButton.setBackground(Color.RED);
+            //Obtiene la lista de clientes y la pone en la tabla
+            listadoTable.setModel(conexion.obtenerClientesJP());
+            //Muestra los paneles
+            listadoPanel.setVisible(true);
+            generalPanel.setVisible(true);
+            //Inhabilita el botón
+            generalButton.setEnabled(false);
+        } catch (SQLException|NoSePuedeConectar ex) {
+            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Visualización", "Error:\n"+ex.toString());
+            dialogo.setVisible(true);
+        }
     }//GEN-LAST:event_verButtonMouseClicked
 
     private void listadoTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listadoTableMousePressed
@@ -476,17 +528,70 @@ public class Clientes extends javax.swing.JPanel {
     }//GEN-LAST:event_listadoTableKeyReleased
 
     private void generalButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generalButtonMouseClicked
- 
-        //Si esta en modo ingreso, modificación o eliminación, hace cosas distintas
-        //Se comprueba en que modo está
-        if(ingresarButton.getBackground()==Color.RED){
-
-        }else if(modificarButton.getBackground()==Color.RED){
-
-        }else if(eliminarButton.getBackground()==Color.RED)
-        {
-
-        }        
+        try {
+            //Si esta en modo ingreso, modificación o eliminación, hace cosas distintas
+            //Se comprueba en que modo está
+            if(ingresarButton.getBackground()==Color.RED){
+                if(!nombreField.getText().trim().equals("")&&!nombreField.getText().trim().equals("N/A")){
+                    //Valida los datos de los textos de numero
+                    descuentoField.commitEdit();
+                    limCreditoField.commitEdit();
+                    saldoField.commitEdit();
+                    //Hace un ingreso a la BD
+                    int resultado=conexion.crearCliente(nombreField.getText().trim(), apellidoField.getText().trim(), (long)descuentoField.getValue(),direccionField.getText().trim(), (long)limCreditoField.getValue(),Float.parseFloat(saldoField.getText()),nitField.getText().trim(), chequeCheck.isSelected());
+                    //Si el resultado es 1, significa que si se ingreso, si es 0 que no (ya existe)
+                    if(resultado==1){
+                        DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Ingreso", "Se ha ingresado correctamente");
+                        dialogo.setVisible(true);
+                    }
+                    else if(resultado==0){
+                        DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Ingreso", "Este usuario ya existe");
+                        dialogo.setVisible(true);
+                    }
+                    //Limpia el formulario
+                    limpiar();
+                }else{
+                    DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Ingreso", "Debe ingresar al menos el nombre del cliente");
+                    dialogo.setVisible(true);
+                    nombreField.requestFocus();
+                }
+            }else if(modificarButton.getBackground()==Color.RED){
+                if(!nombreField.getText().trim().equals("")&&!nombreField.getText().trim().equals("N/A")){
+                //Valida los datos de los campos de numero
+                descuentoField.commitEdit();
+                limCreditoField.commitEdit();
+                saldoField.commitEdit();
+                //Hace la consulta de modificación y devuelve el número de filas cambiadas (Debe de ser 1)
+                int filasMod=conexion.modificarCliente(Integer.parseInt(listadoTable.getValueAt(listadoTable.getSelectedRow(),0).toString()),nombreField.getText().trim(), apellidoField.getText().trim(), (long)descuentoField.getValue(),direccionField.getText().trim(), (long)limCreditoField.getValue(),Float.parseFloat(saldoField.getText()),nitField.getText().trim(), chequeCheck.isSelected());
+                DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Modificación", "Se ha actualizado correctamente\nRegistros actualizados: "+filasMod);
+                dialogo.setVisible(true);
+                //Limpia el formulario
+                limpiar();
+                }else{
+                    DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Modificacion", "Debe ingresar al menos el nombre del cliente");
+                    dialogo.setVisible(true);
+                    nombreField.requestFocus();
+                }
+            }else if(eliminarButton.getBackground()==Color.RED)
+            {
+                //Muestra un dialogo para confirmar si se quiere borrar el cliente
+                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INTERROGANTE,"Eliminación", "¿Esta seguro de eliminar al cliente seleccionado?");
+                dialogo.setVisible(true);
+                //Si se acepta, entonces lo borra
+                if(dialogo.isAceptar()){
+                    //Manda la orden de eliminación a la BD, devuelve el número de filas cambiadas
+                    int filasMod=conexion.eliminarCliente(Integer.parseInt(listadoTable.getValueAt(listadoTable.getSelectedRow(),0).toString()));
+                    dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Eliminación", "Se ha eliminado al cliente\nRegistros actualizados: "+filasMod);
+                    dialogo.setVisible(true);
+                    //Limpia el formulario
+                    limpiar();
+                }
+            }
+        } catch (SQLException|ParseException|NoSePuedeConectar ex) {
+            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Ingreso", "Error:\n"+ex.toString());
+            dialogo.setVisible(true);
+            limpiar();
+        }      
     }//GEN-LAST:event_generalButtonMouseClicked
 
     private void MinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizarMouseClicked
