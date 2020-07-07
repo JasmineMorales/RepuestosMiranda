@@ -6,16 +6,33 @@
 package interaz;
 
 import javax.swing.JFrame;
-
+import clases.*;
 /**
  *
  *
  */
 public class Seguridad extends javax.swing.JPanel {
-    public final static String marcaInicio="analisis";
+    public final static String marcaInicio="SCE";
     public final static String claveCifrado = "Sistema de Control Empresarial";
+    private Conexion conexion;
 
-    public Seguridad() {
+    public Seguridad(Conexion conexion) {
+        initComponents();  
+        this.conexion=conexion;
+        //Hacemos invisibles todos lo paneles que no deben mostrarse desde el inicio
+        eliminarPanel.setVisible(false);
+        ingresarPanel.setVisible(false);
+        modificarPanel.setVisible(false);
+        conexionPanel.setVisible(false);
+        usuariosPanel1.setVisible(false);
+        //Ponemos los paneles en el mismo punto, de tal manera que todos estén en el centro, y no regados en el JFrame
+        ingresarPanel.setBounds(eliminarPanel.getBounds().x, eliminarPanel.getBounds().y, ingresarPanel.getBounds().width, ingresarPanel.getBounds().height);
+        conexionPanel.setBounds(eliminarPanel.getBounds().x, eliminarPanel.getBounds().y,conexionPanel.getBounds().width,conexionPanel.getBounds().height);
+        modificarPanel.setBounds(eliminarPanel.getBounds().x, eliminarPanel.getBounds().y,modificarPanel.getBounds().width,modificarPanel.getBounds().height);
+        if(conexion.getUsuario().getIdPermisos()>1){
+            gesUsuariosButton.setEnabled(false);
+            gesConButton.setEnabled(false);
+        }
     }
     
     
