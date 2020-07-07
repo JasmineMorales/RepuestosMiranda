@@ -5,26 +5,82 @@
  */
 package interaz;
 
+import Excepciones.NoSePuedeConectar;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
+import clases.*;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * 
  */
 public class Productos extends javax.swing.JPanel {
+    private Conexion conexion=new Conexion();
     private ArrayList[] sucursales_unidades;
     private ArrayList productoActual=new ArrayList(); 
     private boolean nuevo=false;
     private boolean modificar=false;
 
-    public Productos() {
+    public Productos(Conexion conexion) {
+        initComponents();
+        pnContenido1.setVisible(false);
+        this.conexion=conexion;
+        buttonGroup1.add(rbtn_Credito);
+        buttonGroup1.add(rbtn_Credito1);
+        buttonGroup1.add(rbtn_Credito2);
+        try {
+            sucursales_unidades=new ArrayList[2];
+            cmb_sucursal.addItem("Total");
+            sucursales_unidades=conexion.obtener_Sucursales_Unidades();
+            for(int i=0; i<sucursales_unidades[0].size();i++)
+            {
+                cmb_sucursal.addItem(sucursales_unidades[1].get(i).toString());
+            }
+            for(int i=0; i<sucursales_unidades[2].size();i++)
+            {
+                cmb_unidad.addItem(sucursales_unidades[3].get(i).toString());
+            }
+            cmb_unidad.addItem("Ninguno");
+            cmb_unidad.setSelectedIndex(cmb_unidad.getItemCount()-1);
+            cambiarModo();
+            llenarListado();
+            setJTexFieldChanged(txt_codigo1);
+            scp_listado.getViewport().setBackground(Color.red);
+        } catch (SQLException|NoSePuedeConectar ex) {
+            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        switch(conexion.getUsuario().getIdPermisos()){
+            case 3:
+                btn_nuevo.setEnabled(false);
+                btn_modificar.setEnabled(false);
+                btn_eliminar.setEnabled(false);
+                break;
+            case 4:
+                btn_nuevo.setEnabled(false);
+                btn_modificar.setEnabled(false);
+                btn_eliminar.setEnabled(false);
+                btn_ver.setEnabled(false);
+                break;
+            case 5:
+                btn_nuevo.setEnabled(false);
+                btn_modificar.setEnabled(false);
+                btn_eliminar.setEnabled(false);
+                break;
+            case 6:
+                btn_nuevo.setEnabled(false);
+                btn_modificar.setEnabled(false);
+                btn_eliminar.setEnabled(false);
+                break;
+            default:
+                break;
+        }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -820,6 +876,7 @@ public class Productos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void llenarListado()
     {
+            try {
             int filtro;
             if(rbtn_Credito.isSelected())
                 filtro=0;
@@ -827,7 +884,36 @@ public class Productos extends javax.swing.JPanel {
                 filtro=1;
             else
                 filtro=2;
-           
+            DefaultTableModel tabla=conexion.obtenerProductos_vista(filtro,txt_codigo1.getText());
+            if(tabla!=null)
+                    tbl_productos.setModel(tabla);
+                    /*//if(!nuevo){
+                    ArrayList[] listado=null;
+                    try {
+                    listado=conexion.obtener_productos();
+                    } catch (SQLException ex) {
+                    Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    if(listado!=null)
+                    {
+                    pn_listado.removeAll();
+                    for(int i=0;i<listado[0].size();i++)
+                    {
+                    JPanel pan=new producto_lista(listado[1].get(i).toString(),listado[2].get(i).toString(),
+                    listado[3].get(i).toString(),this);
+                    pan.setSize(292,100);
+                    pan.setLocation(0, i*100);
+                    pan.setName(listado[0].get(i).toString());
+                    pn_listado.add(pan);
+                    }
+                    pn_listado.setPreferredSize(new Dimension(pn_listado.getParent().getWidth(),listado[0].size()*100));
+                    pn_listado.getParent().revalidate();
+                    pn_listado.getParent().repaint();
+                    }
+                    //}*/
+        } catch (SQLException|NoSePuedeConectar ex) {
+            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+        }           
     }
     private void cambiarModo(){
         txt_codigo.setEnabled(nuevo);      
@@ -847,7 +933,11 @@ public class Productos extends javax.swing.JPanel {
     }
     public void cargarProducto(int i)
     {
-        
+        try {
+            productoActual=conexion.obtener_detalleProducto(i,0);
+        } catch (SQLException|NoSePuedeConectar ex) {
+            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if(productoActual.size()>0)
             cargarProductoActual();
         else
@@ -855,7 +945,11 @@ public class Productos extends javax.swing.JPanel {
     }
     public void cargarProducto(String codigo, String codigo_barras, String descripcion)
     {
-        
+        try {
+            productoActual=conexion.obtener_detalleProducto(descripcion,codigo,codigo_barras);
+        } catch (SQLException|NoSePuedeConectar ex) {
+            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if(productoActual.size()>0)
             cargarProductoActual();
         else
@@ -864,6 +958,7 @@ public class Productos extends javax.swing.JPanel {
     private void cargarProductoActual()
     {
         if(productoActual.size()>0 && !nuevo){
+            try {
                 txt_codigo.setText(productoActual.get(1).toString());
                 txt_codigoBarra.setText(productoActual.get(2).toString());
                 txa_descripcion.setText(productoActual.get(3).toString());
@@ -898,8 +993,14 @@ public class Productos extends javax.swing.JPanel {
                 else
                     txt_marca.setText(productoActual.get(10).toString());
                     cmb_sucursal.setSelectedIndex(0);
-            }          
-        
+                    txt_existencia.setText(conexion.obtenerExistencia(0, Integer.parseInt(productoActual.get(0).toString()))+"");
+                    } catch (SQLException ex) {
+                Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSePuedeConectar ex) {
+                Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+        }
         else
             modoSinDatos();
     }
@@ -1068,7 +1169,7 @@ public class Productos extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_Guardar_AceptarMouseReleased
 
     private void btn_Guardar_AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Guardar_AceptarMouseClicked
-    
+    try {
             if(nuevo && cmb_sucursal.getSelectedIndex()>0){
                 String est=txt_estanteria.getText(), fil=txt_fila.getText(), 
                         col=txt_columna.getText(), uni=(cmb_unidad.getSelectedIndex()+1)+"";
@@ -1076,17 +1177,27 @@ public class Productos extends javax.swing.JPanel {
                 {
                     uni=null;
                 }
-               
+                conexion.insertarProducto(txt_codigo.getText(),txt_codigoBarra.getText(),
+                    txa_descripcion.getText(),Double.parseDouble(ftx_venta.getValue().toString()),
+                    Double.parseDouble(ftx_costo.getValue().toString()),est,col,fil,txt_marca.getText(),
+                    uni,Integer.parseInt(sucursales_unidades[0].get(cmb_sucursal.getSelectedIndex()-1).toString()),
+                    Double.parseDouble(txt_existencia.getText()));
                 llenarListado();
                 btn_verMouseClicked(evt); 
                 }
             if(modificar){
                 String est=txt_estanteria.getText(), fil=txt_fila.getText(), 
                         col=txt_columna.getText();
-                
+                conexion.modificarProducto(Integer.parseInt(productoActual.get(0).toString()),txt_codigo.getText(),txt_codigoBarra.getText(),
+                    txa_descripcion.getText(),Double.parseDouble(ftx_venta.getValue().toString()),
+                    Double.parseDouble(ftx_costo.getValue().toString()),est,col,fil,txt_marca.getText());
+                 cargarProducto(Integer.parseInt(productoActual.get(0).toString()));
                  btn_verMouseClicked(evt);
                  llenarListado();
             }
+        } catch (SQLException|NoSePuedeConectar ex) {
+                Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_Guardar_AceptarMouseClicked
 
     private void txt_codigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_codigoFocusGained
@@ -1143,12 +1254,21 @@ public class Productos extends javax.swing.JPanel {
             if(productoActual.size()>0)
              {
                  btn_eliminar.setBackground(Color.red);
+                 try {
                      DialogoOpcion dialogo= new DialogoOpcion(null,true, DialogoOpcion.ICONO_INTERROGANTE,"Eliminar Producto", "Esta seguro de eliminar este producto");
                      dialogo.setVisible(true);
                      if(dialogo.isAceptar())
                      {
-                        
+                         if(conexion.obtenerExistencia(0,Integer.parseInt(productoActual.get(0).toString()))==0)
+                             conexion.deshabilitarProducto(Integer.parseInt(productoActual.get(0).toString()));
+                         else{
+                             dialogo=new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR,"Error","Aun hay existencias del producto");
+                             dialogo.setVisible(true);
+                         }
                      }
+                 } catch (SQLException|NoSePuedeConectar ex) {
+                     Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+                 }
                  btn_eliminar.setBackground(Color.black);
                  llenarListado();
                  productoActual=new ArrayList();

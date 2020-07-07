@@ -10,12 +10,14 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import clases.*;
 
 /**
  *
  * 
  */
 public class Principal extends javax.swing.JFrame {
+    private Conexion conexion;
     private Seguridad seguridad;
     private Clientes clientes;
     private Compras panel_Compras;
@@ -29,7 +31,29 @@ public class Principal extends javax.swing.JFrame {
         panel_Compras = new Compras();
         panel_Ventas = new Ventas();
     }
-    
+    public Principal(Conexion con){
+        initComponents();
+        setLocationRelativeTo(null);
+        this.conexion=con;
+        panel_Compras = new Compras();
+        panel_Ventas = new Ventas(conexion);
+        switch(con.getUsuario().getIdPermisos()){
+            
+            case 4:
+                btn_Ventas.setEnabled(false);
+                btn_Compras.setEnabled(false);
+                btn_Clientes.setEnabled(false);
+                break;
+            case 5:
+                btn_Compras.setEnabled(false);
+                break;
+            case 6:
+                btn_Compras.setEnabled(false);
+                break;
+            default:
+                break;
+        }
+    }
     public void setEtiqueta(JLabel etiqueta){
         etiqueta.setBackground(Color.BLACK);
     }
@@ -204,7 +228,7 @@ public class Principal extends javax.swing.JFrame {
             resetEtiqueta(btn_Ventas);
             resetEtiqueta(jLabel6);
             resetEtiqueta(btn_Clientes);
-            JPanel j = new Productos();
+            JPanel j = new Productos(conexion);
             j.setLocation(0, 0);
             j.setSize(jPanel2.getSize());
             jPanel2.removeAll();
@@ -257,7 +281,7 @@ public class Principal extends javax.swing.JFrame {
             resetEtiqueta(btn_Inventario);
             resetEtiqueta(btn_Clientes);
             if(seguridad==null)
-            seguridad= new Seguridad();
+                seguridad= new Seguridad(conexion);
             seguridad.setLocation(0,0);
             seguridad.setSize(jPanel2.getSize());
             jPanel2.removeAll();
@@ -285,9 +309,9 @@ public class Principal extends javax.swing.JFrame {
             resetEtiqueta(btn_Inventario);
             resetEtiqueta(btn_Compras);
             resetEtiqueta(btn_Ventas);
-            resetEtiqueta(jLabel6);     
+            resetEtiqueta(jLabel6);
             setEtiqueta(btn_Clientes);
-            clientes=new Clientes();
+            clientes=new Clientes(conexion);
             clientes.setLocation(0,0);
             clientes.setSize(jPanel2.getSize());
             jPanel2.removeAll();
