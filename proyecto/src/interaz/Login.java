@@ -6,22 +6,90 @@
 package interaz;
 
 
+import Excepciones.ArchivoNoExiste;
+import Excepciones.FormatoInvalido;
+import Excepciones.NoSePuedeConectar;
+import Excepciones.NoSePuedeEscribirArchivo;
 import conexion.conexionDB;
 import java.awt.event.KeyEvent;
 import javax.persistence.EntityManagerFactory;
+import clases.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
+import static interaz.Seguridad.claveCifrado;
+
 
 /**
  *
  * 
  */
 public class Login extends javax.swing.JFrame {
+    
+    private Server server;
+    private Conexion conexion;
+    private UsuarioG user;
     /**
      * Creates new form Interfaz
      */
+    
     public Login() {
         initComponents();
-        this.setLocationRelativeTo(null);
         emf = conexionDB.obtenerConexion();
+        this.setLocationRelativeTo(null);
+        try {
+            File configDServer = Server.SERVER_CONFIG_DEFAULT_FILE;
+            //Comprobamos si la configuración de conexion al servidor ya existe
+            if(configDServer.exists()&&configDServer.length()>0){
+                //Leemos la configuración del archivo
+                server = new Server(Server.SERVER_CONFIG_DEFAULT_FILE);
+                // Generamos una clave que queramos que tenga al menos 16 bytes adecuada para AES
+                Key key = new SecretKeySpec(Seguridad.claveCifrado.getBytes(),  0, 16, "AES");
+                // Se obtiene un cifrador AES
+                Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
+                // Se inicializa el cifrador, se pone en modo de descifrado y se le envia la clave
+                aes.init(Cipher.DECRYPT_MODE,key);
+                // Se desencripta y se guarda en la variable de servidor
+                server.setPass(new String(aes.doFinal(server.getPassArray())));
+                conexion= new Conexion(server.getUser(), server.getIp(), server.getPass(), server.getBd());
+                //Comprobamos si hay una sesión guardada
+                File configDUser=UsuarioG.LOGGED_USER_DEFAULT_FILE;
+                if(configDUser.exists()&&configDUser.length()>0){
+                    user= new UsuarioG(configDUser);
+                    // Generamos una clave que queramos que tenga al menos 16 bytes adecuada para AES
+                    key = new SecretKeySpec(Seguridad.claveCifrado.getBytes(),  0, 16, "AES");
+                    // Se obtiene un cifrador AES
+                    aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
+                    // Se inicializa el cifrador, se pone en modo de descifrado y se le envia la clave
+                    aes.init(Cipher.DECRYPT_MODE,key);
+                    // Se desencripta y se guarda en la variable de servidor
+                    user.setPass(new String(aes.doFinal(user.getPassBytes())));
+                    //Se hace login desde el archivo
+                    logueo(user.getUser(),user.getPass(),true);
+                }
+                else{
+                    //Si no hay sesión guardada, se muestra la ventana de login
+                    this.setVisible(true);
+                }
+            }
+            else{
+                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR,"No hay configuración","Error: no hay configuración de acceso a la base de datos");
+                dialogo.setVisible(true);
+                //System.exit(0);
+                this.setVisible(true);
+            }
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException | FileNotFoundException | FormatoInvalido | ArchivoNoExiste ex) {
+            DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR,"Error fatal",ex.toString());
+            dialogo.setVisible(true);
+        }
     }
     
     EntityManagerFactory emf;
@@ -304,12 +372,50 @@ public class Login extends javax.swing.JFrame {
      * @param guardar si va a guardarse la sesión o no
      */
     private void logueo(String usuario, String password, boolean guardar){
-        Principal m = new Principal();
-        m.setVisible(true);
-        this.setVisible(false);
-        jTextField2.setText("");
-        jPasswordField1.setText("");
-        jTextField2.requestFocus();
+        if(!server.getUser().equals("")){
+            try {
+                if(conexion.login(usuario,password)==1){
+                    if(guardar){
+                        // Generamos una clave que queramos que tenga al menos 16 bytes adecuada para AES
+                        Key key = new SecretKeySpec(claveCifrado.getBytes(),  0, 16, "AES");
+                        // Se obtiene un cifrador AES
+                        Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
+                        // Se inicializa el cifrador, se pone en modo de cifrado y se le envia la clave
+                        aes.init(Cipher.ENCRYPT_MODE,key);
+                        // Se encripta
+                        byte[] encriptado=aes.doFinal(password.getBytes());
+                        user=new UsuarioG(usuario, encriptado);
+                        user.escribirArchivo(UsuarioG.LOGGED_USER_DEFAULT_FILE);
+                    }
+                    Usuario datosUsuario= new Usuario(usuario,conexion.obtenerPermisosDeUsuario(usuario));
+                    conexion.setUsuario(datosUsuario);
+                    Principal m = new Principal(conexion);
+                    m.setVisible(true);
+                    this.setVisible(false);
+                }
+                else{
+                    DialogoOpcion dialogo = new DialogoOpcion(this, true, DialogoOpcion.ICONO_ERROR, "Error", "Usuario o contraseña incorrecta");  
+                    dialogo.setVisible(true);
+                    if(UsuarioG.LOGGED_USER_DEFAULT_FILE.length()>0){
+                        UsuarioG.limpiarArchivo(UsuarioG.LOGGED_USER_DEFAULT_FILE);
+                        System.exit(0);
+                    }
+                }
+                jTextField2.setText("");
+                jPasswordField1.setText("");
+                jTextField2.requestFocus();
+                
+            } catch (SQLException|NoSuchAlgorithmException|NoSuchPaddingException|InvalidKeyException|IllegalBlockSizeException|BadPaddingException|NoSePuedeEscribirArchivo ex) {
+                DialogoOpcion dialogo = new DialogoOpcion(this, true, DialogoOpcion.ICONO_ERROR, "Log In", "Error:\n"+ex.toString());  
+                dialogo.setVisible(true);
+            }catch(NoSePuedeConectar ex){
+                DialogoOpcion dialogo = new DialogoOpcion(this, true, DialogoOpcion.ICONO_ERROR, "No se puede conectar", "NO es posible conectarse a la base de datos, revise su configuración de conexión. Se mostrará otro mensaje con detalles");  
+                dialogo.setVisible(true);
+                dialogo = new DialogoOpcion(this, true, DialogoOpcion.ICONO_ERROR, "Detalles del error", ex.toString());  
+                dialogo.setVisible(true);
+                    
+            }
+        }
     }
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
@@ -362,7 +468,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9KeyReleased
 
     private void conexionProblema1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_conexionProblema1MouseClicked
- 
+        DialConexion dialogo = new DialConexion(null, true);
+        
+        dialogo.setVisible(true);
     }//GEN-LAST:event_conexionProblema1MouseClicked
 
     /**
@@ -410,7 +518,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Login()/*.setVisible(true)*/;
             }
         });
     }
