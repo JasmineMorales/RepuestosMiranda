@@ -5,17 +5,35 @@
  */
 package interaz;
 
-import javax.swing.JFrame;
+import Excepciones.NoSePuedeConectar;
+import Excepciones.NoSePuedeEscribirArchivo;
 import clases.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
+import javax.swing.JFrame;
+
 /**
  *
- *
+ * 
  */
 public class Seguridad extends javax.swing.JPanel {
     public final static String marcaInicio="SCE";
     public final static String claveCifrado = "Sistema de Control Empresarial";
     private Conexion conexion;
-
+    /**
+     * Creates new form Seguridad
+     */
     public Seguridad(Conexion conexion) {
         initComponents();  
         this.conexion=conexion;
@@ -34,8 +52,7 @@ public class Seguridad extends javax.swing.JPanel {
             gesConButton.setEnabled(false);
         }
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -232,7 +249,7 @@ public class Seguridad extends javax.swing.JPanel {
         );
 
         add(conexionPanel);
-        conexionPanel.setBounds(430, 220, 370, 0);
+        conexionPanel.setBounds(430, 220, 370, 215);
 
         eliminarPanel.setOpaque(false);
 
@@ -294,7 +311,7 @@ public class Seguridad extends javax.swing.JPanel {
         );
 
         add(eliminarPanel);
-        eliminarPanel.setBounds(220, 150, 470, 0);
+        eliminarPanel.setBounds(220, 160, 470, 57);
 
         ingresarPanel.setOpaque(false);
 
@@ -513,7 +530,7 @@ public class Seguridad extends javax.swing.JPanel {
         );
 
         add(usuariosPanel1);
-        usuariosPanel1.setBounds(150, 60, 0, 0);
+        usuariosPanel1.setBounds(140, 70, 612, 74);
 
         logoutButton.setBackground(new java.awt.Color(255, 0, 0));
         logoutButton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -643,7 +660,26 @@ public class Seguridad extends javax.swing.JPanel {
     private void guardarDBButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarDBButtonMouseClicked
        if(!ipField.getText().trim().equals("")&&!userField.getText().trim().equals("")&&!new String(passField.getPassword()).trim().equals("")&&!bdField.getText().equals("")){
             if(new String(passField.getPassword()).trim().equals(new String(passField1.getPassword()).trim())){
-               
+                try {
+                    // Generamos una clave que queramos que tenga al menos 16 bytes adecuada para AES
+                    Key key = new SecretKeySpec(claveCifrado.getBytes(),  0, 16, "AES");
+                    // Se obtiene un cifrador AES
+                    Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
+                    // Se inicializa el cifrador, se pone en modo de cifrado y se le envia la clave
+                    aes.init(Cipher.ENCRYPT_MODE,key);
+                    // Se encripta
+                    byte[] encriptado=aes.doFinal(new String(passField.getPassword()).getBytes());
+                    //Se crea un nuevo servidor, enviando los datos nuevos y se escribe la configuracion al archivo
+                    Server server=new Server(ipField.getText(), userField.getText(),encriptado , bdField.getText());
+                    server.escribirArchivo(Server.SERVER_CONFIG_DEFAULT_FILE);
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Escritura exitosa", "Archivo Escrito");  
+                    dialogo.setVisible(true);
+                    //Limpiamos el formulario
+                    limpiar();
+                } catch (NoSePuedeEscribirArchivo | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException ex) {
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Escritura exitosa", ex.toString());  
+                    dialogo.setVisible(true);
+                }
             }
             else{
                 DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Llene los campos correctamente", "Las contraseñas no coinciden");  
@@ -668,7 +704,26 @@ public class Seguridad extends javax.swing.JPanel {
     }//GEN-LAST:event_userIButttonMouseClicked
 
     private void verUsElButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verUsElButtonMouseClicked
-        
+        try {
+            //Limpiamos la lista de usuarios en el combo
+            int tamano=usuariosCombo1.getModel().getSize();
+            for (int i = 0; i < tamano; i++) {
+                usuariosCombo1.removeItemAt(0);
+            }
+            //Obtenemos la lista de usuarios desde la BD, y luego los agregamos al combo
+            ArrayList modelo= conexion.obtenerUsuarios();
+            for(int i=0;i<modelo.size();i++){
+                usuariosCombo1.addItem((String) modelo.get(i));
+            }
+            //Hacemos que no esté seleccionado ningún elemento del combo, y mostramos el panel
+            usuariosCombo1.setSelectedIndex(-1);
+            eliminarPanel.setVisible(true);
+            usuariosPanel1.setVisible(false);
+            gesUsuariosButton.setEnabled(false);
+        } catch (SQLException|NoSePuedeConectar ex) {
+            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+            dialogo.setVisible(true);
+        }
     }//GEN-LAST:event_verUsElButtonMouseClicked
 
     private void gesUsuariosButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gesUsuariosButtonMouseClicked
@@ -680,10 +735,53 @@ public class Seguridad extends javax.swing.JPanel {
     }//GEN-LAST:event_gesUsuariosButtonMouseClicked
 
     private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
+        //Borramos el contenido del archivo de logueo, para que no vuelva a iniciarse la sesión
+        BufferedWriter bw = null;
+        try {
+            bw = new BufferedWriter(new FileWriter(UsuarioG.LOGGED_USER_DEFAULT_FILE));
+            bw.write("");
+            bw.close();
+        } catch (IOException ex) {
+            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+            dialogo.setVisible(true);
+        } finally {
+            try {
+                bw.close();
+            } catch (IOException ex) {
+                DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+                dialogo.setVisible(true);
+            }
+        }
+        // (Comentar/Descomentar una opción) Despues de borrar el archivo, mostramos de nuevo la ventana de login, o cerramos el programa
+        //Opcion 1: cierra el programa
+        System.exit(0);
+        //Opcion 2: muestra de nuevo el login (aun infuncional)
+        //Login l= new Login();
+        //this.setVisible(false);
+        //l.setVisible(true);
         
     }//GEN-LAST:event_logoutButtonMouseClicked
 
     private void verUsInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verUsInButtonMouseClicked
+        try {
+            limpiar();
+            ingresarPanel.setVisible(true);
+            usuariosPanel1.setVisible(false);
+            ArrayList trabajadores=conexion.obtenerTrabajadoresParaUsuarios();
+            for (int i = 0; i < trabajadores.size(); i++) {
+                trabajadoresCombo.addItem(trabajadores.get(i).toString());
+            }
+            ArrayList permisos=conexion.obtenerPermisos();
+            for (int i = 0; i < permisos.size(); i++) {
+                permisosCombo.addItem(permisos.get(i).toString());
+            }
+            permisosCombo.setSelectedIndex(-1);
+            trabajadoresCombo.setSelectedIndex(-1);
+            gesUsuariosButton.setEnabled(false);
+        } catch (NoSePuedeConectar|SQLException ex) {
+            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Ingreso", "Error:\n"+ex.toString());
+            dialogo.setVisible(true);
+        }
         
     }//GEN-LAST:event_verUsInButtonMouseClicked
 
@@ -718,11 +816,45 @@ public class Seguridad extends javax.swing.JPanel {
     }//GEN-LAST:event_cancelarElButtonMouseClicked
 
     private void probarDBButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_probarDBButtonMouseClicked
-       
+        if(!ipField.getText().trim().equals("")&&!userField.getText().trim().equals("")&&!new String(passField.getPassword()).trim().equals("")&&!bdField.getText().equals("")){
+            if(new String(passField.getPassword()).trim().equals(new String(passField1.getPassword()).trim())){
+                Conexion prueba= new Conexion(userField.getText(), ipField.getText(), new String(passField.getPassword()),bdField.getText());
+                if(prueba.probarConexion()){
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Conexion Exitosa", "Esta configuración es correcta\nSE PUEDE CONECTAR AL SGBD");  
+                    dialogo.setVisible(true);
+                }else{
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Conexion Fallida", "Esta configuración NO es correcta\nNO se puede conectar al SGBD");  
+                    dialogo.setVisible(true);
+                }
+            }else{
+                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Llene los campos correctamente", "Las contraseñas no coinciden");  
+                dialogo.setVisible(true);
+                passField.setText("");
+                passField1.setText("");
+                passField.requestFocus();
+            }
+        }
+        
     }//GEN-LAST:event_probarDBButtonMouseClicked
 
     private void cambiarMButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiarMButtonMouseClicked
-        
+        try{
+            if(usuariosMCombo.getSelectedIndex()>-1){
+                DialogoOpcion dialogo= new DialogoOpcion(null,true,DialogoOpcion.ICONO_INTERROGANTE,"Modificar usuarios","Realmente desea modificar el usuario "+usuariosMCombo.getSelectedItem().toString());
+                dialogo.setVisible(true);
+                if(dialogo.isAceptar()){
+                    //Manda la orden de eliminación a la BD, devuelve el número de filas cambiadas
+                        int filasMod=conexion.modificacionUsuario(usuariosMCombo.getSelectedItem().toString(),permisosMCombo.getSelectedIndex()+1);
+                        dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Eliminación", "Se ha eliminado la sucursal\nRegistros actualizados: "+filasMod);
+                        dialogo.setVisible(true);
+                        //Limpia el formulario
+                        limpiar();
+                }
+            }
+        } catch (SQLException|NoSePuedeConectar ex) {
+            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+            dialogo.setVisible(true);
+        }
     }//GEN-LAST:event_cambiarMButtonMouseClicked
 
     private void cancelarMButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarMButtonMouseClicked
@@ -730,19 +862,63 @@ public class Seguridad extends javax.swing.JPanel {
     }//GEN-LAST:event_cancelarMButtonMouseClicked
 
     private void verUsModButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verUsModButtonMouseClicked
-        
+        try {
+            //Limpiamos la lista de usuarios en el combo
+            int tamano=usuariosMCombo.getModel().getSize();
+            for (int i = 0; i < tamano; i++) {
+                usuariosMCombo.removeItemAt(0);
+            }
+            //Obtenemos la lista de usuarios desde la BD, y luego los agregamos al combo
+            ArrayList modelo= conexion.obtenerUsuarios();
+            for(int i=0;i<modelo.size();i++){
+                usuariosMCombo.addItem((String) modelo.get(i));
+            }
+            ArrayList permisos=conexion.obtenerPermisos();
+            for (int i = 0; i < permisos.size(); i++) {
+                permisosMCombo.addItem(permisos.get(i).toString());
+            }
+            //Hacemos que no esté seleccionado ningún elemento de los combos, y mostramos el panel
+            usuariosMCombo.setSelectedIndex(-1);
+            permisosMCombo.setSelectedIndex(-1);
+            modificarPanel.setVisible(true);
+            usuariosPanel1.setVisible(false);
+            gesUsuariosButton.setEnabled(false);
+        } catch (SQLException|NoSePuedeConectar ex) {
+            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+            dialogo.setVisible(true);
+        }
     }//GEN-LAST:event_verUsModButtonMouseClicked
 
     private void usuariosMComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_usuariosMComboItemStateChanged
         if(permisosMCombo.getModel().getSize()>0&&usuariosMCombo.getSelectedIndex()>-1){
-
+            try {
+                permisosMCombo.setSelectedIndex(conexion.obtenerPermisosDeUsuario(usuariosMCombo.getSelectedItem().toString())-1);
+            } catch (SQLException|NoSePuedeConectar ex) {
+                DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+                dialogo.setVisible(true);
+            }
         }
     }//GEN-LAST:event_usuariosMComboItemStateChanged
     //Elimina un usuario, seleccionado en el combo
     private void eliminarUser(){
         //Verifica que haya un objeto seleccionado en el combo
         if(usuariosCombo1.getSelectedIndex()!=-1){
-           
+            DialogoOpcion diag= new DialogoOpcion(null,true,DialogoOpcion.ICONO_INTERROGANTE,"Eliminar usuarios","Realmente desea eliminar el usuario "+usuariosCombo1.getSelectedItem().toString());
+            diag.setVisible(true);
+            if(diag.isAceptar()){
+                try {
+                    //Manda la orden de eliminación a la BD
+                    conexion.eliminarUsuario((String) usuariosCombo1.getSelectedItem());
+                    //Muestra mensaje de borrado, y pone todo en estado normal
+                    diag= new DialogoOpcion(null,true,DialogoOpcion.ICONO_INFORMACION,"Eliminar usuarios","Usuario eliminado");
+                    diag.setVisible(true);
+                    limpiar();
+                } catch (SQLException|NoSePuedeConectar ex) {
+                    DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+                    dialogo.setVisible(true);
+                }
+            }
+            limpiar();
         }
     }
     /**
@@ -755,7 +931,35 @@ public class Seguridad extends javax.swing.JPanel {
         String user=userIField.getText();
         //Compara que las contraseñas sean iguales
         if(!user.equals("")&&pass1.equals(pass2)&&!pass1.equals("")&&permisosCombo.getSelectedIndex()>-1){
-            
+            try {
+                int idTrabajador=0;
+                if(trabajadoresCombo.getSelectedIndex()!=-1){
+                    //Obtenemos el ID del trabajador
+                    String[] trabajadorSeparado=trabajadoresCombo.getSelectedItem().toString().split("-");
+                    idTrabajador=Integer.parseInt(trabajadorSeparado[trabajadorSeparado.length-1]);
+                }
+                //Manda la orden de ingreso de usuario, si la función retorna 1 significa que se ingresó correctamente
+                if(conexion.crearUsuario(user, pass1,idTrabajador,(permisosCombo.getSelectedIndex()+1))==1){
+                    //Muestra un mensaje de exito, y limpia
+                    DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Ingreso", "Ingreso exitoso");
+                    dialogo.setVisible(true);
+                    passIField.setText("");
+                    passIField2.setText("");
+                    userIField.setText("");
+                    limpiar();
+                }
+                else{
+                    DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Ingreso", "Este usuario ya existe");
+                    dialogo.setVisible(true);
+                    passIField.setText("");
+                    passIField2.setText("");
+                    userIField.setText("");
+                    userIField.requestFocus();
+                }
+            } catch (SQLException|NoSePuedeConectar ex) {
+                DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+                dialogo.setVisible(true);
+            }
         }else{
             DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Ingrese adecuadamente los datos");
             dialogo.setVisible(true);
