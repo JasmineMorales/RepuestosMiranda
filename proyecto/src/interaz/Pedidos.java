@@ -5,19 +5,30 @@
  */
 package interaz;
 
+import Excepciones.*;
+import clases.Conexion;
+import java.sql.SQLException;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * 
+ *
  */
 public class Pedidos extends javax.swing.JPanel {
 
     private DefaultTableModel Productos;
+    private final Conexion Conexion_DB = new Conexion();
+    private final DialogodeMensaje dialogo = new DialogodeMensaje();
     public Pedidos() {
         initComponents();
+        try {
+            lbl_Orden.setText(Conexion_DB.numeroPedido()+"");
+        } catch (SQLException|NoSePuedeConectar ex) {
+            dialogo.setContenido("ERROR", ex.getMessage(), DialogodeMensaje.ICONO_ERROR);
+            dialogo.setVisible(true);
+        }
     }
     private void iniciarTablaProductos() {
 //        
@@ -33,7 +44,7 @@ public class Pedidos extends javax.swing.JPanel {
         tabla_detalle.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-               
+               total();
             }
         });
     }
@@ -402,15 +413,35 @@ public class Pedidos extends javax.swing.JPanel {
             btn_Seleccion.setEnabled(true);
             btn_Consultar.setText("GUARDAR");
             btn_Editar.setText("CANCELAR");
+            try {
+            lbl_Orden.setText(Conexion_DB.numeroPedido()+"");
+        } catch (SQLException|NoSePuedeConectar ex) {
+            dialogo.setContenido("ERROR", ex.getMessage(), DialogodeMensaje.ICONO_ERROR);
+            dialogo.setVisible(true);
         }
+        }
+        
     }//GEN-LAST:event_btn_NuevoMouseClicked
 
     private void btn_ConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ConsultarMouseClicked
         if (btn_Consultar.getText().equals("GUARDAR")) {
-            if (!txt_Nombre.getText().equals("PROVEEDOR") && !txt_Nombre.getText().equals("")) {
-
-            }else{
-
+            try {
+                if (!txt_Nombre.getText().equals("PROVEEDOR") && !txt_Nombre.getText().equals("")) {
+                    Conexion_DB.crearPedido(((txt_Factura.getText().equals("INGRESE NUEMERO DE FACTURA")) ? "": txt_Factura.getText()), total, rbtn_Credito.isSelected());
+                    dialogo.setContenido("INFORMACION", "SE A GUARDADO EXITOSAMENTE", DialogodeMensaje.ICONO_INFORMACION);
+                    dialogo.setVisible(true);
+                    lbl_Orden.setText(Conexion_DB.numeroPedido()+"");
+                    for (int i = 0; i < tabla_detalle.getRowCount() - 1; i++) {
+                        Conexion_DB.insertarDetallePedido(Conexion_DB.idCodigo(tabla_detalle.getValueAt(i, 0).toString()), Conexion_DB.idProve(txt_Nombre.getText()), Conexion_DB.numeroPedido(), Float.parseFloat(tabla_detalle.getValueAt(i, 3).toString()), Float.parseFloat(tabla_detalle.getValueAt(i, 2).toString()));
+                    }
+                }else{
+                    dialogo.setContenido("INFORMACION", "SELECCIONE UN PROVEEDOR", DialogodeMensaje.ICONO_INFORMACION);
+                    dialogo.setVisible(true);
+                }
+                
+            } catch (SQLException|NoSePuedeConectar ex) {
+                dialogo.setContenido("ERROR", ex.getMessage(), DialogodeMensaje.ICONO_ERROR);
+                dialogo.setVisible(true);
             }
         }
     }//GEN-LAST:event_btn_ConsultarMouseClicked
@@ -436,7 +467,9 @@ public class Pedidos extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_NombreFocusGained
 
     private void btn_SeleccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeleccionMouseClicked
-      
+        selectorProveedor selector = new selectorProveedor();
+        selector.setTxt(txt_Nombre);
+        selector.setVisible(true);
 
     }//GEN-LAST:event_btn_SeleccionMouseClicked
 
@@ -527,9 +560,48 @@ public class Pedidos extends javax.swing.JPanel {
     }//GEN-LAST:event_tabla_detalleKeyPressed
     private float total = 0;
     private void tabla_detalleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabla_detalleKeyReleased
-        
+        if(btn_Consultar.getText().equals("GUARDAR")){
+            if (evt.getKeyCode() == 112) {
+                selectorProducto selector = new selectorProducto();
+                selector.setProductos(Productos);
+                selector.setVisible(true);
+            }
+            if (evt.getKeyCode() == 114) {
+                if (Productos.getRowCount()>1) {
+                    Productos.removeRow(tabla_detalle.getSelectedRow());
+                    total();
+                }
+
+            }
+            if (evt.getKeyCode() == 38) {
+                int seleccion = tabla_detalle.getSelectedRow() + 1;
+                if (tabla_detalle.getRowCount() != seleccion && seleccion != -1){
+                    float cantidad = Float.parseFloat(tabla_detalle.getValueAt(seleccion, 2).toString());
+                    float precio = Float.parseFloat(tabla_detalle.getValueAt(seleccion, 3).toString());
+                    tabla_detalle.setValueAt("" + (cantidad * precio), seleccion, 4);
+                    total();
+                }
+            }
+            if (evt.getKeyCode() == 40 || evt.getKeyCode() ==13 || evt.getKeyCode() == 9) {
+                int seleccion = tabla_detalle.getSelectedRow() - 1;
+                if (tabla_detalle.getRowCount() != seleccion && seleccion != -1){
+                    float cantidad = Float.parseFloat(tabla_detalle.getValueAt(seleccion, 2).toString());
+                    float precio = Float.parseFloat(tabla_detalle.getValueAt(seleccion, 3).toString());
+                    tabla_detalle.setValueAt("" + (cantidad * precio), seleccion, 4);
+                    total();
+                }
+            }
+        }
     }//GEN-LAST:event_tabla_detalleKeyReleased
-    
+    private void total(){
+        int cant = tabla_detalle.getRowCount() - 1;
+        total =0;
+        for (int i = 0; i < cant; i++) {
+            total += Float.parseFloat(tabla_detalle.getValueAt(i, 4).toString());
+        }
+        txt_Total.setText(total+"");
+        txt_Saldo.setText((total - Float.parseFloat(txt_Abonos.getText())) + "");
+    }
     private void tabla_detalleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_detalleMousePressed
         
     }//GEN-LAST:event_tabla_detalleMousePressed
