@@ -5,6 +5,10 @@
  */
 package interaz;
 
+import Excepciones.*;
+import clases.Conexion;
+import java.sql.SQLException;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -15,9 +19,18 @@ public class Proveedores extends javax.swing.JPanel {
     /**
      * Creates new form Proveedores
      */
+    private Conexion Conexion_DB = new Conexion();
+    private DialogodeMensaje Dialogo = new DialogodeMensaje();
+    private DialogodeConfrimacion DialogoConfirmacion = new DialogodeConfrimacion();
     public Proveedores() {
         initComponents();
-        
+        tabla_prov.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        try {
+            tabla_prov.setModel(Conexion_DB.obtenerProceedores());
+        } catch (SQLException|NoSePuedeConectar ex) {
+            Dialogo.setContenido("ERROR", ex.getMessage(), DialogodeMensaje.ICONO_ERROR);
+            Dialogo.setVisible(true);
+        }
     }
     
     /**
@@ -448,10 +461,19 @@ public class Proveedores extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_DeudaFocusGained
 
     private void btn_GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_GuardarMouseClicked
-        if (!txt_Nombre.getText().equals("INGRESE EL NOMBRE DEL PROVEEDOR")){
-
-        } else{
-
+       try {
+            if (!txt_Nombre.getText().equals("INGRESE EL NOMBRE DEL PROVEEDOR")){
+                Conexion_DB.crearProveedor(txt_Nombre.getText(), txt_Nit.getText(), rbtn_Credito.isSelected());
+                Dialogo.setContenido("INFORMACION", "EL PROVEEDOR FUE CREADO EXITOSAMENTE!", DialogodeMensaje.ICONO_INFORMACION);
+                Dialogo.setVisible(true);
+                tabla_prov.setModel(Conexion_DB.obtenerProceedores());
+            } else{
+                Dialogo.setContenido("ERROR", "INGRESE UN NOMBRE DE PROVEEDOR", DialogodeMensaje.ICONO_ERROR);
+                Dialogo.setVisible(true);
+            }
+        } catch (SQLException|NoSePuedeConectar ex) {
+            Dialogo.setContenido("ERROR", ex.getMessage(), DialogodeMensaje.ICONO_ERROR);
+            Dialogo.setVisible(true);
         }
     }//GEN-LAST:event_btn_GuardarMouseClicked
 
@@ -463,6 +485,12 @@ public class Proveedores extends javax.swing.JPanel {
         txt_Deuda.setText("0.00");
         txt_Saldo.setText("0.00");
         txt_abonos.setText("0.00");
+        try {
+            tabla_prov.setModel(Conexion_DB.obtenerProceedores());
+        } catch (SQLException|NoSePuedeConectar ex) {
+             Dialogo.setContenido("ERROR", ex.getMessage(), DialogodeMensaje.ICONO_ERROR);
+                Dialogo.setVisible(true);
+        }
     }//GEN-LAST:event_btn_NuevoMouseClicked
 
     private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
@@ -500,9 +528,18 @@ public class Proveedores extends javax.swing.JPanel {
     private void btn_EliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarMouseClicked
         int selccion = tabla_prov.getSelectedRow();
         if (selccion != -1) {
-            
+            try {
+                DialogoConfirmacion.setContenido("CONFIRMACION", "¿ESTA SEGURO QUE DESEA ELIMINAR EL PROVEEDOR?", DialogodeMensaje.ICONO_INTERROGANTE, tabla_prov.getValueAt(selccion, 0).toString());
+                DialogoConfirmacion.setVisible(true);
+                
+                tabla_prov.setModel(Conexion_DB.obtenerProceedores());
+            } catch (SQLException|NoSePuedeConectar ex) {
+                Dialogo.setContenido("ERROR", ex.getMessage(), DialogodeMensaje.ICONO_ERROR);
+                Dialogo.setVisible(true);
+            }
         }else {
-            
+            Dialogo.setContenido("ERROR", "DEBE SELECCIONAR UN PROVEEDOR PARA PODER ELIMINARLO", DialogodeMensaje.ICONO_ERROR);
+                Dialogo.setVisible(true);
         }
     }//GEN-LAST:event_btn_EliminarMouseClicked
 

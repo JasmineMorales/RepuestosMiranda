@@ -101,7 +101,7 @@ public class Conexion {
     public void crearPedido(String Factura, float Total, boolean credito) throws SQLException, NoSePuedeConectar{
         conectar();
         Statement instruccion = conexion.createStatement();
-        instruccion.executeUpdate("INSERT INTO compra (Factura, Total, Credito) VALUES ('" + Factura + "', " + Total + ", " + ((credito) ? 1: 0) +");");
+        instruccion.executeUpdate("INSERT INTO compra (Factura, Total) VALUES ('" + Factura + "', " + Total + ");");
               
         conexion.close();
     }
@@ -466,7 +466,7 @@ public class Conexion {
         conectar();
         Statement instruccion = conexion.createStatement();
         
-        instruccion.executeUpdate("INSERT INTO detalle_compra (Producto_id, Compra_id, proveedor_id, Precio, Cantidad) VALUES (" + idCodigo + ", " + (Pedido - 1) + ", " + idProve + ", " + Precio + ", " + Cantidad + ");");
+        instruccion.executeUpdate("INSERT INTO detalle_compra (Producto_id, Compra_id, proveedor_id, Precio) VALUES (" + idCodigo + ", " + (Pedido - 1) + ", " + idProve + ", " + Precio + ");");
         
         conexion.close();
     }
