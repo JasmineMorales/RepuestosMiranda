@@ -17,7 +17,7 @@ import java.sql.SQLException;
  *
  * 
  */
-public class Factura extends javax.swing.JPanel {
+public class Factura extends javax.swing.JPanel implements movimientoProductos{
 
     /**
      * Creates new form Factura
@@ -1542,4 +1542,10 @@ public class Factura extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField txt_SubTotal;
     private javax.swing.JFormattedTextField txt_Total;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void guardar() {
+        manejoControlador fabrica = new controladorVentas();
+        fabrica.nuevoDocumento();
+    }
 }
