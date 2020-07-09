@@ -14,7 +14,7 @@ import tablas.Importaciones;
 
 /**
  *
- * @author jrmir
+ * @author aarroyave
  */
 public class controladorCompras implements manejoControlador{
 

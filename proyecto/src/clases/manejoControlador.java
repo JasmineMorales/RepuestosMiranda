@@ -7,7 +7,7 @@ package clases;
 
 /**
  *
- * @author jrmir
+ * @author aarroyave
  */
 public interface manejoControlador {
     public void nuevoDocumento();

@@ -12,7 +12,7 @@ import tablas.Facturacion;
 
 /**
  *
- * @author jrmir
+ * @author aarroyave
  */
 public class controladorVentas implements manejoControlador{
 
