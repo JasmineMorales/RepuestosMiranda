@@ -7,6 +7,10 @@ package interaz;
 
 import Excepciones.*;
 import clases.Conexion;
+import clases.controladorCompras;
+import clases.controladorVentas;
+import clases.manejoControlador;
+import clases.movimientoProductos;
 import java.sql.SQLException;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -16,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  *
  */
-public class Pedidos extends javax.swing.JPanel {
+public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
 
     private DefaultTableModel Productos;
     private final Conexion Conexion_DB = new Conexion();
@@ -635,4 +639,10 @@ public class Pedidos extends javax.swing.JPanel {
     private javax.swing.JTextField txt_Saldo;
     private javax.swing.JTextField txt_Total;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void guardar() {
+        manejoControlador fabrica = new controladorCompras();
+        fabrica.nuevoDocumento();
+    }
 }
