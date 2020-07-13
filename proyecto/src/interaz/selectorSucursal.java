@@ -75,14 +75,14 @@ public class selectorSucursal extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Aceptar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Aceptar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Aceptar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Aceptar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Aceptar.setText("ACEPTAR");
+        btn_Aceptar.setText("Aceptar");
         btn_Aceptar.setEnabled(false);
         btn_Aceptar.setOpaque(true);
         btn_Aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,19 +90,20 @@ public class selectorSucursal extends javax.swing.JDialog {
                 btn_AceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 160, 40));
+        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 100, 27));
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(96, 96, 96));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lbl_Titulo.setForeground(new java.awt.Color(255, 255, 255));
         lbl_Titulo.setText("SELECCIONE UNA SUCURSAL");
-        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 3, 260, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 40));
 
         tabla_Sucursales.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        tabla_Sucursales.setForeground(new java.awt.Color(64, 64, 64));
         tabla_Sucursales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -111,10 +112,10 @@ public class selectorSucursal extends javax.swing.JDialog {
 
             }
         ));
-        tabla_Sucursales.setGridColor(new java.awt.Color(0, 0, 0));
+        tabla_Sucursales.setGridColor(new java.awt.Color(64, 64, 64));
         tabla_Sucursales.setRowHeight(24);
-        tabla_Sucursales.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        tabla_Sucursales.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tabla_Sucursales.setSelectionBackground(new java.awt.Color(192, 192, 192));
+        tabla_Sucursales.setSelectionForeground(new java.awt.Color(64, 64, 64));
         tabla_Sucursales.setShowVerticalLines(false);
         tabla_Sucursales.getTableHeader().setReorderingAllowed(false);
         tabla_Sucursales.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,7 +130,7 @@ public class selectorSucursal extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tabla_Sucursales);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 650, 330));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 580, 290));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

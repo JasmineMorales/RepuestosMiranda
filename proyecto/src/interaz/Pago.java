@@ -120,6 +120,7 @@ public class Pago extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         lbl_Titulo = new javax.swing.JLabel();
         lbl_Nombre12 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         sep_Nombre8 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         lbl_Nombre10 = new javax.swing.JLabel();
@@ -162,67 +163,88 @@ public class Pago extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_Nombre9.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre9.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre9.setText("CREDITO");
-        jPanel2.add(lbl_Nombre9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 40));
+        lbl_Nombre9.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        lbl_Nombre9.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre9.setText("Crédito:");
+        jPanel2.add(lbl_Nombre9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, 40));
 
-        sep_Nombre7.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(sep_Nombre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 100, 10));
+        sep_Nombre7.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre7.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel2.add(sep_Nombre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 100, 10));
 
-        jPanel3.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(96, 96, 96));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lbl_Titulo.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Titulo.setText("METODO DE PAGO");
-        jPanel3.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        lbl_Titulo.setText("MÉTODO DE PAGO");
+        jPanel3.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -7, -1, 50));
 
         lbl_Nombre12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lbl_Nombre12.setForeground(new java.awt.Color(255, 255, 255));
         lbl_Nombre12.setText("F1 PAGO TOTAL EN EFECTIVO");
-        jPanel3.add(lbl_Nombre12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, 40));
+        jPanel3.add(lbl_Nombre12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 180, 40));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 40));
+        jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
-        sep_Nombre8.setForeground(new java.awt.Color(255, 255, 255));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 200, -1));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 40));
+
+        sep_Nombre8.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre8.setForeground(new java.awt.Color(64, 64, 64));
         jPanel2.add(sep_Nombre8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 50, 10));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("DIAS");
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel2.setText("días");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 40, 60));
 
-        lbl_Nombre10.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre10.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre10.setText("EFECTIVO");
-        jPanel2.add(lbl_Nombre10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 40));
+        lbl_Nombre10.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        lbl_Nombre10.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre10.setText("Efectivo:");
+        jPanel2.add(lbl_Nombre10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 40));
 
-        sep_Nombre9.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(sep_Nombre9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 100, 10));
+        sep_Nombre9.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre9.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel2.add(sep_Nombre9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 100, 10));
 
-        lbl_Nombre11.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre11.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre11.setText("CHEQUE");
+        lbl_Nombre11.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        lbl_Nombre11.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre11.setText("Cheque:");
         jPanel2.add(lbl_Nombre11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, 40));
 
-        sep_Nombre10.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(sep_Nombre10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 100, 10));
+        sep_Nombre10.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre10.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel2.add(sep_Nombre10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 100, 10));
 
-        sep_Nombre11.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(sep_Nombre11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 100, 10));
+        sep_Nombre11.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre11.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel2.add(sep_Nombre11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 100, 10));
 
-        txt_Cheque1Coment.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Cheque1Coment.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Cheque1Coment.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Cheque1Coment.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txt_Cheque1Coment.setText("INGRESE INFROMACION DEL CHEQUE");
+        txt_Cheque1Coment.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Cheque1Coment.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Cheque1Coment.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Cheque1Coment.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_Cheque1Coment.setText("Información del cheque");
         txt_Cheque1Coment.setBorder(null);
-        txt_Cheque1Coment.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Cheque1Coment.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Cheque1Coment.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Cheque1Coment.setSelectedTextColor(new java.awt.Color(68, 68, 68));
+        txt_Cheque1Coment.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Cheque1Coment.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_Cheque1ComentFocusGained(evt);
@@ -243,25 +265,28 @@ public class Pago extends javax.swing.JDialog {
         });
         jPanel2.add(txt_Cheque1Coment, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 220, 30));
 
-        sep_Nombre12.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre12.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre12.setForeground(new java.awt.Color(64, 64, 64));
         jPanel2.add(sep_Nombre12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 220, 10));
 
-        lbl_Nombre13.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre13.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre13.setText("CHEQUE");
+        lbl_Nombre13.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        lbl_Nombre13.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre13.setText("Cheque:");
         jPanel2.add(lbl_Nombre13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, 40));
 
-        sep_Nombre13.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(sep_Nombre13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 100, 10));
+        sep_Nombre13.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre13.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel2.add(sep_Nombre13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 100, 10));
 
-        txt_Cheque2Coment.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Cheque2Coment.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Cheque2Coment.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Cheque2Coment.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txt_Cheque2Coment.setText("INGRESE INFROMACION DEL CHEQUE");
+        txt_Cheque2Coment.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Cheque2Coment.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Cheque2Coment.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Cheque2Coment.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_Cheque2Coment.setText("Información del cheque");
         txt_Cheque2Coment.setBorder(null);
-        txt_Cheque2Coment.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Cheque2Coment.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Cheque2Coment.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Cheque2Coment.setSelectedTextColor(new java.awt.Color(68, 68, 68));
+        txt_Cheque2Coment.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Cheque2Coment.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_Cheque2ComentFocusGained(evt);
@@ -282,25 +307,28 @@ public class Pago extends javax.swing.JDialog {
         });
         jPanel2.add(txt_Cheque2Coment, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 220, 30));
 
-        sep_Nombre14.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre14.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre14.setForeground(new java.awt.Color(64, 64, 64));
         jPanel2.add(sep_Nombre14, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 220, 10));
 
-        lbl_Nombre14.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre14.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre14.setText("CHEQUE");
+        lbl_Nombre14.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        lbl_Nombre14.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre14.setText("Cheque:");
         jPanel2.add(lbl_Nombre14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, 40));
 
-        sep_Nombre15.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(sep_Nombre15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 100, 10));
+        sep_Nombre15.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre15.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel2.add(sep_Nombre15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 100, 10));
 
-        txt_Cheque3Coment.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Cheque3Coment.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Cheque3Coment.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Cheque3Coment.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Cheque3Coment.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Cheque3Coment.setForeground(new java.awt.Color(64, 64, 64));
         txt_Cheque3Coment.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txt_Cheque3Coment.setText("INGRESE INFROMACION DEL CHEQUE");
+        txt_Cheque3Coment.setText("Información del cheque");
         txt_Cheque3Coment.setBorder(null);
-        txt_Cheque3Coment.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Cheque3Coment.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Cheque3Coment.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Cheque3Coment.setSelectedTextColor(new java.awt.Color(68, 68, 68));
+        txt_Cheque3Coment.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Cheque3Coment.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_Cheque3ComentFocusGained(evt);
@@ -321,17 +349,19 @@ public class Pago extends javax.swing.JDialog {
         });
         jPanel2.add(txt_Cheque3Coment, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 220, 30));
 
-        sep_Nombre16.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre16.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre16.setForeground(new java.awt.Color(64, 64, 64));
         jPanel2.add(sep_Nombre16, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 220, 10));
 
-        txt_OtroComent.setBackground(new java.awt.Color(0, 0, 0));
-        txt_OtroComent.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_OtroComent.setForeground(new java.awt.Color(255, 255, 255));
+        txt_OtroComent.setBackground(new java.awt.Color(240, 240, 240));
+        txt_OtroComent.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_OtroComent.setForeground(new java.awt.Color(64, 64, 64));
         txt_OtroComent.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txt_OtroComent.setText("ESPECIFIQUE");
+        txt_OtroComent.setText("Especifique");
         txt_OtroComent.setBorder(null);
-        txt_OtroComent.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_OtroComent.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_OtroComent.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_OtroComent.setSelectedTextColor(new java.awt.Color(68, 68, 68));
+        txt_OtroComent.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_OtroComent.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_OtroComentFocusGained(evt);
@@ -352,48 +382,51 @@ public class Pago extends javax.swing.JDialog {
         });
         jPanel2.add(txt_OtroComent, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 220, 30));
 
-        sep_Nombre17.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre17.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre17.setForeground(new java.awt.Color(64, 64, 64));
         jPanel2.add(sep_Nombre17, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 220, 10));
 
-        lbl_Nombre15.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre15.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre15.setText("OTROS");
+        lbl_Nombre15.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        lbl_Nombre15.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre15.setText("Otros:");
         jPanel2.add(lbl_Nombre15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, 40));
 
-        lbl_Nombre16.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre16.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre16.setText("TOTAL");
+        lbl_Nombre16.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        lbl_Nombre16.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre16.setText("Total:");
         jPanel2.add(lbl_Nombre16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, 40));
 
-        sep_Nombre18.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(sep_Nombre18, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 100, 10));
+        sep_Nombre18.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre18.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel2.add(sep_Nombre18, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 100, 10));
 
-        lbl_Nombre17.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre17.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre17.setText("SALDO");
+        lbl_Nombre17.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        lbl_Nombre17.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre17.setText("Saldo:");
         jPanel2.add(lbl_Nombre17, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, 40));
 
-        sep_Nombre19.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(sep_Nombre19, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 130, 10));
+        sep_Nombre19.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre19.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel2.add(sep_Nombre19, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 150, 10));
 
-        btn_Cancelar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Cancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Cancelar.setText("CANCELAR");
+        btn_Cancelar.setText("Cancelar");
         btn_Cancelar.setOpaque(true);
         btn_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_CancelarMouseClicked(evt);
             }
         });
-        jPanel2.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 220, 40));
+        jPanel2.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 125, 35));
 
-        btn_Aceptar2.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Aceptar2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Aceptar2.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Aceptar2.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Aceptar2.setForeground(new java.awt.Color(255, 255, 255));
         btn_Aceptar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Aceptar2.setText("ACEPTAR");
+        btn_Aceptar2.setText("Aceptar");
         btn_Aceptar2.setEnabled(false);
         btn_Aceptar2.setOpaque(true);
         btn_Aceptar2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -401,18 +434,20 @@ public class Pago extends javax.swing.JDialog {
                 btn_Aceptar2MouseClicked(evt);
             }
         });
-        jPanel2.add(btn_Aceptar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 220, 40));
+        jPanel2.add(btn_Aceptar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 125, 35));
 
-        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("CONTRASEÑA");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 170, -1));
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel8.setText("Contraseña:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 100, -1));
 
-        jPasswordField1.setBackground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPasswordField1.setBackground(new java.awt.Color(240, 240, 240));
+        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setBorder(null);
-        jPasswordField1.setCaretColor(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setCaretColor(new java.awt.Color(64, 64, 64));
+        jPasswordField1.setSelectedTextColor(new java.awt.Color(68, 68, 68));
+        jPasswordField1.setSelectionColor(new java.awt.Color(192, 192, 192));
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordField1FocusGained(evt);
@@ -423,31 +458,33 @@ public class Pago extends javax.swing.JDialog {
                 jPasswordField1KeyReleased(evt);
             }
         });
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 280, 30));
+        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 280, 30));
 
-        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 280, 6));
+        jSeparator5.setBackground(new java.awt.Color(64, 64, 64));
+        jSeparator5.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 280, 6));
 
         txt_Saldo.setEditable(false);
-        txt_Saldo.setBackground(new java.awt.Color(0, 0, 0));
         txt_Saldo.setBorder(null);
-        txt_Saldo.setForeground(new java.awt.Color(255, 0, 0));
+        txt_Saldo.setForeground(new java.awt.Color(255, 51, 51));
         txt_Saldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_Saldo.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_Saldo.setText("0.00");
-        txt_Saldo.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Saldo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel2.add(txt_Saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 130, -1));
+        txt_Saldo.setCaretColor(new java.awt.Color(255, 51, 51));
+        txt_Saldo.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        txt_Saldo.setSelectedTextColor(new java.awt.Color(68, 68, 68));
+        txt_Saldo.setSelectionColor(new java.awt.Color(192, 192, 192));
+        jPanel2.add(txt_Saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 291, 150, -1));
 
         txt_CreditoDias.setEditable(false);
-        txt_CreditoDias.setBackground(new java.awt.Color(0, 0, 0));
         txt_CreditoDias.setBorder(null);
-        txt_CreditoDias.setForeground(new java.awt.Color(255, 255, 255));
+        txt_CreditoDias.setForeground(new java.awt.Color(64, 64, 64));
         txt_CreditoDias.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         txt_CreditoDias.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_CreditoDias.setText("0");
+        txt_CreditoDias.setCaretColor(new java.awt.Color(64, 64, 64));
         txt_CreditoDias.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txt_CreditoDias.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_CreditoDias.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         txt_CreditoDias.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_CreditoDiasFocusGained(evt);
@@ -456,16 +493,16 @@ public class Pago extends javax.swing.JDialog {
                 txt_CreditoDiasFocusLost(evt);
             }
         });
-        jPanel2.add(txt_CreditoDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 50, -1));
+        jPanel2.add(txt_CreditoDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 51, 50, 20));
 
-        txt_Efectivo.setBackground(new java.awt.Color(0, 0, 0));
+        txt_Efectivo.setBackground(new java.awt.Color(240, 240, 240));
         txt_Efectivo.setBorder(null);
-        txt_Efectivo.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Efectivo.setForeground(new java.awt.Color(64, 64, 64));
         txt_Efectivo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_Efectivo.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_Efectivo.setText("0.00");
-        txt_Efectivo.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Efectivo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_Efectivo.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Efectivo.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         txt_Efectivo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_EfectivoFocusGained(evt);
@@ -474,16 +511,16 @@ public class Pago extends javax.swing.JDialog {
                 txt_EfectivoFocusLost(evt);
             }
         });
-        jPanel2.add(txt_Efectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 100, -1));
+        jPanel2.add(txt_Efectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 91, 100, 20));
 
-        txt_Cheque1cant.setBackground(new java.awt.Color(0, 0, 0));
+        txt_Cheque1cant.setBackground(new java.awt.Color(240, 240, 240));
         txt_Cheque1cant.setBorder(null);
-        txt_Cheque1cant.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Cheque1cant.setForeground(new java.awt.Color(64, 64, 64));
         txt_Cheque1cant.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_Cheque1cant.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_Cheque1cant.setText("0.00");
-        txt_Cheque1cant.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Cheque1cant.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_Cheque1cant.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Cheque1cant.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         txt_Cheque1cant.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_Cheque1cantFocusGained(evt);
@@ -492,16 +529,16 @@ public class Pago extends javax.swing.JDialog {
                 txt_Cheque1cantFocusLost(evt);
             }
         });
-        jPanel2.add(txt_Cheque1cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 100, -1));
+        jPanel2.add(txt_Cheque1cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 131, 100, 20));
 
-        txt_Cheque2cant.setBackground(new java.awt.Color(0, 0, 0));
+        txt_Cheque2cant.setBackground(new java.awt.Color(240, 240, 240));
         txt_Cheque2cant.setBorder(null);
-        txt_Cheque2cant.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Cheque2cant.setForeground(new java.awt.Color(64, 64, 64));
         txt_Cheque2cant.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_Cheque2cant.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_Cheque2cant.setText("0.00");
-        txt_Cheque2cant.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Cheque2cant.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_Cheque2cant.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Cheque2cant.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         txt_Cheque2cant.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_Cheque2cantFocusGained(evt);
@@ -510,16 +547,16 @@ public class Pago extends javax.swing.JDialog {
                 txt_Cheque2cantFocusLost(evt);
             }
         });
-        jPanel2.add(txt_Cheque2cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 100, -1));
+        jPanel2.add(txt_Cheque2cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 171, 100, 20));
 
-        txt_Cheque3cant.setBackground(new java.awt.Color(0, 0, 0));
+        txt_Cheque3cant.setBackground(new java.awt.Color(240, 240, 240));
         txt_Cheque3cant.setBorder(null);
-        txt_Cheque3cant.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Cheque3cant.setForeground(new java.awt.Color(64, 64, 64));
         txt_Cheque3cant.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_Cheque3cant.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_Cheque3cant.setText("0.00");
-        txt_Cheque3cant.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Cheque3cant.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_Cheque3cant.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Cheque3cant.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         txt_Cheque3cant.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_Cheque3cantFocusGained(evt);
@@ -528,16 +565,16 @@ public class Pago extends javax.swing.JDialog {
                 txt_Cheque3cantFocusLost(evt);
             }
         });
-        jPanel2.add(txt_Cheque3cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 100, -1));
+        jPanel2.add(txt_Cheque3cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 211, 100, 20));
 
-        txt_OtrosCant.setBackground(new java.awt.Color(0, 0, 0));
+        txt_OtrosCant.setBackground(new java.awt.Color(240, 240, 240));
         txt_OtrosCant.setBorder(null);
-        txt_OtrosCant.setForeground(new java.awt.Color(255, 255, 255));
+        txt_OtrosCant.setForeground(new java.awt.Color(64, 64, 64));
         txt_OtrosCant.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_OtrosCant.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_OtrosCant.setText("0.00");
-        txt_OtrosCant.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_OtrosCant.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_OtrosCant.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_OtrosCant.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         txt_OtrosCant.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_OtrosCantFocusGained(evt);
@@ -546,29 +583,27 @@ public class Pago extends javax.swing.JDialog {
                 txt_OtrosCantFocusLost(evt);
             }
         });
-        jPanel2.add(txt_OtrosCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 100, -1));
+        jPanel2.add(txt_OtrosCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 251, 100, 20));
 
         txt_Total.setEditable(false);
-        txt_Total.setBackground(new java.awt.Color(0, 0, 0));
         txt_Total.setBorder(null);
-        txt_Total.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Total.setForeground(new java.awt.Color(64, 64, 64));
         txt_Total.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_Total.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_Total.setText("0.00");
-        txt_Total.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Total.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel2.add(txt_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 100, -1));
+        txt_Total.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Total.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        jPanel2.add(txt_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 291, 100, -1));
 
         txt_CreditoCant.setEditable(false);
-        txt_CreditoCant.setBackground(new java.awt.Color(0, 0, 0));
         txt_CreditoCant.setBorder(null);
-        txt_CreditoCant.setForeground(new java.awt.Color(255, 255, 255));
+        txt_CreditoCant.setForeground(new java.awt.Color(64, 64, 64));
         txt_CreditoCant.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         txt_CreditoCant.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_CreditoCant.setText("0.00");
-        txt_CreditoCant.setCaretColor(new java.awt.Color(255, 255, 255));
+        txt_CreditoCant.setCaretColor(new java.awt.Color(64, 64, 64));
         txt_CreditoCant.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txt_CreditoCant.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txt_CreditoCant.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         txt_CreditoCant.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_CreditoCantFocusGained(evt);
@@ -577,13 +612,15 @@ public class Pago extends javax.swing.JDialog {
                 txt_CreditoCantFocusLost(evt);
             }
         });
-        jPanel2.add(txt_CreditoCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 100, -1));
+        jPanel2.add(txt_CreditoCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 100, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -825,6 +862,7 @@ public class Pago extends javax.swing.JDialog {
     private javax.swing.JLabel btn_Cancelar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;

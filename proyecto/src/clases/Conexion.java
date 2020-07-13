@@ -1121,7 +1121,42 @@ public class Conexion {
         }
         conexion.close();
         return Productos;
-    }    
+    }
+    
+    public DefaultTableModel Nuevo_obtenerProductos(int filtro, String criterio) throws SQLException, NoSePuedeConectar{
+         Productos = null;
+         String texto_busqueda="";
+         if(!criterio.isEmpty())
+         {
+             texto_busqueda="and ";
+             switch(filtro){
+                 case 0:
+                     texto_busqueda+="codigo ";
+                     break;
+                 case 1:
+                     texto_busqueda+="codigo_barras ";
+                     break;
+                 default:
+                     texto_busqueda+="descripcion ";
+                     break;
+             }
+             texto_busqueda+="like concat('%','"+criterio+"','%')";
+                     
+         }
+         iniciarTablaProductos();
+        Productos.setColumnCount(11);
+        
+        conectar();
+        Statement instruccion = conexion.createStatement();
+        ResultSet resultado = instruccion.executeQuery("SELECT Codigo, Codigo_Barras, Descripcion, Precio_Venta, Precio_Costo, Estanteria, Columna, Fila, Marca_id, Unidad_id FROM producto where habilitado=1 "+texto_busqueda+";");
+        while(resultado.next()){
+            Productos.addRow(new String[] {resultado.getString("Codigo"), resultado.getString("Codigo_Barras"), resultado.getString("Descripcion"), resultado.getString("Precio_Venta"), resultado.getString("Precio_Costo"), resultado.getString("Estanteria"), resultado.getString("Columna"), resultado.getString("Fila")
+            , resultado.getString("Marca_id"), resultado.getString("Unidad_id")});
+        }
+        conexion.close();
+        return Productos;
+    }
+    
     public DefaultTableModel obtenerFacturasConsulta(String fecha,String nombre,String dpi) throws SQLException, NoSePuedeConectar
     {
         DefaultTableModel facturas=null;

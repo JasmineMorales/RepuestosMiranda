@@ -17,6 +17,8 @@ import javax.swing.JPanel;
  */
 public class Compras extends javax.swing.JPanel {
     Conexion conexion;
+    Color color_set = new Color(128,128,128);
+    Color color_reset = new Color(96,96,96);
     /**
      * Creates new form Proveedores
      */
@@ -30,10 +32,10 @@ public class Compras extends javax.swing.JPanel {
         this.conexion=conexion;
     }
     private void setBoton(JLabel boton){
-        boton.setBackground(Color.RED);
+        boton.setBackground(color_set);
     }
     private void resetBoton(JLabel boton){
-        boton.setBackground(Color.BLACK);
+        boton.setBackground(color_reset);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,11 +51,12 @@ public class Compras extends javax.swing.JPanel {
         btn_Compras = new javax.swing.JLabel();
         btn_Proveedores = new javax.swing.JLabel();
         panel_Contenido = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Salir.setBackground(new java.awt.Color(0, 0, 0));
+        Salir.setBackground(new java.awt.Color(96, 96, 96));
         Salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
         Salir.setOpaque(true);
@@ -68,12 +71,11 @@ public class Compras extends javax.swing.JPanel {
         Minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/minus-symbol.png"))); // NOI18N
         add(Minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
 
-        btn_Compras.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Compras.setBackground(new java.awt.Color(96, 96, 96));
         btn_Compras.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_Compras.setForeground(new java.awt.Color(255, 255, 255));
         btn_Compras.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_Compras.setText("COMPRAS");
-        btn_Compras.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btn_Compras.setName(""); // NOI18N
         btn_Compras.setOpaque(true);
         btn_Compras.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -81,14 +83,13 @@ public class Compras extends javax.swing.JPanel {
                 btn_ComprasMouseClicked(evt);
             }
         });
-        add(btn_Compras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 160, 50));
+        add(btn_Compras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 40));
 
-        btn_Proveedores.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Proveedores.setBackground(new java.awt.Color(96, 96, 96));
         btn_Proveedores.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_Proveedores.setForeground(new java.awt.Color(255, 255, 255));
         btn_Proveedores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_Proveedores.setText("PROVEEDORES");
-        btn_Proveedores.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btn_Proveedores.setName(""); // NOI18N
         btn_Proveedores.setOpaque(true);
         btn_Proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,23 +97,26 @@ public class Compras extends javax.swing.JPanel {
                 btn_ProveedoresMouseClicked(evt);
             }
         });
-        add(btn_Proveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, -10, 160, 50));
+        add(btn_Proveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 160, 40));
 
-        panel_Contenido.setBackground(new java.awt.Color(0, 0, 0));
         panel_Contenido.setName(""); // NOI18N
 
         javax.swing.GroupLayout panel_ContenidoLayout = new javax.swing.GroupLayout(panel_Contenido);
         panel_Contenido.setLayout(panel_ContenidoLayout);
         panel_ContenidoLayout.setHorizontalGroup(
             panel_ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGap(0, 920, Short.MAX_VALUE)
         );
         panel_ContenidoLayout.setVerticalGroup(
             panel_ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
 
-        add(panel_Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 940, 650));
+        add(panel_Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 920, 640));
+
+        jPanel2.setBackground(new java.awt.Color(96, 96, 96));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
@@ -159,6 +163,7 @@ public class Compras extends javax.swing.JPanel {
     private javax.swing.JLabel Salir;
     private javax.swing.JLabel btn_Compras;
     private javax.swing.JLabel btn_Proveedores;
+    private javax.swing.JPanel jPanel2;
     public static javax.swing.JPanel panel_Contenido;
     // End of variables declaration//GEN-END:variables
 }

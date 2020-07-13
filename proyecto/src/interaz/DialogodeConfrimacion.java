@@ -63,25 +63,27 @@ public class DialogodeConfrimacion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
+        jPanel1.setPreferredSize(new java.awt.Dimension(410, 190));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Cancelar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Cancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Cancelar.setText("CANCELAR");
+        btn_Cancelar.setText("Cancelar");
         btn_Cancelar.setOpaque(true);
         btn_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_CancelarMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 160, 40));
+        jPanel1.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 100, 27));
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(96, 96, 96));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
 
-        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lbl_Titulo.setForeground(new java.awt.Color(255, 255, 255));
         lbl_Titulo.setText("TITULO");
 
@@ -90,41 +92,37 @@ public class DialogodeConfrimacion extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_Titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(lbl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_Titulo)
-                .addContainerGap())
+            .addComponent(lbl_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
 
         Icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/info.png"))); // NOI18N
         jPanel1.add(Icono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        Mensaje.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        Mensaje.setForeground(new java.awt.Color(255, 255, 255));
-        Mensaje.setText("MENSAJE");
-        Mensaje.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Mensaje.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        Mensaje.setForeground(new java.awt.Color(64, 64, 64));
+        Mensaje.setText("Mensaje");
         jPanel1.add(Mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 290, 80));
 
-        btn_Aceptar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Aceptar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Aceptar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Aceptar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Aceptar.setText("ACEPTAR");
+        btn_Aceptar.setText("Aceptar");
         btn_Aceptar.setOpaque(true);
         btn_Aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_AceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 160, 40));
+        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 100, 27));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,11 +130,11 @@ public class DialogodeConfrimacion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
         );
 
         pack();

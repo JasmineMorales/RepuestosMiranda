@@ -59,26 +59,26 @@ public class selectorTrabajador_2 extends javax.swing.JDialog {
         lbl_Titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_cliente = new javax.swing.JTable();
-        sep_Filtro = new javax.swing.JSeparator();
         btn_Cancelar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(96, 96, 96));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lbl_Titulo.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Titulo.setText("SELECCIONE UN TRABAJADOR");
-        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        lbl_Titulo.setText("SELECCIONAR TRABAJADOR");
+        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 1, 330, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 40));
 
         tabla_cliente.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        tabla_cliente.setForeground(new java.awt.Color(64, 64, 64));
         tabla_cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -87,10 +87,10 @@ public class selectorTrabajador_2 extends javax.swing.JDialog {
 
             }
         ));
-        tabla_cliente.setGridColor(new java.awt.Color(0, 0, 0));
+        tabla_cliente.setGridColor(new java.awt.Color(64, 64, 64));
         tabla_cliente.setRowHeight(24);
-        tabla_cliente.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        tabla_cliente.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tabla_cliente.setSelectionBackground(new java.awt.Color(192, 192, 192));
+        tabla_cliente.setSelectionForeground(new java.awt.Color(64, 64, 64));
         tabla_cliente.setShowVerticalLines(false);
         tabla_cliente.getTableHeader().setReorderingAllowed(false);
         tabla_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,23 +105,20 @@ public class selectorTrabajador_2 extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tabla_cliente);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 650, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 580, 290));
 
-        sep_Filtro.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(sep_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 650, -1));
-
-        btn_Cancelar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Cancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Cancelar.setText("CANCELAR");
+        btn_Cancelar.setText("Cancelar");
         btn_Cancelar.setOpaque(true);
         btn_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_CancelarMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 160, 40));
+        jPanel1.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 100, 27));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,7 +212,6 @@ public class selectorTrabajador_2 extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_Titulo;
-    private javax.swing.JSeparator sep_Filtro;
     private javax.swing.JTable tabla_cliente;
     // End of variables declaration//GEN-END:variables
 }

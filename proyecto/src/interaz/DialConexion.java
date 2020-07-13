@@ -61,44 +61,57 @@ public class DialConexion extends javax.swing.JDialog {
         cancelarGesButton = new javax.swing.JLabel();
         probarDBButton = new javax.swing.JLabel();
         guardarDBButton = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_Titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        conexionPanel.setBackground(new java.awt.Color(0, 0, 0));
+        conexionPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         conexionPanel.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(64, 64, 64));
         jLabel4.setText("Usuario del SGBD:");
 
         passField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        passField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        passField.setSelectionColor(new java.awt.Color(192, 192, 192));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setBackground(new java.awt.Color(96, 96, 96));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(64, 64, 64));
         jLabel1.setText("Dirección del servidor:");
 
         ipField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        ipField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        ipField.setSelectionColor(new java.awt.Color(192, 192, 192));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(64, 64, 64));
         jLabel2.setText("Contraseña:");
 
         bdField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        bdField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        bdField.setSelectionColor(new java.awt.Color(192, 192, 192));
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(64, 64, 64));
         jLabel3.setText("Nombre de la BD:");
 
         userField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        userField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        userField.setSelectionColor(new java.awt.Color(192, 192, 192));
 
         passField1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        passField1.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        passField1.setSelectionColor(new java.awt.Color(192, 192, 192));
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(64, 64, 64));
         jLabel9.setText("Confirme contraseña:");
 
-        cancelarGesButton.setBackground(new java.awt.Color(255, 0, 0));
+        cancelarGesButton.setBackground(new java.awt.Color(255, 51, 51));
         cancelarGesButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         cancelarGesButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelarGesButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -110,7 +123,7 @@ public class DialConexion extends javax.swing.JDialog {
             }
         });
 
-        probarDBButton.setBackground(new java.awt.Color(255, 0, 0));
+        probarDBButton.setBackground(new java.awt.Color(255, 51, 51));
         probarDBButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         probarDBButton.setForeground(new java.awt.Color(255, 255, 255));
         probarDBButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,7 +135,7 @@ public class DialConexion extends javax.swing.JDialog {
             }
         });
 
-        guardarDBButton.setBackground(new java.awt.Color(255, 0, 0));
+        guardarDBButton.setBackground(new java.awt.Color(255, 51, 51));
         guardarDBButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         guardarDBButton.setForeground(new java.awt.Color(255, 255, 255));
         guardarDBButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -134,80 +147,105 @@ public class DialConexion extends javax.swing.JDialog {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(96, 96, 96));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
+
+        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        lbl_Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_Titulo.setText("CONEXIÓN");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(lbl_Titulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_Titulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout conexionPanelLayout = new javax.swing.GroupLayout(conexionPanel);
         conexionPanel.setLayout(conexionPanelLayout);
         conexionPanelLayout.setHorizontalGroup(
             conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(conexionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, conexionPanelLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(conexionPanelLayout.createSequentialGroup()
                         .addComponent(probarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addGap(30, 30, 30)
                         .addComponent(guardarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelarGesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(conexionPanelLayout.createSequentialGroup()
-                        .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(conexionPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(passField1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(conexionPanelLayout.createSequentialGroup()
-                                .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(userField)
-                                    .addComponent(bdField)
-                                    .addComponent(ipField, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                    .addComponent(passField))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passField1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bdField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 36, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         conexionPanelLayout.setVerticalGroup(
             conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(conexionPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(9, 9, 9)
+                .addGap(18, 18, 18)
                 .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(passField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelarGesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(probarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(guardarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(guardarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelarGesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(conexionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(conexionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(conexionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(conexionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -335,6 +373,8 @@ public class DialConexion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbl_Titulo;
     private javax.swing.JPasswordField passField;
     private javax.swing.JPasswordField passField1;
     private javax.swing.JLabel probarDBButton;

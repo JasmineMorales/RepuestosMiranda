@@ -36,7 +36,7 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
     }
     private void iniciarTablaProductos() {
 //        
-        Productos = new DefaultTableModel(null, new String[]{"Codigo", "Descripccion", "Cantidad", "P/Unitario", "P/Total"}){
+        Productos = new DefaultTableModel(null, new String[]{"Código", "Descripción", "Cantidad", "P/Unitario", "P/Total"}){
             boolean[] canEdit = new boolean [] {
         false, false, true, true, false
             };
@@ -99,7 +99,6 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabla_detalle.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -111,10 +110,12 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
 
             }
         ));
-        tabla_detalle.setGridColor(new java.awt.Color(0, 0, 0));
+        tabla_detalle.setToolTipText("<html>\n<head>\n<style>\n.contenedor{background:#F0F0F0;color:#0A0A0A;margin:0;padding-left:5px;padding-right:5px;font-size:1.1em;font-family:century gothic;font-weight: lighter;}\n</style>\n</head>\n<body>\n<h4 class=\"contenedor\">F1 para agregar un producto</h4>\n</body>\n</html>");
+        tabla_detalle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabla_detalle.setGridColor(new java.awt.Color(96, 96, 96));
         tabla_detalle.setRowHeight(24);
-        tabla_detalle.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        tabla_detalle.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tabla_detalle.setSelectionBackground(new java.awt.Color(192, 192, 192));
+        tabla_detalle.setSelectionForeground(new java.awt.Color(64, 64, 64));
         tabla_detalle.setShowVerticalLines(false);
         tabla_detalle.getTableHeader().setReorderingAllowed(false);
         tabla_detalle.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,58 +133,59 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
         });
         jScrollPane1.setViewportView(tabla_detalle);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 349, 940, 300));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 349, 860, 250));
 
-        btn_Nuevo.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Nuevo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Nuevo.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Nuevo.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Nuevo.setForeground(new java.awt.Color(255, 255, 255));
         btn_Nuevo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Nuevo.setText("NUEVO");
+        btn_Nuevo.setText("Nuevo");
         btn_Nuevo.setOpaque(true);
         btn_Nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_NuevoMouseClicked(evt);
             }
         });
-        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 300, 84));
+        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 125, 35));
 
-        btn_Consultar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Consultar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Consultar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Consultar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Consultar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Consultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Consultar.setText("CONSULTAR");
+        btn_Consultar.setText("Consultar");
         btn_Consultar.setOpaque(true);
         btn_Consultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_ConsultarMouseClicked(evt);
             }
         });
-        add(btn_Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 300, 84));
+        add(btn_Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 125, 35));
 
-        btn_Editar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Editar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Editar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Editar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Editar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Editar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Editar.setText("EDITAR");
+        btn_Editar.setText("Editar");
         btn_Editar.setOpaque(true);
         btn_Editar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_EditarMouseClicked(evt);
             }
         });
-        add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 300, 84));
+        add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 125, 35));
 
-        sep_Nombre.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 400, 10));
+        sep_Nombre.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 360, 10));
 
         txt_Nombre.setEditable(false);
-        txt_Nombre.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Nombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Nombre.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Nombre.setText("PROVEEDOR");
+        txt_Nombre.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Nombre.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Nombre.setText("Nombre del proveedor");
         txt_Nombre.setBorder(null);
-        txt_Nombre.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Nombre.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Nombre.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Nombre.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Nombre.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Nombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_NombreFocusGained(evt);
@@ -202,19 +204,18 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
                 txt_NombreActionPerformed(evt);
             }
         });
-        add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 300, 26));
+        add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 360, 26));
 
-        lbl_Nombre.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre.setText("PROVEEDOR");
-        add(lbl_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        lbl_Nombre.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Nombre.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre.setText("Proveedor");
+        add(lbl_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
-        btn_Seleccion.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Seleccion.setBackground(new java.awt.Color(255, 51, 51));
         btn_Seleccion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btn_Seleccion.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Seleccion.setForeground(new java.awt.Color(240, 240, 240));
         btn_Seleccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Seleccion.setText("SELECCIONAR");
-        btn_Seleccion.setEnabled(false);
+        btn_Seleccion.setText("Seleccionar");
         btn_Seleccion.setOpaque(true);
         btn_Seleccion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -224,21 +225,22 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
                 btn_SeleccionMouseEntered(evt);
             }
         });
-        add(btn_Seleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 90, 30));
+        add(btn_Seleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 90, 20));
 
-        lbl_Orden.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Orden.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_Orden.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_Orden.setForeground(new java.awt.Color(255, 51, 51));
         lbl_Orden.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbl_Orden.setText("000001");
-        add(lbl_Orden, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
+        add(lbl_Orden, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, -1, -1));
 
-        txt_Factura.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Factura.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Factura.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Factura.setText("INGRESE NUEMERO DE FACTURA");
+        txt_Factura.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Factura.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Factura.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Factura.setText("Ingrese número de factura");
         txt_Factura.setBorder(null);
-        txt_Factura.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Factura.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Factura.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Factura.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Factura.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Factura.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_FacturaFocusGained(evt);
@@ -257,35 +259,37 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
                 txt_FacturaActionPerformed(evt);
             }
         });
-        add(txt_Factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 400, 26));
+        add(txt_Factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 260, 26));
 
-        sep_Nombre1.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 400, 10));
+        sep_Nombre1.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre1.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 260, 10));
 
-        lbl_Nombre2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre2.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre2.setText("FACTURA");
-        add(lbl_Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        lbl_Nombre2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Nombre2.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre2.setText("Factura");
+        add(lbl_Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
-        lbl_Nombre3.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre3.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre3.setText("ORDEN NO.");
-        add(lbl_Nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, -1));
+        lbl_Nombre3.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_Nombre3.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre3.setText("Orden No.");
+        add(lbl_Nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
 
-        lbl_Deuda.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Deuda.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Deuda.setText("TOTAL");
-        add(lbl_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
+        lbl_Deuda.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Deuda.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Deuda.setText("Total");
+        add(lbl_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, -1, -1));
 
-        txt_Total.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Total.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Total.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Total.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Total.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Total.setForeground(new java.awt.Color(64, 64, 64));
         txt_Total.setText("0.00");
         txt_Total.setBorder(null);
-        txt_Total.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Total.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txt_Total.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Total.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txt_Total.setEnabled(false);
-        txt_Total.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Total.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Total.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Total.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_TotalFocusGained(evt);
@@ -304,23 +308,24 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
                 txt_TotalActionPerformed(evt);
             }
         });
-        add(txt_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 220, 26));
+        add(txt_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 210, 26));
 
-        sep_Deuda.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 220, -1));
+        sep_Deuda.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Deuda.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 220, -1));
 
-        lbl_Deuda1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Deuda1.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Deuda1.setText("ABONOS");
-        add(lbl_Deuda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, -1, -1));
+        lbl_Deuda1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Deuda1.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Deuda1.setText("Abonos");
+        add(lbl_Deuda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
-        txt_Abonos.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Abonos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Abonos.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Abonos.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Abonos.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Abonos.setForeground(new java.awt.Color(64, 64, 64));
         txt_Abonos.setText("0.00");
         txt_Abonos.setBorder(null);
         txt_Abonos.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Abonos.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txt_Abonos.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txt_Abonos.setEnabled(false);
         txt_Abonos.setSelectionColor(new java.awt.Color(255, 0, 0));
         txt_Abonos.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -341,23 +346,24 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
                 txt_AbonosActionPerformed(evt);
             }
         });
-        add(txt_Abonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 130, 26));
+        add(txt_Abonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 220, 26));
 
-        sep_Deuda1.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Deuda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, 220, -1));
+        sep_Deuda1.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Deuda1.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Deuda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, 210, 10));
 
-        lbl_Deuda2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Deuda2.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Deuda2.setText("SALDO");
-        add(lbl_Deuda2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
+        lbl_Deuda2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Deuda2.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Deuda2.setText("Saldo");
+        add(lbl_Deuda2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
 
-        txt_Saldo.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Saldo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Saldo.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Saldo.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Saldo.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Saldo.setForeground(new java.awt.Color(64, 64, 64));
         txt_Saldo.setText("0.00");
         txt_Saldo.setBorder(null);
         txt_Saldo.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Saldo.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txt_Saldo.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txt_Saldo.setEnabled(false);
         txt_Saldo.setSelectionColor(new java.awt.Color(255, 0, 0));
         txt_Saldo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -378,24 +384,29 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
                 txt_SaldoActionPerformed(evt);
             }
         });
-        add(txt_Saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 220, 26));
+        add(txt_Saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 220, 26));
 
-        sep_Deuda2.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Deuda2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 220, -1));
+        sep_Deuda2.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Deuda2.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Deuda2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 220, 10));
 
-        rbtn_Credito.setBackground(new java.awt.Color(0, 0, 0));
-        rbtn_Credito.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        rbtn_Credito.setForeground(new java.awt.Color(255, 255, 255));
+        rbtn_Credito.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        rbtn_Credito.setForeground(new java.awt.Color(64, 64, 64));
         rbtn_Credito.setSelected(true);
-        rbtn_Credito.setText("CREDITO");
+        rbtn_Credito.setText("Crédito");
         rbtn_Credito.setBorder(null);
-        add(rbtn_Credito, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 400, -1));
+        rbtn_Credito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtn_CreditoActionPerformed(evt);
+            }
+        });
+        add(rbtn_Credito, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 400, -1));
 
-        btn_Seleccion1.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Seleccion1.setBackground(new java.awt.Color(255, 51, 51));
         btn_Seleccion1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btn_Seleccion1.setForeground(new java.awt.Color(255, 255, 255));
         btn_Seleccion1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Seleccion1.setText("PAGOS");
+        btn_Seleccion1.setText("Pagos");
         btn_Seleccion1.setEnabled(false);
         btn_Seleccion1.setOpaque(true);
         btn_Seleccion1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -406,17 +417,17 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
                 btn_Seleccion1MouseEntered(evt);
             }
         });
-        add(btn_Seleccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 80, 90, 30));
+        add(btn_Seleccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 90, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_NuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NuevoMouseClicked
-        if (btn_Consultar.getText().equals("CONSULTAR")) {
+        if (btn_Consultar.getText().equals("Consultar")) {
             iniciarTablaProductos();
             Productos.addRow(new String[]{});
             tabla_detalle.setModel(Productos);
             btn_Seleccion.setEnabled(true);
-            btn_Consultar.setText("GUARDAR");
-            btn_Editar.setText("CANCELAR");
+            btn_Consultar.setText("Guardar");
+            btn_Editar.setText("Cancelar");
             try {
             lbl_Orden.setText(Conexion_DB.numeroPedido()+"");
         } catch (SQLException|NoSePuedeConectar ex) {
@@ -428,18 +439,18 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
     }//GEN-LAST:event_btn_NuevoMouseClicked
 
     private void btn_ConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ConsultarMouseClicked
-        if (btn_Consultar.getText().equals("GUARDAR")) {
+        if (btn_Consultar.getText().equals("Guardar")) {
             try {
-                if (!txt_Nombre.getText().equals("PROVEEDOR") && !txt_Nombre.getText().equals("")) {
-                    Conexion_DB.crearPedido(((txt_Factura.getText().equals("INGRESE NUEMERO DE FACTURA")) ? "": txt_Factura.getText()), total, rbtn_Credito.isSelected());
-                    dialogo.setContenido("INFORMACION", "SE A GUARDADO EXITOSAMENTE", DialogodeMensaje.ICONO_INFORMACION);
+                if (!txt_Nombre.getText().equals("64,64,64") && !txt_Nombre.getText().equals("")) {
+                    Conexion_DB.crearPedido(((txt_Factura.getText().equals("Ingrese número de factura")) ? "": txt_Factura.getText()), total, rbtn_Credito.isSelected());
+                    dialogo.setContenido("INFORMACIÓN", "Se ha guardado exitosamente", DialogodeMensaje.ICONO_INFORMACION);
                     dialogo.setVisible(true);
                     lbl_Orden.setText(Conexion_DB.numeroPedido()+"");
                     for (int i = 0; i < tabla_detalle.getRowCount() - 1; i++) {
                         Conexion_DB.insertarDetallePedido(Conexion_DB.idCodigo(tabla_detalle.getValueAt(i, 0).toString()), Conexion_DB.idProve(txt_Nombre.getText()), Conexion_DB.numeroPedido(), Float.parseFloat(tabla_detalle.getValueAt(i, 3).toString()), Float.parseFloat(tabla_detalle.getValueAt(i, 2).toString()));
                     }
                 }else{
-                    dialogo.setContenido("INFORMACION", "SELECCIONE UN PROVEEDOR", DialogodeMensaje.ICONO_INFORMACION);
+                    dialogo.setContenido("INFORMACIÓN", "Seleccione un proveedor", DialogodeMensaje.ICONO_INFORMACION);
                     dialogo.setVisible(true);
                 }
                 
@@ -463,11 +474,11 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
     }//GEN-LAST:event_txt_NombreMousePressed
 
     private void txt_NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NombreFocusLost
-        if (txt_Nombre.getText().equals("")) txt_Nombre.setText("INGRESE EL NOMBRE DEL PROVEEDOR");
+        if (txt_Nombre.getText().equals("")) txt_Nombre.setText("Ingrese el nombre del proveedor");
     }//GEN-LAST:event_txt_NombreFocusLost
 
     private void txt_NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NombreFocusGained
-        if (txt_Nombre.getText().equals("INGRESE EL NOMBRE DEL PROVEEDOR")) txt_Nombre.setText("");
+        if (txt_Nombre.getText().equals("Ingrese el nombre del proveedor")) txt_Nombre.setText("");
     }//GEN-LAST:event_txt_NombreFocusGained
 
     private void btn_SeleccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeleccionMouseClicked
@@ -499,12 +510,12 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
 
     private void txt_TotalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_TotalFocusGained
         // TODO add your handling code here:
-        if(txt_Total.getText().equals("INGRESE EL NOMBRE DE USUARIO"))txt_Total.setText("");
+        if(txt_Total.getText().equals("Ingrese el nombre de usuario"))txt_Total.setText("");
     }//GEN-LAST:event_txt_TotalFocusGained
 
     private void txt_TotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_TotalFocusLost
         // TODO add your handling code here:
-        if(txt_Total.getText().equals("")) txt_Total.setText("INGRESE EL NOMBRE DE USUARIO");
+        if(txt_Total.getText().equals("")) txt_Total.setText("Ingrese el nombre de usuario");
     }//GEN-LAST:event_txt_TotalFocusLost
 
     private void txt_TotalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_TotalMousePressed
@@ -517,12 +528,12 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
 
     private void txt_AbonosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_AbonosFocusGained
         // TODO add your handling code here:
-        if(txt_Total.getText().equals("INGRESE EL NOMBRE DE USUARIO"))txt_Total.setText("");
+        if(txt_Total.getText().equals("Ingrese el nombre de usuario"))txt_Total.setText("");
     }//GEN-LAST:event_txt_AbonosFocusGained
 
     private void txt_AbonosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_AbonosFocusLost
         // TODO add your handling code here:
-        if(txt_Total.getText().equals("")) txt_Total.setText("INGRESE EL NOMBRE DE USUARIO");
+        if(txt_Total.getText().equals("")) txt_Total.setText("Ingrese el nombre de usuario");
     }//GEN-LAST:event_txt_AbonosFocusLost
 
     private void txt_AbonosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_AbonosMousePressed
@@ -535,12 +546,12 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
 
     private void txt_SaldoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_SaldoFocusGained
         // TODO add your handling code here:
-        if(txt_Total.getText().equals("INGRESE EL NOMBRE DE USUARIO"))txt_Total.setText("");
+        if(txt_Total.getText().equals("Ingrese el nombre de usuario"))txt_Total.setText("");
     }//GEN-LAST:event_txt_SaldoFocusGained
 
     private void txt_SaldoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_SaldoFocusLost
         // TODO add your handling code here:
-        if(txt_Total.getText().equals("")) txt_Total.setText("INGRESE EL NOMBRE DE USUARIO");
+        if(txt_Total.getText().equals("")) txt_Total.setText("Ingrese el nombre de usuario");
     }//GEN-LAST:event_txt_SaldoFocusLost
 
     private void txt_SaldoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_SaldoMousePressed
@@ -564,7 +575,7 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
     }//GEN-LAST:event_tabla_detalleKeyPressed
     private float total = 0;
     private void tabla_detalleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabla_detalleKeyReleased
-        if(btn_Consultar.getText().equals("GUARDAR")){
+        if(btn_Consultar.getText().equals("Guardar")){
             if (evt.getKeyCode() == 112) {
                 selectorProducto selector = new selectorProducto();
                 selector.setProductos(Productos);
@@ -609,6 +620,10 @@ public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
     private void tabla_detalleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_detalleMousePressed
         
     }//GEN-LAST:event_tabla_detalleMousePressed
+
+    private void rbtn_CreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_CreditoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtn_CreditoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

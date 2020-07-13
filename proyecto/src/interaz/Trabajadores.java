@@ -21,6 +21,8 @@ public class Trabajadores extends javax.swing.JPanel {
     Conexion conexion;
     GestorActualizaciones gestor = new GestorActualizaciones();
     ObservadorUsuario observador = new ObservadorUsuario();
+    Color color_reset = new Color(96,96,96);
+    Color color_set = new Color(128,128,128);
 
     public Trabajadores() {
         initComponents();
@@ -44,10 +46,10 @@ public class Trabajadores extends javax.swing.JPanel {
      */
     private void limpiar(){
         //Pone los botones de opcion como negros
-        ingresarButton.setBackground(Color.BLACK);
-        modificarButton.setBackground(Color.BLACK);
-        eliminarButton.setBackground(Color.BLACK);
-        verButton.setBackground(Color.BLACK);
+        ingresarButton.setBackground(color_reset);
+        modificarButton.setBackground(color_reset);
+        eliminarButton.setBackground(color_reset);
+        verButton.setBackground(color_reset);
         //Limpia los JFields
         dpiField.setText("");
         nombreField.setText("");
@@ -73,7 +75,7 @@ public class Trabajadores extends javax.swing.JPanel {
      * Carga los datos de la fila seleccionada en los campos, si se esta en modo modificación
      */
     private void filaSeleccionada(){
-        if(modificarButton.getBackground()==Color.RED){
+        if(modificarButton.getBackground()==color_set){
             int seleccion=listadoTable.getSelectedRow();
             if(seleccion!=-1){
                 dpiField.setText(listadoTable.getValueAt(seleccion,1).toString());
@@ -129,8 +131,6 @@ public class Trabajadores extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ingresarButton = new javax.swing.JLabel();
-        modificarButton = new javax.swing.JLabel();
         generalPanel = new javax.swing.JPanel();
         lbl_codigo = new javax.swing.JLabel();
         nombreField = new javax.swing.JTextField();
@@ -153,117 +153,99 @@ public class Trabajadores extends javax.swing.JPanel {
         bonoDate = new com.toedter.calendar.JDateChooser();
         lbl_codigo10 = new javax.swing.JLabel();
         direccionField = new javax.swing.JTextField();
-        eliminarButton = new javax.swing.JLabel();
         verButton = new javax.swing.JLabel();
         listadoPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listadoTable = new javax.swing.JTable();
         lbl_codigo6 = new javax.swing.JLabel();
-        Minimizar = new javax.swing.JLabel();
-        Salir = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        ingresarButton = new javax.swing.JLabel();
+        modificarButton = new javax.swing.JLabel();
+        eliminarButton = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setMinimumSize(new java.awt.Dimension(939, 630));
+        setPreferredSize(new java.awt.Dimension(937, 646));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ingresarButton.setBackground(new java.awt.Color(0, 0, 0));
-        ingresarButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        ingresarButton.setForeground(new java.awt.Color(255, 255, 255));
-        ingresarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ingresarButton.setText("INGRESO");
-        ingresarButton.setName(""); // NOI18N
-        ingresarButton.setOpaque(true);
-        ingresarButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarButtonMouseClicked(evt);
-            }
-        });
-        add(ingresarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 50));
-
-        modificarButton.setBackground(new java.awt.Color(0, 0, 0));
-        modificarButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        modificarButton.setForeground(new java.awt.Color(255, 255, 255));
-        modificarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        modificarButton.setText("MODIFICACION");
-        modificarButton.setName(""); // NOI18N
-        modificarButton.setOpaque(true);
-        modificarButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modificarButtonMouseClicked(evt);
-            }
-        });
-        add(modificarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 160, 50));
 
         generalPanel.setOpaque(false);
 
-        lbl_codigo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo.setText("Nombre:");
 
-        nombreField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        nombreField.setBorder(null);
+        nombreField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        nombreField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 185)));
         nombreField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         nombreField.setNextFocusableComponent(apellidoField);
+        nombreField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        nombreField.setSelectionColor(new java.awt.Color(192, 192, 192));
         nombreField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nombreFieldFocusGained(evt);
             }
         });
 
-        lbl_codigo1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo1.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo1.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo1.setText("Apellido:");
 
-        apellidoField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        apellidoField.setBorder(null);
+        apellidoField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        apellidoField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 185)));
         apellidoField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         apellidoField.setNextFocusableComponent(telefonoField);
+        apellidoField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        apellidoField.setSelectionColor(new java.awt.Color(192, 192, 192));
         apellidoField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 apellidoFieldFocusGained(evt);
             }
         });
 
-        lbl_codigo2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo2.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo2.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo2.setText("Teléfono:");
 
-        telefonoField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        telefonoField.setBorder(null);
+        telefonoField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        telefonoField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 185)));
         telefonoField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         telefonoField.setNextFocusableComponent(direccionField);
+        telefonoField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        telefonoField.setSelectionColor(new java.awt.Color(192, 192, 192));
         telefonoField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 telefonoFieldFocusGained(evt);
             }
         });
 
-        lbl_codigo3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo3.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo3.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo3.setText("Salario base:");
 
-        dpiField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        dpiField.setBorder(null);
+        dpiField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        dpiField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 185)));
         dpiField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         dpiField.setNextFocusableComponent(nombreField);
+        dpiField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        dpiField.setSelectionColor(new java.awt.Color(192, 192, 192));
         dpiField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 dpiFieldFocusGained(evt);
             }
         });
 
-        lbl_codigo4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo4.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo4.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo4.setText("DPI:");
 
-        lbl_codigo5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo5.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo5.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo5.setText("% de comisión:");
 
-        generalButton.setBackground(new java.awt.Color(255, 0, 0));
-        generalButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        generalButton.setBackground(new java.awt.Color(255, 51, 51));
+        generalButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         generalButton.setForeground(new java.awt.Color(255, 255, 255));
         generalButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        generalButton.setText("GUARDAR");
+        generalButton.setText("Guardar");
         generalButton.setName(""); // NOI18N
         generalButton.setOpaque(true);
         generalButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,14 +254,17 @@ public class Trabajadores extends javax.swing.JPanel {
             }
         });
 
-        lbl_codigo7.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo7.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo7.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo7.setText("Bono incentivo:");
 
         bonoField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         bonoField.setText("0.00");
-        bonoField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        bonoField.setCaretColor(new java.awt.Color(64, 64, 64));
+        bonoField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         bonoField.setNextFocusableComponent(inicioDate);
+        bonoField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        bonoField.setSelectionColor(new java.awt.Color(192, 192, 192));
         bonoField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 bonoFieldFocusGained(evt);
@@ -288,8 +273,11 @@ public class Trabajadores extends javax.swing.JPanel {
 
         comisionField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         comisionField.setText("0.00");
-        comisionField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        comisionField.setCaretColor(new java.awt.Color(64, 64, 64));
+        comisionField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         comisionField.setNextFocusableComponent(salarioField);
+        comisionField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        comisionField.setSelectionColor(new java.awt.Color(192, 192, 192));
         comisionField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 comisionFieldFocusGained(evt);
@@ -298,38 +286,44 @@ public class Trabajadores extends javax.swing.JPanel {
 
         salarioField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         salarioField.setText("0.00");
-        salarioField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        salarioField.setCaretColor(new java.awt.Color(64, 64, 64));
+        salarioField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         salarioField.setNextFocusableComponent(bonoField);
+        salarioField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        salarioField.setSelectionColor(new java.awt.Color(192, 192, 192));
         salarioField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 salarioFieldFocusGained(evt);
             }
         });
 
-        lbl_codigo8.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo8.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo8.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo8.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo8.setText("Fecha de inicio:");
 
-        lbl_codigo9.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo9.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo9.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo9.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo9.setText("Fecha de bono:");
 
         inicioDate.setDateFormatString("yyyy/MM/dd");
-        inicioDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        inicioDate.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         inicioDate.setNextFocusableComponent(bonoDate);
 
         bonoDate.setDateFormatString("yyyy/MM/dd");
-        bonoDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        bonoDate.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         bonoDate.setNextFocusableComponent(generalButton);
 
-        lbl_codigo10.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo10.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo10.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo10.setForeground(new java.awt.Color(64, 64, 64));
         lbl_codigo10.setText("Dirección:");
 
-        direccionField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        direccionField.setBorder(null);
+        direccionField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        direccionField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 185)));
+        direccionField.setCaretColor(new java.awt.Color(64, 64, 64));
         direccionField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         direccionField.setNextFocusableComponent(comisionField);
+        direccionField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        direccionField.setSelectionColor(new java.awt.Color(192, 192, 192));
         direccionField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 direccionFieldFocusGained(evt);
@@ -341,128 +335,103 @@ public class Trabajadores extends javax.swing.JPanel {
         generalPanelLayout.setHorizontalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(generalPanelLayout.createSequentialGroup()
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
-                                .addComponent(lbl_codigo2)
-                                .addGap(11, 11, 11))
-                            .addGroup(generalPanelLayout.createSequentialGroup()
-                                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_codigo4)
-                                    .addComponent(lbl_codigo1)
-                                    .addComponent(lbl_codigo))
-                                .addGap(15, 15, 15)))
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dpiField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(apellidoField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombreField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(telefonoField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(generalPanelLayout.createSequentialGroup()
-                        .addComponent(lbl_codigo10)
-                        .addGap(4, 4, 4)
-                        .addComponent(direccionField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(generalPanelLayout.createSequentialGroup()
-                        .addComponent(lbl_codigo9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(bonoDate, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(generalPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_codigo3)
-                            .addComponent(lbl_codigo7)
-                            .addComponent(lbl_codigo8)
-                            .addComponent(lbl_codigo5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comisionField)
-                            .addComponent(bonoField)
-                            .addComponent(salarioField)
-                            .addComponent(inicioDate, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(113, 113, 113))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(generalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(303, 303, 303))
+                            .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
+                                    .addComponent(lbl_codigo2)
+                                    .addGap(11, 11, 11))
+                                .addGroup(generalPanelLayout.createSequentialGroup()
+                                    .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_codigo4)
+                                        .addComponent(lbl_codigo1)
+                                        .addComponent(lbl_codigo))
+                                    .addGap(15, 15, 15)))
+                            .addComponent(lbl_codigo10))
+                        .addGap(44, 44, 44)
+                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, generalPanelLayout.createSequentialGroup()
+                                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(dpiField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(apellidoField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(telefonoField, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(123, 123, 123)
+                                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_codigo8)
+                                    .addComponent(lbl_codigo3)
+                                    .addComponent(lbl_codigo7)
+                                    .addComponent(lbl_codigo5)
+                                    .addComponent(lbl_codigo9))
+                                .addGap(32, 32, 32)
+                                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bonoDate, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(salarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comisionField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bonoField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inicioDate, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(direccionField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(generalPanelLayout.createSequentialGroup()
+                        .addGap(314, 314, 314)
+                        .addComponent(generalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         generalPanelLayout.setVerticalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_codigo4)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comisionField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_codigo5)))
+                    .addComponent(dpiField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(salarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_codigo)
+                        .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_codigo3))
+                .addGap(18, 18, 18)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(generalPanelLayout.createSequentialGroup()
+                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_codigo1)
+                            .addComponent(apellidoField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
+                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bonoField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_codigo7))
+                        .addGap(18, 18, 18)))
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_codigo2)
                     .addGroup(generalPanelLayout.createSequentialGroup()
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_codigo4)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(comisionField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_codigo5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(generalPanelLayout.createSequentialGroup()
-                                .addComponent(salarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(3, 3, 3))
-                            .addComponent(lbl_codigo3)
-                            .addComponent(lbl_codigo))
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(generalPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_codigo1)
-                                .addGap(9, 9, 9))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(bonoField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_codigo7))
-                                .addGap(10, 10, 10)))
+                            .addComponent(inicioDate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(telefonoField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl_codigo8)))
+                        .addGap(18, 18, 18)
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(generalPanelLayout.createSequentialGroup()
-                                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_codigo8)
-                                    .addComponent(inicioDate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(8, 8, 8)
-                                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_codigo9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(bonoDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(generalPanelLayout.createSequentialGroup()
-                                .addComponent(lbl_codigo2)
-                                .addGap(5, 5, 5)
-                                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(generalPanelLayout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(lbl_codigo10))
-                                    .addComponent(direccionField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(generalPanelLayout.createSequentialGroup()
-                        .addComponent(dpiField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(apellidoField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(telefonoField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(generalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bonoDate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbl_codigo9)
+                                .addComponent(lbl_codigo10))
+                            .addComponent(direccionField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(generalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(generalPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 770, 240));
+        add(generalPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 900, 270));
 
-        eliminarButton.setBackground(new java.awt.Color(0, 0, 0));
-        eliminarButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        eliminarButton.setForeground(new java.awt.Color(255, 255, 255));
-        eliminarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        eliminarButton.setText("ELIMINACIÓN");
-        eliminarButton.setName(""); // NOI18N
-        eliminarButton.setOpaque(true);
-        eliminarButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarButtonMouseClicked(evt);
-            }
-        });
-        add(eliminarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 160, 50));
-
-        verButton.setBackground(new java.awt.Color(0, 0, 0));
+        verButton.setBackground(new java.awt.Color(96, 96, 96));
         verButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         verButton.setForeground(new java.awt.Color(255, 255, 255));
         verButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -474,7 +443,7 @@ public class Trabajadores extends javax.swing.JPanel {
                 verButtonMouseClicked(evt);
             }
         });
-        add(verButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 190, 50));
+        add(verButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 210, 40));
 
         listadoPanel.setOpaque(false);
 
@@ -487,10 +456,10 @@ public class Trabajadores extends javax.swing.JPanel {
 
             }
         ));
-        listadoTable.setGridColor(new java.awt.Color(0, 0, 0));
+        listadoTable.setGridColor(new java.awt.Color(96, 96, 96));
         listadoTable.setRowHeight(24);
-        listadoTable.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        listadoTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        listadoTable.setSelectionBackground(new java.awt.Color(192, 192, 192));
+        listadoTable.setSelectionForeground(new java.awt.Color(64, 64, 64));
         listadoTable.setShowVerticalLines(false);
         listadoTable.getTableHeader().setReorderingAllowed(false);
         listadoTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -505,21 +474,19 @@ public class Trabajadores extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(listadoTable);
 
-        lbl_codigo6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo6.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_codigo6.setText("Listado de trabajadores:");
+        lbl_codigo6.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo6.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_codigo6.setText("Listado de trabajadores");
 
         javax.swing.GroupLayout listadoPanelLayout = new javax.swing.GroupLayout(listadoPanel);
         listadoPanel.setLayout(listadoPanelLayout);
         listadoPanelLayout.setHorizontalGroup(
             listadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(listadoPanelLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listadoPanelLayout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
                 .addGroup(listadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(listadoPanelLayout.createSequentialGroup()
-                        .addComponent(lbl_codigo6)
-                        .addContainerGap(699, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(lbl_codigo6)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         listadoPanelLayout.setVerticalGroup(
             listadoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,63 +494,73 @@ public class Trabajadores extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_codigo6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
         );
 
-        add(listadoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 920, 320));
+        add(listadoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 890, 300));
 
-        Minimizar.setForeground(new java.awt.Color(255, 255, 255));
-        Minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/minus-symbol.png"))); // NOI18N
-        Minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel3.setBackground(new java.awt.Color(96, 96, 96));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ingresarButton.setBackground(new java.awt.Color(96, 96, 96));
+        ingresarButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        ingresarButton.setForeground(new java.awt.Color(255, 255, 255));
+        ingresarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ingresarButton.setText("INGRESO");
+        ingresarButton.setName(""); // NOI18N
+        ingresarButton.setOpaque(true);
+        ingresarButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MinimizarMouseClicked(evt);
+                ingresarButtonMouseClicked(evt);
             }
         });
-        add(Minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, -1, -1));
+        jPanel3.add(ingresarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 40));
 
-        Salir.setBackground(new java.awt.Color(0, 0, 0));
-        Salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
-        Salir.setOpaque(true);
-        Salir.addMouseListener(new java.awt.event.MouseAdapter() {
+        modificarButton.setBackground(new java.awt.Color(96, 96, 96));
+        modificarButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        modificarButton.setForeground(new java.awt.Color(255, 255, 255));
+        modificarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        modificarButton.setText("MODIFICACIÓN");
+        modificarButton.setName(""); // NOI18N
+        modificarButton.setOpaque(true);
+        modificarButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SalirMouseClicked(evt);
+                modificarButtonMouseClicked(evt);
             }
         });
-        add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, -1, -1));
+        jPanel3.add(modificarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 160, 40));
+
+        eliminarButton.setBackground(new java.awt.Color(96, 96, 96));
+        eliminarButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        eliminarButton.setForeground(new java.awt.Color(255, 255, 255));
+        eliminarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eliminarButton.setText("ELIMINACIÓN");
+        eliminarButton.setName(""); // NOI18N
+        eliminarButton.setOpaque(true);
+        eliminarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarButtonMouseClicked(evt);
+            }
+        });
+        jPanel3.add(eliminarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 160, 40));
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 40));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ingresarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarButtonMouseClicked
-        //Limpia el formulario
-        limpiar();
-        //Setea el boton de ingresar como rojo
-        ingresarButton.setBackground(Color.RED);
-        //Muestra los paneles
-        listadoPanel.setEnabled(false);
-        listadoPanel.setVisible(true);
-        generalPanel.setVisible(true);
-        //Cambia el texto del botón
-        generalButton.setText("Ingresar");
-        generalButton.setEnabled(true);
-        //Pone el foco en el texto de DPI
-        dpiField.requestFocus();
-        
-    }//GEN-LAST:event_ingresarButtonMouseClicked
 
     private void modificarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarButtonMouseClicked
         try {
             //limpia el formulario
             limpiar();
             //Setea el color del boton a rojo
-            modificarButton.setBackground(Color.RED);
+            modificarButton.setBackground(color_set);
             //Muestra los paneles
             listadoPanel.setVisible(true);
             generalPanel.setVisible(true);
             //Obtiene la lista de Trabajadores y la setea en la tabla
             listadoTable.setModel(conexion.obtenerTrabajadoresJP());
             //Setea el texto del boton
-            generalButton.setText("Actualizar Datos");
+            generalButton.setText("Actualizar datos");
             generalButton.setEnabled(true);
             //Pone el foco en la tabla
             listadoTable.requestFocus();
@@ -598,11 +575,11 @@ public class Trabajadores extends javax.swing.JPanel {
             //Limpia el formulario
             limpiar();
             //Pone el color del boton en rojo y muestra los paneles
-            eliminarButton.setBackground(Color.RED);
+            eliminarButton.setBackground(color_set);
             listadoPanel.setVisible(true);
             generalPanel.setVisible(true);
             //Cambia el texto del botón
-            generalButton.setText("Eliminar Selección");
+            generalButton.setText("Eliminar selección");
             generalButton.setEnabled(true);
             //Obtiene la lista de trabajadores y la pone en la tabla, pone el foco en la misma
             listadoTable.setModel(conexion.obtenerTrabajadoresJP());
@@ -618,7 +595,7 @@ public class Trabajadores extends javax.swing.JPanel {
             //Limpia el formulario
             limpiar();
             //Cambia el color del boton a rojo
-            verButton.setBackground(Color.RED);
+            verButton.setBackground(color_set);
             //Obtiene la lista de trabajadores y la pone en la tabla
             listadoTable.setModel(conexion.obtenerTrabajadoresJP());
             //Muestra los paneles
@@ -647,7 +624,7 @@ public class Trabajadores extends javax.swing.JPanel {
         try {
             //Si esta en modo ingreso, modificación o eliminación, hace cosas distintas
             //Se comprueba en que modo está
-            if(ingresarButton.getBackground()==Color.RED){
+            if(ingresarButton.getBackground()==color_set){
                 //Comprobamos que hayan al menos ciertos datos
                 boolean telefono=telefonoField.getText().trim().length()==8;
                 if((dpiField.getText().trim().length()>10)&&!dpiField.getText().trim().equals("")&&!dpiField.getText().trim().equals("N/A")&&!nombreField.getText().trim().equals("")&&!nombreField.getText().trim().equals("N/A")||!apellidoField.getText().trim().equals("")&&!apellidoField.getText().trim().equals("N/A")&&!direccionField.getText().trim().equals("")&&!direccionField.getText().trim().equals("N/A")&&telefono){
@@ -676,11 +653,11 @@ public class Trabajadores extends javax.swing.JPanel {
                         dialogo.setVisible(true);
                     }
                 }else{
-                    DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Ingreso", "Debe ingresar al menos el DPI, Nombre, Apellido, Dirección y Telefono\nVerifique que todos los campos estén ingresados correctamente");
+                    DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Ingreso", "Debe ingresar al menos el DPI, nombre, apellido, dirección y teléfono.\nVerifique que todos los campos estén ingresados correctamente.");
                     dialogo.setVisible(true);
                     dpiField.requestFocus();
                 }
-            }else if(modificarButton.getBackground()==Color.RED){
+            }else if(modificarButton.getBackground()==color_set){
                 //compruba que hayan un mínimo de datos ingresados
                 boolean telefono=telefonoField.getText().trim().length()==8;
                 if((dpiField.getText().trim().length()>10)&&!dpiField.getText().trim().equals("")&&!dpiField.getText().trim().equals("N/A")&&!nombreField.getText().trim().equals("")&&!nombreField.getText().trim().equals("N/A")||!apellidoField.getText().trim().equals("")&&!apellidoField.getText().trim().equals("N/A")&&!direccionField.getText().trim().equals("")&&!direccionField.getText().trim().equals("N/A")&&telefono){
@@ -701,20 +678,20 @@ public class Trabajadores extends javax.swing.JPanel {
                     //Limpia el formulario
                     limpiar();
                 }else{
-                    DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Modificación", "Debe ingresar al menos el DPI, Nombre, Apellido, Dirección y Telefono\nVerifique que todos los campos estén ingresados correctamente");
+                    DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Modificación", "Debe ingresar al menos el DPI, nombre, apellido, dirección y teléfono.\nVerifique que todos los campos estén ingresados correctamente.");
                     dialogo.setVisible(true);
                     dpiField.requestFocus();
                 }
-            }else if(eliminarButton.getBackground()==Color.RED)
+            }else if(eliminarButton.getBackground()==color_set)
             {
                 //Muestra un dialogo para confirmar si se quiere borrar el trabajador
-                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INTERROGANTE,"Eliminación", "¿Esta seguro de eliminar al trabajador seleccionado?");
+                DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INTERROGANTE,"Eliminación", "¿Está seguro de eliminar al trabajador seleccionado?");
                 dialogo.setVisible(true);
                 //Si se acepta, entonces lo borra
                 if(dialogo.isAceptar()){
                     //Manda la orden de eliminación a la BD, devuelve el número de filas cambiadas
                     int filasMod=conexion.eliminarTrabajador(Integer.parseInt(listadoTable.getValueAt(listadoTable.getSelectedRow(),0).toString()));
-                    dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Eliminación", "Se ha eliminado al trabajador\nRegistros actualizados: "+filasMod);
+                    dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Eliminación", "Se ha eliminado al trabajador.\nRegistros actualizados: "+filasMod);
                     dialogo.setVisible(true);
                     //Limpia el formulario
                     limpiar();
@@ -726,17 +703,6 @@ public class Trabajadores extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_generalButtonMouseClicked
-
-    private void MinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizarMouseClicked
-        //Obtenemos los contenedores padres, hasta obtener el JFrame donde se está trabajando
-        JFrame padre= (JFrame)this.getParent().getParent().getParent().getParent().getParent();
-        //Se le manda la orden de minimizar
-        padre.setExtendedState(1);
-    }//GEN-LAST:event_MinimizarMouseClicked
-
-    private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_SalirMouseClicked
 
     private void nombreFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFieldFocusGained
         nombreField.selectAll();
@@ -769,11 +735,25 @@ public class Trabajadores extends javax.swing.JPanel {
     private void direccionFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_direccionFieldFocusGained
         direccionField.selectAll();
     }//GEN-LAST:event_direccionFieldFocusGained
+
+    private void ingresarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarButtonMouseClicked
+        //Limpia el formulario
+        limpiar();
+        //Setea el boton de ingresar como rojo
+        ingresarButton.setBackground(color_set);
+        //Muestra los paneles
+        listadoPanel.setEnabled(false);
+        listadoPanel.setVisible(true);
+        generalPanel.setVisible(true);
+        //Cambia el texto del botón
+        generalButton.setText("Ingresar");
+        generalButton.setEnabled(true);
+        //Pone el foco en el texto de DPI
+        dpiField.requestFocus();
+    }//GEN-LAST:event_ingresarButtonMouseClicked
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Minimizar;
-    private javax.swing.JLabel Salir;
     private javax.swing.JTextField apellidoField;
     private com.toedter.calendar.JDateChooser bonoDate;
     private javax.swing.JFormattedTextField bonoField;
@@ -785,6 +765,7 @@ public class Trabajadores extends javax.swing.JPanel {
     private javax.swing.JPanel generalPanel;
     private javax.swing.JLabel ingresarButton;
     private com.toedter.calendar.JDateChooser inicioDate;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_codigo;
     private javax.swing.JLabel lbl_codigo1;
