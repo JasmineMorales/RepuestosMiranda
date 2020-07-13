@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interaz;
 
 import Excepciones.NoSePuedeConectar;
@@ -20,6 +15,8 @@ import java.text.ParseException;
  */
 public class Clientes extends javax.swing.JPanel {
     Conexion conexion;
+    Color color_reset = new Color(128,128,128);
+    Color color_set = new Color(96,96,96);
     /**
      * Creates new form Clientes
      */
@@ -59,10 +56,11 @@ public class Clientes extends javax.swing.JPanel {
      */
     private void limpiar(){
         //Pone los botones de opcion como negros
-        ingresarButton.setBackground(Color.BLACK);
-        modificarButton.setBackground(Color.BLACK);
-        eliminarButton.setBackground(Color.BLACK);
-        verButton.setBackground(Color.BLACK);
+        ingresarButton.setBackground(color_set);
+        modificarButton.setBackground(color_set);
+        eliminarButton.setBackground(color_set);
+        verButton.setBackground(color_set);
+        btn_Pagos.setBackground(color_set);
         //Limpia los JFields
         nombreField.setText("");
         apellidoField.setText("");
@@ -82,7 +80,7 @@ public class Clientes extends javax.swing.JPanel {
      * Carga los datos de la fila seleccionada en los campos, si se esta en modo modificación
      */
     private void filaSeleccionada(){
-        if(modificarButton.getBackground()==Color.RED){
+        if(modificarButton.getBackground()==color_reset){
             int seleccion=listadoTable.getSelectedRow();
             if(seleccion!=-1){
                 nitField.setText((String)listadoTable.getValueAt(seleccion, 1));
@@ -112,7 +110,6 @@ public class Clientes extends javax.swing.JPanel {
         verButton = new javax.swing.JLabel();
         Minimizar = new javax.swing.JLabel();
         Salir = new javax.swing.JLabel();
-        panel_Contenido = new javax.swing.JPanel();
         panel_Anterior = new javax.swing.JPanel();
         generalPanel = new javax.swing.JPanel();
         lbl_codigo = new javax.swing.JLabel();
@@ -136,12 +133,14 @@ public class Clientes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         listadoTable = new javax.swing.JTable();
         lbl_codigo6 = new javax.swing.JLabel();
+        panel_Contenido = new javax.swing.JPanel();
         btn_Pagos = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ingresarButton.setBackground(new java.awt.Color(0, 0, 0));
+        ingresarButton.setBackground(new java.awt.Color(96, 96, 96));
         ingresarButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         ingresarButton.setForeground(new java.awt.Color(255, 255, 255));
         ingresarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -155,11 +154,11 @@ public class Clientes extends javax.swing.JPanel {
         });
         add(ingresarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 40));
 
-        modificarButton.setBackground(new java.awt.Color(0, 0, 0));
+        modificarButton.setBackground(new java.awt.Color(96, 96, 96));
         modificarButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         modificarButton.setForeground(new java.awt.Color(255, 255, 255));
         modificarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        modificarButton.setText("MODIFICACION");
+        modificarButton.setText("MODIFICACIÓN");
         modificarButton.setName(""); // NOI18N
         modificarButton.setOpaque(true);
         modificarButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,9 +166,9 @@ public class Clientes extends javax.swing.JPanel {
                 modificarButtonMouseClicked(evt);
             }
         });
-        add(modificarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 160, 40));
+        add(modificarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 170, 40));
 
-        eliminarButton.setBackground(new java.awt.Color(0, 0, 0));
+        eliminarButton.setBackground(new java.awt.Color(96, 96, 96));
         eliminarButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         eliminarButton.setForeground(new java.awt.Color(255, 255, 255));
         eliminarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -181,9 +180,9 @@ public class Clientes extends javax.swing.JPanel {
                 eliminarButtonMouseClicked(evt);
             }
         });
-        add(eliminarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 160, 40));
+        add(eliminarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 160, 40));
 
-        verButton.setBackground(new java.awt.Color(0, 0, 0));
+        verButton.setBackground(new java.awt.Color(96, 96, 96));
         verButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         verButton.setForeground(new java.awt.Color(255, 255, 255));
         verButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -195,8 +194,9 @@ public class Clientes extends javax.swing.JPanel {
                 verButtonMouseClicked(evt);
             }
         });
-        add(verButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 160, 40));
+        add(verButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 160, 40));
 
+        Minimizar.setBackground(new java.awt.Color(96, 96, 96));
         Minimizar.setForeground(new java.awt.Color(255, 255, 255));
         Minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/minus-symbol.png"))); // NOI18N
         Minimizar.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -207,7 +207,7 @@ public class Clientes extends javax.swing.JPanel {
         });
         add(Minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 0, -1, -1));
 
-        Salir.setBackground(new java.awt.Color(0, 0, 0));
+        Salir.setBackground(new java.awt.Color(96, 96, 96));
         Salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
         Salir.setOpaque(true);
@@ -219,102 +219,113 @@ public class Clientes extends javax.swing.JPanel {
         });
         add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, -1, -1));
 
-        panel_Contenido.setBackground(new java.awt.Color(0, 0, 0));
-        panel_Contenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(panel_Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 940, 610));
-
-        panel_Anterior.setBackground(new java.awt.Color(0, 0, 0));
         panel_Anterior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         generalPanel.setOpaque(false);
         generalPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_codigo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo.setForeground(new java.awt.Color(96, 96, 96));
         lbl_codigo.setText("Nombre:");
-        generalPanel.add(lbl_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 11, -1, -1));
+        generalPanel.add(lbl_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
-        nombreField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        nombreField.setBorder(null);
+        nombreField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        nombreField.setForeground(new java.awt.Color(96, 96, 96));
+        nombreField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 185)));
+        nombreField.setCaretColor(new java.awt.Color(96, 96, 96));
         nombreField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         nombreField.setNextFocusableComponent(apellidoField);
+        nombreField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        nombreField.setSelectionColor(new java.awt.Color(192, 192, 192));
         nombreField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nombreFieldFocusGained(evt);
             }
         });
-        generalPanel.add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 12, 260, 26));
+        generalPanel.add(nombreField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 260, 26));
 
-        lbl_codigo1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo1.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo1.setForeground(new java.awt.Color(96, 96, 96));
         lbl_codigo1.setText("Apellido:");
-        generalPanel.add(lbl_codigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, -1, -1));
+        generalPanel.add(lbl_codigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        apellidoField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        apellidoField.setBorder(null);
+        apellidoField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        apellidoField.setForeground(new java.awt.Color(96, 96, 96));
+        apellidoField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 185)));
+        apellidoField.setCaretColor(new java.awt.Color(96, 96, 96));
         apellidoField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         apellidoField.setNextFocusableComponent(nitField);
+        apellidoField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        apellidoField.setSelectionColor(new java.awt.Color(192, 192, 192));
         apellidoField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 apellidoFieldFocusGained(evt);
             }
         });
-        generalPanel.add(apellidoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 45, 260, 26));
+        generalPanel.add(apellidoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 260, 26));
 
-        lbl_codigo2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo2.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo2.setForeground(new java.awt.Color(96, 96, 96));
         lbl_codigo2.setText("Dirección:");
-        generalPanel.add(lbl_codigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        generalPanel.add(lbl_codigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        direccionField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        direccionField.setBorder(null);
+        direccionField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        direccionField.setForeground(new java.awt.Color(96, 96, 96));
+        direccionField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 185)));
+        direccionField.setCaretColor(new java.awt.Color(96, 96, 96));
         direccionField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         direccionField.setNextFocusableComponent(descuentoField);
+        direccionField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        direccionField.setSelectionColor(new java.awt.Color(192, 192, 192));
         direccionField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 direccionFieldFocusGained(evt);
             }
         });
-        generalPanel.add(direccionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 111, 260, 26));
+        generalPanel.add(direccionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 260, 26));
 
-        lbl_codigo3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo3.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo3.setForeground(new java.awt.Color(96, 96, 96));
         lbl_codigo3.setText("Límite de crédito:");
-        generalPanel.add(lbl_codigo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
+        generalPanel.add(lbl_codigo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, 30));
 
-        nitField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        nitField.setBorder(null);
+        nitField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        nitField.setForeground(new java.awt.Color(96, 96, 96));
+        nitField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 185, 185)));
+        nitField.setCaretColor(new java.awt.Color(96, 96, 96));
         nitField.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         nitField.setNextFocusableComponent(direccionField);
+        nitField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        nitField.setSelectionColor(new java.awt.Color(192, 192, 192));
         nitField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nitFieldFocusGained(evt);
             }
         });
-        generalPanel.add(nitField, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 78, 260, 26));
+        generalPanel.add(nitField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 260, 26));
 
-        lbl_codigo4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo4.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo4.setForeground(new java.awt.Color(96, 96, 96));
         lbl_codigo4.setText("NIT:");
-        generalPanel.add(lbl_codigo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 77, -1, -1));
+        generalPanel.add(lbl_codigo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        lbl_codigo5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo5.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo5.setForeground(new java.awt.Color(96, 96, 96));
         lbl_codigo5.setText("% de descuento:");
-        generalPanel.add(lbl_codigo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 13, -1, 30));
+        generalPanel.add(lbl_codigo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, -1, 30));
 
-        chequeCheck.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        chequeCheck.setForeground(new java.awt.Color(255, 255, 255));
+        chequeCheck.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        chequeCheck.setForeground(new java.awt.Color(96, 96, 96));
         chequeCheck.setText("¿Se le acepta cheque?");
         chequeCheck.setNextFocusableComponent(generalButton);
         chequeCheck.setOpaque(false);
-        generalPanel.add(chequeCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, -1, -1));
+        generalPanel.add(chequeCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
-        generalButton.setBackground(new java.awt.Color(255, 0, 0));
-        generalButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        generalButton.setBackground(new java.awt.Color(255, 51, 51));
+        generalButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         generalButton.setForeground(new java.awt.Color(255, 255, 255));
         generalButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        generalButton.setText("GUARDAR");
+        generalButton.setText("Guardar");
         generalButton.setName(""); // NOI18N
         generalButton.setOpaque(true);
         generalButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -322,51 +333,62 @@ public class Clientes extends javax.swing.JPanel {
                 generalButtonMouseClicked(evt);
             }
         });
-        generalPanel.add(generalButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 160, 40));
+        generalPanel.add(generalButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 160, 35));
 
+        descuentoField.setForeground(new java.awt.Color(64, 64, 64));
         descuentoField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         descuentoField.setText("0");
+        descuentoField.setCaretColor(new java.awt.Color(64, 64, 64));
         descuentoField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         descuentoField.setNextFocusableComponent(limCreditoField);
+        descuentoField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        descuentoField.setSelectionColor(new java.awt.Color(192, 192, 192));
         descuentoField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 descuentoFieldFocusGained(evt);
             }
         });
-        generalPanel.add(descuentoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 260, 30));
+        generalPanel.add(descuentoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 260, 30));
 
+        limCreditoField.setForeground(new java.awt.Color(64, 64, 64));
         limCreditoField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         limCreditoField.setText("0");
+        limCreditoField.setCaretColor(new java.awt.Color(64, 64, 64));
         limCreditoField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         limCreditoField.setNextFocusableComponent(saldoField);
+        limCreditoField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        limCreditoField.setSelectionColor(new java.awt.Color(192, 192, 192));
         limCreditoField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 limCreditoFieldFocusGained(evt);
             }
         });
-        generalPanel.add(limCreditoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, 260, 26));
+        generalPanel.add(limCreditoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 46, 260, 30));
 
-        lbl_codigo7.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo7.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_codigo7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo7.setForeground(new java.awt.Color(96, 96, 96));
         lbl_codigo7.setText("Saldo actual:");
-        generalPanel.add(lbl_codigo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, -1));
+        generalPanel.add(lbl_codigo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
 
+        saldoField.setForeground(new java.awt.Color(64, 64, 64));
         saldoField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         saldoField.setText("0.00");
         saldoField.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         saldoField.setNextFocusableComponent(chequeCheck);
+        saldoField.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        saldoField.setSelectionColor(new java.awt.Color(192, 192, 192));
         saldoField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 saldoFieldFocusGained(evt);
             }
         });
-        generalPanel.add(saldoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 86, 260, 30));
+        generalPanel.add(saldoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 260, 30));
 
-        telefonosButton.setBackground(new java.awt.Color(255, 0, 0));
-        telefonosButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        telefonosButton.setBackground(new java.awt.Color(255, 51, 51));
+        telefonosButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         telefonosButton.setForeground(new java.awt.Color(255, 255, 255));
         telefonosButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        telefonosButton.setText("TELEFONOS");
+        telefonosButton.setText("Teléfonos");
         telefonosButton.setName(""); // NOI18N
         telefonosButton.setOpaque(true);
         telefonosButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -374,14 +396,15 @@ public class Clientes extends javax.swing.JPanel {
                 telefonosButtonMouseClicked(evt);
             }
         });
-        generalPanel.add(telefonosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, 160, 40));
+        generalPanel.add(telefonosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, 170, 35));
 
-        panel_Anterior.add(generalPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 900, 210));
+        panel_Anterior.add(generalPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 910, 210));
 
         listadoPanel.setOpaque(false);
         listadoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         listadoTable.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        listadoTable.setForeground(new java.awt.Color(64, 64, 64));
         listadoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -390,10 +413,10 @@ public class Clientes extends javax.swing.JPanel {
 
             }
         ));
-        listadoTable.setGridColor(new java.awt.Color(0, 0, 0));
+        listadoTable.setGridColor(new java.awt.Color(64, 64, 64));
         listadoTable.setRowHeight(24);
-        listadoTable.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        listadoTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        listadoTable.setSelectionBackground(new java.awt.Color(192, 192, 192));
+        listadoTable.setSelectionForeground(new java.awt.Color(64, 64, 64));
         listadoTable.setShowVerticalLines(false);
         listadoTable.getTableHeader().setReorderingAllowed(false);
         listadoTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -408,18 +431,21 @@ public class Clientes extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(listadoTable);
 
-        listadoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 940, 340));
+        listadoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 860, 300));
 
-        lbl_codigo6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lbl_codigo6.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_codigo6.setText("Listado de clientes:");
-        listadoPanel.add(lbl_codigo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        lbl_codigo6.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_codigo6.setForeground(new java.awt.Color(96, 96, 96));
+        lbl_codigo6.setText("Listado de clientes");
+        listadoPanel.add(lbl_codigo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        panel_Anterior.add(listadoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 940, 380));
+        panel_Anterior.add(listadoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 910, 380));
 
-        add(panel_Anterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 940, 610));
+        panel_Contenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel_Anterior.add(panel_Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 910, 550));
 
-        btn_Pagos.setBackground(new java.awt.Color(0, 0, 0));
+        add(panel_Anterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 920, 600));
+
+        btn_Pagos.setBackground(new java.awt.Color(96, 96, 96));
         btn_Pagos.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_Pagos.setForeground(new java.awt.Color(255, 255, 255));
         btn_Pagos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -431,14 +457,18 @@ public class Clientes extends javax.swing.JPanel {
                 btn_PagosMouseClicked(evt);
             }
         });
-        add(btn_Pagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 160, 40));
+        add(btn_Pagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 160, 40));
+
+        jPanel2.setBackground(new java.awt.Color(96, 96, 96));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingresarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarButtonMouseClicked
         //Limpia el formulario
         limpiar();
         //Setea el boton de ingresar como rojo
-        ingresarButton.setBackground(Color.RED);
+        ingresarButton.setBackground(color_reset);
         //Muestra los paneles
         listadoPanel.setEnabled(false);
         listadoPanel.setVisible(true);
@@ -457,14 +487,14 @@ public class Clientes extends javax.swing.JPanel {
                 //limpia el formulario
                 limpiar();
                 //Setea el color del boton a rojo
-                modificarButton.setBackground(Color.RED);
+                modificarButton.setBackground(color_reset);
                 //Muestra los paneles
                 listadoPanel.setVisible(true);
                 generalPanel.setVisible(true);
                 //Obtiene la lista de clientes y la setea en la tabla
                 listadoTable.setModel(conexion.obtenerClientesJP());
                 //Setea el texto del boton
-                generalButton.setText("Actualizar Datos");
+                generalButton.setText("Actualizar datos");
                 generalButton.setEnabled(true);
                 //Pone el foco en la tabla
                 listadoTable.requestFocus();
@@ -481,11 +511,11 @@ public class Clientes extends javax.swing.JPanel {
                 //Limpia el formulario
                 limpiar();
                 //Pone el color del boton en rojo y muestra los paneles
-                eliminarButton.setBackground(Color.RED);
+                eliminarButton.setBackground(color_reset);
                 listadoPanel.setVisible(true);
                 generalPanel.setVisible(true);
                 //Cambia el texto del botón
-                generalButton.setText("Eliminar Selección");
+                generalButton.setText("Eliminar selección");
                 generalButton.setEnabled(true);
                 //Obtiene la lista de clientes y la pone en la tabla, pone el foco en la misma
                 listadoTable.setModel(conexion.obtenerClientesJP());
@@ -502,7 +532,7 @@ public class Clientes extends javax.swing.JPanel {
             //Limpia el formulario
             limpiar();
             //Cambia el color del boton a rojo
-            verButton.setBackground(Color.RED);
+            verButton.setBackground(color_reset);
             //Obtiene la lista de clientes y la pone en la tabla
             listadoTable.setModel(conexion.obtenerClientesJP());
             //Muestra los paneles
@@ -531,7 +561,7 @@ public class Clientes extends javax.swing.JPanel {
         try {
             //Si esta en modo ingreso, modificación o eliminación, hace cosas distintas
             //Se comprueba en que modo está
-            if(ingresarButton.getBackground()==Color.RED){
+            if(ingresarButton.getBackground()==color_reset){
                 if(!nombreField.getText().trim().equals("")&&!nombreField.getText().trim().equals("N/A")){
                     //Valida los datos de los textos de numero
                     descuentoField.commitEdit();
@@ -555,7 +585,7 @@ public class Clientes extends javax.swing.JPanel {
                     dialogo.setVisible(true);
                     nombreField.requestFocus();
                 }
-            }else if(modificarButton.getBackground()==Color.RED){
+            }else if(modificarButton.getBackground()==color_reset){
                 if(!nombreField.getText().trim().equals("")&&!nombreField.getText().trim().equals("N/A")){
                 //Valida los datos de los campos de numero
                 descuentoField.commitEdit();
@@ -572,7 +602,7 @@ public class Clientes extends javax.swing.JPanel {
                     dialogo.setVisible(true);
                     nombreField.requestFocus();
                 }
-            }else if(eliminarButton.getBackground()==Color.RED)
+            }else if(eliminarButton.getBackground()==color_reset)
             {
                 //Muestra un dialogo para confirmar si se quiere borrar el cliente
                 DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INTERROGANTE,"Eliminación", "¿Esta seguro de eliminar al cliente seleccionado?");
@@ -641,7 +671,7 @@ public class Clientes extends javax.swing.JPanel {
         //Limpia el formulario
         limpiar();
         //Setea el boton de ingresar como rojo
-        btn_Pagos.setBackground(Color.RED);
+        btn_Pagos.setBackground(color_reset);
         
         
     }//GEN-LAST:event_btn_PagosMouseClicked
@@ -659,6 +689,7 @@ public class Clientes extends javax.swing.JPanel {
     private javax.swing.JLabel generalButton;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JLabel ingresarButton;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_codigo;
     private javax.swing.JLabel lbl_codigo1;

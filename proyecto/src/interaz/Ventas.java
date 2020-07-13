@@ -24,6 +24,8 @@ public class Ventas extends javax.swing.JPanel {
 
     private consultaFactura consulta;
     private Conexion Conexion_DB;
+    Color color_set = new Color(128,128,128);
+    Color color_reset = new Color(96,96,96);
     public Ventas() {
         initComponents();
        try {
@@ -48,10 +50,10 @@ public class Ventas extends javax.swing.JPanel {
 
     }
     private void setBoton(JLabel boton){
-        boton.setBackground(Color.RED);
+        boton.setBackground(color_set);
     }
     private void resetBoton(JLabel boton){
-        boton.setBackground(Color.BLACK);
+        boton.setBackground(color_reset);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,22 +68,23 @@ public class Ventas extends javax.swing.JPanel {
         Minimizar = new javax.swing.JLabel();
         Salir = new javax.swing.JLabel();
         btn_Facturaccion = new javax.swing.JLabel();
+        pn_herramientas = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel_Contenido.setBackground(new java.awt.Color(0, 0, 0));
+        panel_Contenido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         panel_Contenido.setName(""); // NOI18N
 
         javax.swing.GroupLayout panel_ContenidoLayout = new javax.swing.GroupLayout(panel_Contenido);
         panel_Contenido.setLayout(panel_ContenidoLayout);
         panel_ContenidoLayout.setHorizontalGroup(
             panel_ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGap(0, 938, Short.MAX_VALUE)
         );
         panel_ContenidoLayout.setVerticalGroup(
             panel_ContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 648, Short.MAX_VALUE)
         );
 
         add(panel_Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 940, 650));
@@ -90,7 +93,7 @@ public class Ventas extends javax.swing.JPanel {
         Minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/minus-symbol.png"))); // NOI18N
         add(Minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
 
-        Salir.setBackground(new java.awt.Color(0, 0, 0));
+        Salir.setBackground(new java.awt.Color(96, 96, 96));
         Salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
         Salir.setOpaque(true);
@@ -101,12 +104,11 @@ public class Ventas extends javax.swing.JPanel {
         });
         add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, 40, 40));
 
-        btn_Facturaccion.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Facturaccion.setBackground(new java.awt.Color(96, 96, 96));
         btn_Facturaccion.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_Facturaccion.setForeground(new java.awt.Color(255, 255, 255));
         btn_Facturaccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Facturaccion.setText("FACTURACION");
-        btn_Facturaccion.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_Facturaccion.setText("FACTURACIÓN");
         btn_Facturaccion.setName(""); // NOI18N
         btn_Facturaccion.setOpaque(true);
         btn_Facturaccion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,7 +116,12 @@ public class Ventas extends javax.swing.JPanel {
                 btn_FacturaccionMouseClicked(evt);
             }
         });
-        add(btn_Facturaccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 160, 50));
+        add(btn_Facturaccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 40));
+
+        pn_herramientas.setBackground(new java.awt.Color(96, 96, 96));
+        pn_herramientas.setPreferredSize(new java.awt.Dimension(868, 40));
+        pn_herramientas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(pn_herramientas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 40));
     }// </editor-fold>//GEN-END:initComponents
     
     private void btn_FacturaccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_FacturaccionMouseClicked
@@ -139,5 +146,6 @@ public class Ventas extends javax.swing.JPanel {
     private javax.swing.JLabel Salir;
     private javax.swing.JLabel btn_Facturaccion;
     public static javax.swing.JPanel panel_Contenido;
+    private javax.swing.JPanel pn_herramientas;
     // End of variables declaration//GEN-END:variables
 }

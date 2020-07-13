@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * 
  */
-public class Productos extends javax.swing.JPanel {
+public class NuevoProducto extends javax.swing.JPanel {
     private Conexion conexion=new Conexion();
     private ArrayList[] sucursales_unidades;
     private ArrayList productoActual=new ArrayList(); 
@@ -32,13 +32,14 @@ public class Productos extends javax.swing.JPanel {
     Color color_rojo = new Color(255,51,51);
     Color color_blanco = new Color(250,250,250);
 
-    public Productos(Conexion conexion) {
+    public NuevoProducto(Conexion conexion) {
         initComponents();
-        pnContenido1.setVisible(false);
+//        pnContenido1.setVisible(false);
         this.conexion=conexion;
         buttonGroup1.add(rbtn_Credito);
         buttonGroup1.add(rbtn_Credito1);
         buttonGroup1.add(rbtn_Credito2);
+        btn_Cancelar.setVisible(false);
         try {
             sucursales_unidades=new ArrayList[2];
             cmb_sucursal.addItem("Total");
@@ -58,7 +59,7 @@ public class Productos extends javax.swing.JPanel {
             setJTexFieldChanged(txt_codigo1);
             scp_listado.getViewport().setBackground(color_blanco);
         } catch (SQLException|NoSePuedeConectar ex) {
-            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NuevoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
         switch(conexion.getUsuario().getIdPermisos()){
             case 3:
@@ -70,7 +71,7 @@ public class Productos extends javax.swing.JPanel {
                 btn_nuevo.setEnabled(false);
                 btn_modificar.setEnabled(false);
                 btn_eliminar.setEnabled(false);
-                btn_ver.setEnabled(false);
+//                btn_ver.setEnabled(false);
                 break;
             case 5:
                 btn_nuevo.setEnabled(false);
@@ -97,7 +98,6 @@ public class Productos extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        pnContenido1 = new javax.swing.JPanel();
         pnContenido = new javax.swing.JPanel();
         pnDetalle = new javax.swing.JPanel();
         lbl_Titulo = new javax.swing.JLabel();
@@ -135,8 +135,8 @@ public class Productos extends javax.swing.JPanel {
         lbl_codigo1 = new javax.swing.JLabel();
         ftx_costo = new javax.swing.JFormattedTextField();
         ftx_venta = new javax.swing.JFormattedTextField();
+        btn_Cancelar = new javax.swing.JLabel();
         pn_herramientas = new javax.swing.JPanel();
-        btn_ver = new javax.swing.JLabel();
         btn_nuevo = new javax.swing.JLabel();
         btn_modificar = new javax.swing.JLabel();
         btn_eliminar = new javax.swing.JLabel();
@@ -151,22 +151,6 @@ public class Productos extends javax.swing.JPanel {
         setName("detallesPN"); // NOI18N
         setPreferredSize(new java.awt.Dimension(940, 690));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnContenido1.setMinimumSize(new java.awt.Dimension(150, 150));
-        pnContenido1.setPreferredSize(new java.awt.Dimension(939, 649));
-
-        javax.swing.GroupLayout pnContenido1Layout = new javax.swing.GroupLayout(pnContenido1);
-        pnContenido1.setLayout(pnContenido1Layout);
-        pnContenido1Layout.setHorizontalGroup(
-            pnContenido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 935, Short.MAX_VALUE)
-        );
-        pnContenido1Layout.setVerticalGroup(
-            pnContenido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
-        );
-
-        add(pnContenido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 41, 935, 645));
 
         pnContenido.setMinimumSize(new java.awt.Dimension(150, 150));
         pnContenido.setPreferredSize(new java.awt.Dimension(840, 650));
@@ -641,6 +625,25 @@ public class Productos extends javax.swing.JPanel {
             }
         });
 
+        btn_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        btn_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Cancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_Cancelar.setText("Cancelar");
+        btn_Cancelar.setName(""); // NOI18N
+        btn_Cancelar.setOpaque(true);
+        btn_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_CancelarMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_CancelarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_CancelarMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnDetalleLayout = new javax.swing.GroupLayout(pnDetalle);
         pnDetalle.setLayout(pnDetalleLayout);
         pnDetalleLayout.setHorizontalGroup(
@@ -689,19 +692,22 @@ public class Productos extends javax.swing.JPanel {
                                     .addComponent(scp_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addGroup(pnDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbl_codigo1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDetalleLayout.createSequentialGroup()
-                                .addComponent(rbtn_Credito, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(79, 79, 79)
-                                .addComponent(rbtn_Credito2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                                .addComponent(rbtn_Credito1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(scp_listado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_codigo1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDetalleLayout.createSequentialGroup()
+                        .addGroup(pnDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lbl_codigo1)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDetalleLayout.createSequentialGroup()
+                                    .addComponent(rbtn_Credito, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(79, 79, 79)
+                                    .addComponent(rbtn_Credito2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                                    .addComponent(rbtn_Credito1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(scp_listado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_codigo1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnDetalleLayout.createSequentialGroup()
+                                .addGap(68, 68, 68)
                                 .addComponent(btn_Guardar_Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(132, 132, 132)))
+                                .addGap(38, 38, 38)
+                                .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(55, Short.MAX_VALUE))))
         );
         pnDetalleLayout.setVerticalGroup(
@@ -771,7 +777,9 @@ public class Productos extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(scp_listado, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_Guardar_Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btn_Guardar_Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(33, 33, 33))
                     .addGroup(pnDetalleLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -806,21 +814,6 @@ public class Productos extends javax.swing.JPanel {
         pn_herramientas.setPreferredSize(new java.awt.Dimension(868, 40));
         pn_herramientas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_ver.setBackground(new java.awt.Color(128, 128, 128));
-        btn_ver.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        btn_ver.setForeground(new java.awt.Color(255, 255, 255));
-        btn_ver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_ver.setText("VER");
-        btn_ver.setName(""); // NOI18N
-        btn_ver.setOpaque(true);
-        btn_ver.setPreferredSize(new java.awt.Dimension(93, 40));
-        btn_ver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_verMouseClicked(evt);
-            }
-        });
-        pn_herramientas.add(btn_ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, -1));
-
         btn_nuevo.setBackground(new java.awt.Color(96, 96, 96));
         btn_nuevo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_nuevo.setForeground(new java.awt.Color(255, 255, 255));
@@ -834,7 +827,7 @@ public class Productos extends javax.swing.JPanel {
                 btn_nuevoMouseClicked(evt);
             }
         });
-        pn_herramientas.add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 138, -1));
+        pn_herramientas.add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 138, -1));
 
         btn_modificar.setBackground(new java.awt.Color(96, 96, 96));
         btn_modificar.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -849,7 +842,7 @@ public class Productos extends javax.swing.JPanel {
                 btn_modificarMouseClicked(evt);
             }
         });
-        pn_herramientas.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 138, -1));
+        pn_herramientas.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 138, -1));
 
         btn_eliminar.setBackground(new java.awt.Color(96, 96, 96));
         btn_eliminar.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -864,7 +857,7 @@ public class Productos extends javax.swing.JPanel {
                 btn_eliminarMouseClicked(evt);
             }
         });
-        pn_herramientas.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 138, -1));
+        pn_herramientas.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 138, -1));
 
         Salir1.setBackground(new java.awt.Color(96, 96, 96));
         Salir1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -919,9 +912,10 @@ public class Productos extends javax.swing.JPanel {
                     }
                     //}*/
         } catch (SQLException|NoSePuedeConectar ex) {
-            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NuevoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }           
-    }
+    }    
+    
     private void cambiarModo(){
         txt_codigo.setEnabled(nuevo);      
         txt_columna.setEnabled(nuevo||modificar);
@@ -943,7 +937,7 @@ public class Productos extends javax.swing.JPanel {
         try {
             productoActual=conexion.obtener_detalleProducto(i,0);
         } catch (SQLException|NoSePuedeConectar ex) {
-            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NuevoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(productoActual.size()>0)
             cargarProductoActual();
@@ -955,7 +949,7 @@ public class Productos extends javax.swing.JPanel {
         try {
             productoActual=conexion.obtener_detalleProducto(descripcion,codigo,codigo_barras);
         } catch (SQLException|NoSePuedeConectar ex) {
-            Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NuevoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(productoActual.size()>0)
             cargarProductoActual();
@@ -1002,15 +996,31 @@ public class Productos extends javax.swing.JPanel {
                     cmb_sucursal.setSelectedIndex(0);
                     txt_existencia.setText(conexion.obtenerExistencia(0, Integer.parseInt(productoActual.get(0).toString()))+"");
                     } catch (SQLException ex) {
-                Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(NuevoProducto.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NoSePuedeConectar ex) {
-                Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(NuevoProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
                 
         }
         else
             modoSinDatos();
     }
+    private void modoDeshabilitado()
+    {
+        txt_marca.setText("");
+        txt_columna.setText("");
+        ftx_costo.setValue(0.00);
+        ftx_costo.setText("Q0.00");
+        txt_codigoBarra.setText("");
+        txt_existencia.setText("");
+        txt_fila.setText("");
+        ftx_venta.setValue(0.00);
+        ftx_venta.setText("Q0.00");
+        txt_codigo.setText("");
+        txa_descripcion.setText("");
+        txt_estanteria.setText("");
+    }
+    
     private void modoSinDatos()
     {
         txt_marca.setText("");
@@ -1190,7 +1200,8 @@ public class Productos extends javax.swing.JPanel {
                     uni,Integer.parseInt(sucursales_unidades[0].get(cmb_sucursal.getSelectedIndex()-1).toString()),
                     Double.parseDouble(txt_existencia.getText()));
                 llenarListado();
-                btn_verMouseClicked(evt); 
+                tbl_productosMouseClicked(evt);
+//                btn_verMouseClicked(evt); 
                 }
             if(modificar){
                 String est=txt_estanteria.getText(), fil=txt_fila.getText(), 
@@ -1199,11 +1210,12 @@ public class Productos extends javax.swing.JPanel {
                     txa_descripcion.getText(),Double.parseDouble(ftx_venta.getValue().toString()),
                     Double.parseDouble(ftx_costo.getValue().toString()),est,col,fil,txt_marca.getText());
                  cargarProducto(Integer.parseInt(productoActual.get(0).toString()));
-                 btn_verMouseClicked(evt);
+//                 btn_verMouseClicked(evt);
+                    tbl_productosMouseClicked(evt);
                  llenarListado();
             }
         } catch (SQLException|NoSePuedeConectar ex) {
-                Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(NuevoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_Guardar_AceptarMouseClicked
 
@@ -1240,22 +1252,6 @@ public class Productos extends javax.swing.JPanel {
         
     }//GEN-LAST:event_cmb_unidadActionPerformed
 
-    private void btn_verMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_verMouseClicked
-        if(btn_ver.isEnabled()){
-            pnContenido1.setVisible(false);
-            btn_modificar.setBackground(color_reset);
-            btn_nuevo.setBackground(color_reset);
-            btn_ver.setBackground(color_set);
-            modificar=false;
-            nuevo=false;
-            cargarProductoActual();
-            cambiarModo();
-            lbl_codigo.requestFocus();
-            pnContenido1.setVisible(false);
-            pnContenido.setVisible(true);
-        }
-    }//GEN-LAST:event_btn_verMouseClicked
-
     private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
         if(btn_eliminar.isEnabled()){
             if(productoActual.size()>0)
@@ -1274,7 +1270,7 @@ public class Productos extends javax.swing.JPanel {
                          }
                      }
                  } catch (SQLException|NoSePuedeConectar ex) {
-                     Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
+                     Logger.getLogger(NuevoProducto.class.getName()).log(Level.SEVERE, null, ex);
                  }
                  btn_eliminar.setBackground(color_reset);
                  llenarListado();
@@ -1286,11 +1282,13 @@ public class Productos extends javax.swing.JPanel {
 
     private void btn_nuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_nuevoMouseClicked
         if(btn_nuevo.isEnabled()){
-            pnContenido1.setVisible(false);
+//            pnContenido1.setVisible(false);
             pnContenido.setVisible(true);
             btn_modificar.setBackground(color_reset);
             btn_nuevo.setBackground(color_set);
-            btn_ver.setBackground(color_reset);
+            btn_Cancelar.setVisible(true);
+            btn_Guardar_Aceptar.setEnabled(true);
+//            btn_ver.setBackground(color_reset);
             modificar=false;
             nuevo=true;
             modoSinDatos();
@@ -1303,10 +1301,11 @@ public class Productos extends javax.swing.JPanel {
         if(btn_modificar.isEnabled()){
             if(productoActual.size()>0)
             {
-
+                btn_Cancelar.setVisible(true);
+                btn_Guardar_Aceptar.setEnabled(true);
                 btn_modificar.setBackground(color_set);
                 btn_nuevo.setBackground(color_reset);
-                btn_ver.setBackground(color_reset);
+//                btn_ver.setBackground(color_reset);
                 modificar=true;
                 nuevo=false;
                 cambiarModo();
@@ -1404,14 +1403,30 @@ public class Productos extends javax.swing.JPanel {
         // TODO add your handling code here:
         ftx_costo.setText(ftx_costo.getValue().toString());
     }//GEN-LAST:event_ftx_costoFocusGained
+
+    private void btn_CancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelarMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_CancelarMouseReleased
+
+    private void btn_CancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelarMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_CancelarMousePressed
+
+    private void btn_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelarMouseClicked
+        modoSinDatos();
+        btn_Guardar_Aceptar.setVisible(false);
+        btn_Cancelar.setVisible(false);
+        cargarProductoActual();
+        
+    }//GEN-LAST:event_btn_CancelarMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Salir1;
+    private javax.swing.JLabel btn_Cancelar;
     private javax.swing.JLabel btn_Guardar_Aceptar;
     private javax.swing.JLabel btn_eliminar;
     private javax.swing.JLabel btn_modificar;
     private javax.swing.JLabel btn_nuevo;
-    private javax.swing.JLabel btn_ver;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmb_sucursal;
     private javax.swing.JComboBox<String> cmb_unidad;
@@ -1433,7 +1448,6 @@ public class Productos extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_codigoBarra;
     private javax.swing.JLabel lbl_precioVenta;
     public static javax.swing.JPanel pnContenido;
-    public static javax.swing.JPanel pnContenido1;
     public static javax.swing.JPanel pnDetalle;
     private javax.swing.JPanel pn_herramientas;
     private javax.swing.JRadioButton rbtn_Credito;

@@ -8,6 +8,7 @@ package interaz;
 import Excepciones.NoSePuedeConectar;
 import Excepciones.NoSePuedeEscribirArchivo;
 import clases.*;
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,6 +32,8 @@ public class Seguridad extends javax.swing.JPanel {
     public final static String marcaInicio="SCE";
     public final static String claveCifrado = "Sistema de Control Empresarial";
     private Conexion conexion;
+    Color color_set = new Color(128,128,128);
+    Color color_reset = new Color(96,96,96);
     /**
      * Creates new form Seguridad
      */
@@ -94,15 +97,11 @@ public class Seguridad extends javax.swing.JPanel {
         trabajadoresCombo = new javax.swing.JComboBox<>();
         permisosCombo = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        gesConButton = new javax.swing.JLabel();
-        gesUsuariosButton = new javax.swing.JLabel();
         usuariosPanel1 = new javax.swing.JPanel();
-        verUsElButton = new javax.swing.JLabel();
-        verUsModButton = new javax.swing.JLabel();
+        pn_herramientas2 = new javax.swing.JPanel();
         verUsInButton = new javax.swing.JLabel();
-        logoutButton = new javax.swing.JLabel();
-        Minimizar = new javax.swing.JLabel();
-        Salir = new javax.swing.JLabel();
+        verUsModButton = new javax.swing.JLabel();
+        verUsElButton = new javax.swing.JLabel();
         modificarPanel = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         usuariosMCombo = new javax.swing.JComboBox<>();
@@ -110,8 +109,14 @@ public class Seguridad extends javax.swing.JPanel {
         cancelarMButton = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         permisosMCombo = new javax.swing.JComboBox<>();
+        pn_herramientas1 = new javax.swing.JPanel();
+        Salir = new javax.swing.JLabel();
+        Minimizar = new javax.swing.JLabel();
+        gesUsuariosButton = new javax.swing.JLabel();
+        gesConButton = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         setPreferredSize(new java.awt.Dimension(940, 650));
         setLayout(null);
 
@@ -119,38 +124,38 @@ public class Seguridad extends javax.swing.JPanel {
         conexionPanel.setForeground(new java.awt.Color(255, 255, 255));
         conexionPanel.setOpaque(false);
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(64, 64, 64));
         jLabel4.setText("Usuario del SGBD:");
 
         passField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(64, 64, 64));
         jLabel1.setText("Dirección del servidor:");
 
         ipField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(64, 64, 64));
         jLabel2.setText("Contraseña:");
 
         bdField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(64, 64, 64));
         jLabel3.setText("Nombre de la BD:");
 
         userField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
 
         passField1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(64, 64, 64));
         jLabel9.setText("Confirme contraseña:");
 
-        cancelarGesButton.setBackground(new java.awt.Color(255, 0, 0));
-        cancelarGesButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        cancelarGesButton.setBackground(new java.awt.Color(255, 51, 51));
+        cancelarGesButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         cancelarGesButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelarGesButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cancelarGesButton.setText("Cancelar");
@@ -161,8 +166,8 @@ public class Seguridad extends javax.swing.JPanel {
             }
         });
 
-        probarDBButton.setBackground(new java.awt.Color(255, 0, 0));
-        probarDBButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        probarDBButton.setBackground(new java.awt.Color(255, 51, 51));
+        probarDBButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         probarDBButton.setForeground(new java.awt.Color(255, 255, 255));
         probarDBButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         probarDBButton.setText("Probar");
@@ -173,8 +178,8 @@ public class Seguridad extends javax.swing.JPanel {
             }
         });
 
-        guardarDBButton.setBackground(new java.awt.Color(255, 0, 0));
-        guardarDBButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        guardarDBButton.setBackground(new java.awt.Color(255, 51, 51));
+        guardarDBButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         guardarDBButton.setForeground(new java.awt.Color(255, 255, 255));
         guardarDBButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         guardarDBButton.setText("Guardar");
@@ -190,32 +195,35 @@ public class Seguridad extends javax.swing.JPanel {
         conexionPanelLayout.setHorizontalGroup(
             conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(conexionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(conexionPanelLayout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passField1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
-                    .addGroup(conexionPanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(passField1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, conexionPanelLayout.createSequentialGroup()
                         .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1))
+                        .addGap(14, 14, 14)
                         .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(userField)
                             .addComponent(bdField)
                             .addComponent(ipField, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                             .addComponent(passField))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, conexionPanelLayout.createSequentialGroup()
-                        .addComponent(probarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, conexionPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(guardarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelarGesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelarGesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)))
+                .addGap(15, 15, 15))
+            .addGroup(conexionPanelLayout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(probarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         conexionPanelLayout.setVerticalGroup(
             conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,27 +248,28 @@ public class Seguridad extends javax.swing.JPanel {
                 .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(probarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(conexionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarGesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(probarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(guardarDBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         add(conexionPanel);
-        conexionPanel.setBounds(430, 220, 370, 215);
+        conexionPanel.setBounds(510, 230, 400, 280);
 
         eliminarPanel.setOpaque(false);
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(64, 64, 64));
         jLabel5.setText("Usuario:");
 
         usuariosCombo1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
 
-        userEButton.setBackground(new java.awt.Color(255, 0, 0));
-        userEButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        userEButton.setBackground(new java.awt.Color(255, 51, 51));
+        userEButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         userEButton.setForeground(new java.awt.Color(255, 255, 255));
         userEButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userEButton.setText("Eliminar");
@@ -271,8 +280,8 @@ public class Seguridad extends javax.swing.JPanel {
             }
         });
 
-        cancelarElButton.setBackground(new java.awt.Color(255, 0, 0));
-        cancelarElButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        cancelarElButton.setBackground(new java.awt.Color(255, 51, 51));
+        cancelarElButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         cancelarElButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelarElButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cancelarElButton.setText("Cancelar");
@@ -287,16 +296,18 @@ public class Seguridad extends javax.swing.JPanel {
         eliminarPanel.setLayout(eliminarPanelLayout);
         eliminarPanelLayout.setHorizontalGroup(
             eliminarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(eliminarPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usuariosCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(userEButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancelarElButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarPanelLayout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
+                .addGroup(eliminarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(eliminarPanelLayout.createSequentialGroup()
+                        .addComponent(userEButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(cancelarElButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(eliminarPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(usuariosCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(130, 130, 130))
         );
         eliminarPanelLayout.setVerticalGroup(
             eliminarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,19 +315,21 @@ public class Seguridad extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(eliminarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(usuariosCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usuariosCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(eliminarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userEButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelarElButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         add(eliminarPanel);
-        eliminarPanel.setBounds(220, 160, 470, 57);
+        eliminarPanel.setBounds(220, 128, 470, 100);
 
         ingresarPanel.setOpaque(false);
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(64, 64, 64));
         jLabel6.setText("Nombre de Usuario:");
 
         userIField.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
@@ -328,16 +341,16 @@ public class Seguridad extends javax.swing.JPanel {
         passIField2.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         passIField2.setNextFocusableComponent(permisosCombo);
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(64, 64, 64));
         jLabel7.setText("Contraseña:");
 
-        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(64, 64, 64));
         jLabel8.setText("Confirmar Contraseña:");
 
-        userIButtton.setBackground(new java.awt.Color(255, 0, 0));
-        userIButtton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        userIButtton.setBackground(new java.awt.Color(255, 51, 51));
+        userIButtton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         userIButtton.setForeground(new java.awt.Color(255, 255, 255));
         userIButtton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userIButtton.setText("Ingreso");
@@ -348,8 +361,8 @@ public class Seguridad extends javax.swing.JPanel {
             }
         });
 
-        cancelarInButton.setBackground(new java.awt.Color(255, 0, 0));
-        cancelarInButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        cancelarInButton.setBackground(new java.awt.Color(255, 51, 51));
+        cancelarInButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         cancelarInButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelarInButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cancelarInButton.setText("Cancelar");
@@ -360,8 +373,8 @@ public class Seguridad extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(64, 64, 64));
         jLabel10.setText("Trabajador:");
 
         trabajadoresCombo.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
@@ -370,8 +383,8 @@ public class Seguridad extends javax.swing.JPanel {
         permisosCombo.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         permisosCombo.setNextFocusableComponent(trabajadoresCombo);
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(64, 64, 64));
         jLabel11.setText("Nivel de Acceso:");
 
         javax.swing.GroupLayout ingresarPanelLayout = new javax.swing.GroupLayout(ingresarPanel);
@@ -379,32 +392,32 @@ public class Seguridad extends javax.swing.JPanel {
         ingresarPanelLayout.setHorizontalGroup(
             ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ingresarPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(ingresarPanelLayout.createSequentialGroup()
-                            .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel8))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(passIField2, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                .addComponent(passIField)
-                                .addComponent(userIField)
-                                .addComponent(permisosCombo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(ingresarPanelLayout.createSequentialGroup()
-                            .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(ingresarPanelLayout.createSequentialGroup()
-                                    .addGap(77, 77, 77)
-                                    .addComponent(userIButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel10))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(trabajadoresCombo, 0, 187, Short.MAX_VALUE)
-                                .addComponent(cancelarInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel11))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ingresarPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ingresarPanelLayout.createSequentialGroup()
+                                .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(passIField2, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                    .addComponent(passIField)
+                                    .addComponent(userIField)
+                                    .addComponent(permisosCombo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(ingresarPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(102, 102, 102)
+                                .addComponent(trabajadoresCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel11)))
+                    .addGroup(ingresarPanelLayout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(userIButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(cancelarInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         ingresarPanelLayout.setVerticalGroup(
             ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,149 +442,83 @@ public class Seguridad extends javax.swing.JPanel {
                 .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(trabajadoresCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(ingresarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userIButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelarInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cancelarInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userIButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(ingresarPanel);
-        ingresarPanel.setBounds(30, 250, 390, 210);
-
-        gesConButton.setBackground(new java.awt.Color(255, 0, 0));
-        gesConButton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        gesConButton.setForeground(new java.awt.Color(255, 255, 255));
-        gesConButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        gesConButton.setText("Gestión de Conexión");
-        gesConButton.setOpaque(true);
-        gesConButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gesConButtonMouseClicked(evt);
-            }
-        });
-        add(gesConButton);
-        gesConButton.setBounds(351, 0, 200, 54);
-
-        gesUsuariosButton.setBackground(new java.awt.Color(255, 0, 0));
-        gesUsuariosButton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        gesUsuariosButton.setForeground(new java.awt.Color(255, 255, 255));
-        gesUsuariosButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        gesUsuariosButton.setText("Gestión de Usuarios");
-        gesUsuariosButton.setOpaque(true);
-        gesUsuariosButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gesUsuariosButtonMouseClicked(evt);
-            }
-        });
-        add(gesUsuariosButton);
-        gesUsuariosButton.setBounds(145, 0, 200, 54);
+        ingresarPanel.setBounds(30, 250, 430, 230);
 
         usuariosPanel1.setOpaque(false);
 
-        verUsElButton.setBackground(new java.awt.Color(255, 0, 0));
-        verUsElButton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        verUsElButton.setForeground(new java.awt.Color(255, 255, 255));
-        verUsElButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        verUsElButton.setText("Eliminación");
-        verUsElButton.setOpaque(true);
-        verUsElButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                verUsElButtonMouseClicked(evt);
-            }
-        });
+        pn_herramientas2.setBackground(new java.awt.Color(96, 96, 96));
+        pn_herramientas2.setPreferredSize(new java.awt.Dimension(868, 40));
+        pn_herramientas2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        verUsModButton.setBackground(new java.awt.Color(255, 0, 0));
-        verUsModButton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        verUsModButton.setForeground(new java.awt.Color(255, 255, 255));
-        verUsModButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        verUsModButton.setText("Modificación");
-        verUsModButton.setOpaque(true);
-        verUsModButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                verUsModButtonMouseClicked(evt);
-            }
-        });
-
-        verUsInButton.setBackground(new java.awt.Color(255, 0, 0));
-        verUsInButton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        verUsInButton.setBackground(new java.awt.Color(96, 96, 96));
+        verUsInButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         verUsInButton.setForeground(new java.awt.Color(255, 255, 255));
         verUsInButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        verUsInButton.setText("Ingreso");
+        verUsInButton.setText("INGRESO");
         verUsInButton.setOpaque(true);
         verUsInButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 verUsInButtonMouseClicked(evt);
             }
         });
+        pn_herramientas2.add(verUsInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 40));
+
+        verUsModButton.setBackground(new java.awt.Color(96, 96, 96));
+        verUsModButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        verUsModButton.setForeground(new java.awt.Color(255, 255, 255));
+        verUsModButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        verUsModButton.setText("MODIFICACIÓN");
+        verUsModButton.setOpaque(true);
+        verUsModButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verUsModButtonMouseClicked(evt);
+            }
+        });
+        pn_herramientas2.add(verUsModButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 170, 40));
+
+        verUsElButton.setBackground(new java.awt.Color(96, 96, 96));
+        verUsElButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        verUsElButton.setForeground(new java.awt.Color(255, 255, 255));
+        verUsElButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        verUsElButton.setText("ELIMINACIÓN");
+        verUsElButton.setOpaque(true);
+        verUsElButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verUsElButtonMouseClicked(evt);
+            }
+        });
+        pn_herramientas2.add(verUsElButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 0, 180, 40));
 
         javax.swing.GroupLayout usuariosPanel1Layout = new javax.swing.GroupLayout(usuariosPanel1);
         usuariosPanel1.setLayout(usuariosPanel1Layout);
         usuariosPanel1Layout.setHorizontalGroup(
             usuariosPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuariosPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(verUsInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(verUsModButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(verUsElButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addGroup(usuariosPanel1Layout.createSequentialGroup()
+                .addComponent(pn_herramientas2, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         usuariosPanel1Layout.setVerticalGroup(
             usuariosPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(usuariosPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(usuariosPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(verUsElButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(verUsModButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(verUsInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pn_herramientas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(usuariosPanel1);
-        usuariosPanel1.setBounds(140, 70, 612, 74);
-
-        logoutButton.setBackground(new java.awt.Color(255, 0, 0));
-        logoutButton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
-        logoutButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoutButton.setText("Log Out");
-        logoutButton.setOpaque(true);
-        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutButtonMouseClicked(evt);
-            }
-        });
-        add(logoutButton);
-        logoutButton.setBounds(557, 0, 200, 54);
-
-        Minimizar.setForeground(new java.awt.Color(255, 255, 255));
-        Minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/minus-symbol.png"))); // NOI18N
-        Minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MinimizarMouseClicked(evt);
-            }
-        });
-        add(Minimizar);
-        Minimizar.setBounds(880, 0, 24, 24);
-
-        Salir.setBackground(new java.awt.Color(0, 0, 0));
-        Salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
-        Salir.setOpaque(true);
-        Salir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SalirMouseClicked(evt);
-            }
-        });
-        add(Salir);
-        Salir.setBounds(910, 0, 24, 24);
+        usuariosPanel1.setBounds(0, 40, 540, 40);
 
         modificarPanel.setOpaque(false);
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(64, 64, 64));
         jLabel12.setText("Usuario:");
 
         usuariosMCombo.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
@@ -582,8 +529,8 @@ public class Seguridad extends javax.swing.JPanel {
             }
         });
 
-        cambiarMButton.setBackground(new java.awt.Color(255, 0, 0));
-        cambiarMButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        cambiarMButton.setBackground(new java.awt.Color(255, 51, 51));
+        cambiarMButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         cambiarMButton.setForeground(new java.awt.Color(255, 255, 255));
         cambiarMButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cambiarMButton.setText("Cambiar");
@@ -594,8 +541,8 @@ public class Seguridad extends javax.swing.JPanel {
             }
         });
 
-        cancelarMButton.setBackground(new java.awt.Color(255, 0, 0));
-        cancelarMButton.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        cancelarMButton.setBackground(new java.awt.Color(255, 51, 51));
+        cancelarMButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         cancelarMButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelarMButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cancelarMButton.setText("Cancelar");
@@ -606,8 +553,8 @@ public class Seguridad extends javax.swing.JPanel {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(64, 64, 64));
         jLabel13.setText("Nivel de Acceso:");
 
         permisosMCombo.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
@@ -618,22 +565,22 @@ public class Seguridad extends javax.swing.JPanel {
         modificarPanelLayout.setHorizontalGroup(
             modificarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(modificarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(modificarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(modificarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(cambiarMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(modificarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(modificarPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(modificarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(modificarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usuariosMCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(permisosMCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(modificarPanelLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(cambiarMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(61, 61, 61)
                         .addComponent(cancelarMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         modificarPanelLayout.setVerticalGroup(
             modificarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -646,15 +593,81 @@ public class Seguridad extends javax.swing.JPanel {
                 .addGroup(modificarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(permisosMCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(modificarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cambiarMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelarMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cancelarMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cambiarMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         add(modificarPanel);
-        modificarPanel.setBounds(40, 470, 340, 110);
+        modificarPanel.setBounds(20, 490, 370, 150);
+
+        pn_herramientas1.setBackground(new java.awt.Color(96, 96, 96));
+        pn_herramientas1.setPreferredSize(new java.awt.Dimension(868, 40));
+        pn_herramientas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Salir.setBackground(new java.awt.Color(96, 96, 96));
+        Salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
+        Salir.setOpaque(true);
+        Salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SalirMouseClicked(evt);
+            }
+        });
+        pn_herramientas1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, 40, 40));
+
+        Minimizar.setForeground(new java.awt.Color(255, 255, 255));
+        Minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/minus-symbol.png"))); // NOI18N
+        Minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MinimizarMouseClicked(evt);
+            }
+        });
+        pn_herramientas1.add(Minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
+
+        gesUsuariosButton.setBackground(new java.awt.Color(96, 96, 96));
+        gesUsuariosButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        gesUsuariosButton.setForeground(new java.awt.Color(255, 255, 255));
+        gesUsuariosButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gesUsuariosButton.setText("USUARIOS");
+        gesUsuariosButton.setOpaque(true);
+        gesUsuariosButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gesUsuariosButtonMouseClicked(evt);
+            }
+        });
+        pn_herramientas1.add(gesUsuariosButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 40));
+
+        gesConButton.setBackground(new java.awt.Color(96, 96, 96));
+        gesConButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        gesConButton.setForeground(new java.awt.Color(255, 255, 255));
+        gesConButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gesConButton.setText("CONEXIÓN");
+        gesConButton.setOpaque(true);
+        gesConButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gesConButtonMouseClicked(evt);
+            }
+        });
+        pn_herramientas1.add(gesConButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 200, 40));
+
+        logoutButton.setBackground(new java.awt.Color(96, 96, 96));
+        logoutButton.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        logoutButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoutButton.setText("LOG OUT");
+        logoutButton.setOpaque(true);
+        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutButtonMouseClicked(evt);
+            }
+        });
+        pn_herramientas1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 170, 40));
+
+        add(pn_herramientas1);
+        pn_herramientas1.setBounds(0, 0, 940, 40);
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarDBButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarDBButtonMouseClicked
@@ -705,6 +718,9 @@ public class Seguridad extends javax.swing.JPanel {
 
     private void verUsElButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verUsElButtonMouseClicked
         try {
+            verUsInButton.setBackground(color_reset);
+            verUsElButton.setBackground(color_set);
+            verUsModButton.setBackground(color_reset);
             //Limpiamos la lista de usuarios en el combo
             int tamano=usuariosCombo1.getModel().getSize();
             for (int i = 0; i < tamano; i++) {
@@ -726,45 +742,12 @@ public class Seguridad extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_verUsElButtonMouseClicked
 
-    private void gesUsuariosButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gesUsuariosButtonMouseClicked
-        if(gesUsuariosButton.isEnabled()){
-            //Mostramos el panel de gestión de usuarios, y deshabilitamos otras opciones
-            usuariosPanel1.setVisible(true);
-            gesConButton.setEnabled(false);
-        }
-    }//GEN-LAST:event_gesUsuariosButtonMouseClicked
-
-    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
-        //Borramos el contenido del archivo de logueo, para que no vuelva a iniciarse la sesión
-        BufferedWriter bw = null;
-        try {
-            bw = new BufferedWriter(new FileWriter(UsuarioG.LOGGED_USER_DEFAULT_FILE));
-            bw.write("");
-            bw.close();
-        } catch (IOException ex) {
-            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
-            dialogo.setVisible(true);
-        } finally {
-            try {
-                bw.close();
-            } catch (IOException ex) {
-                DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
-                dialogo.setVisible(true);
-            }
-        }
-        // (Comentar/Descomentar una opción) Despues de borrar el archivo, mostramos de nuevo la ventana de login, o cerramos el programa
-        //Opcion 1: cierra el programa
-        System.exit(0);
-        //Opcion 2: muestra de nuevo el login (aun infuncional)
-        //Login l= new Login();
-        //this.setVisible(false);
-        //l.setVisible(true);
-        
-    }//GEN-LAST:event_logoutButtonMouseClicked
-
     private void verUsInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verUsInButtonMouseClicked
         try {
             limpiar();
+            verUsInButton.setBackground(color_set);
+            verUsElButton.setBackground(color_reset);
+            verUsModButton.setBackground(color_reset);
             ingresarPanel.setVisible(true);
             usuariosPanel1.setVisible(false);
             ArrayList trabajadores=conexion.obtenerTrabajadoresParaUsuarios();
@@ -785,24 +768,6 @@ public class Seguridad extends javax.swing.JPanel {
         
     }//GEN-LAST:event_verUsInButtonMouseClicked
 
-    private void gesConButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gesConButtonMouseClicked
-        if(gesConButton.isEnabled()){
-            conexionPanel.setVisible(true);
-            gesUsuariosButton.setEnabled(false);
-        }
-    }//GEN-LAST:event_gesConButtonMouseClicked
-
-    private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_SalirMouseClicked
-
-    private void MinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizarMouseClicked
-        //Obtenemos los contenedores padres, hasta obtener el JFrame donde se está trabajando
-        JFrame padre= (JFrame)this.getParent().getParent().getParent().getParent().getParent();
-        //Se le manda la orden de minimizar
-        padre.setExtendedState(1);
-    }//GEN-LAST:event_MinimizarMouseClicked
-
     private void cancelarInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarInButtonMouseClicked
         limpiar();
     }//GEN-LAST:event_cancelarInButtonMouseClicked
@@ -820,10 +785,10 @@ public class Seguridad extends javax.swing.JPanel {
             if(new String(passField.getPassword()).trim().equals(new String(passField1.getPassword()).trim())){
                 Conexion prueba= new Conexion(userField.getText(), ipField.getText(), new String(passField.getPassword()),bdField.getText());
                 if(prueba.probarConexion()){
-                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Conexion Exitosa", "Esta configuración es correcta\nSE PUEDE CONECTAR AL SGBD");  
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Conexión exitosa", "Esta configuración es correcta\nSe puede conectar al SGBD");  
                     dialogo.setVisible(true);
                 }else{
-                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Conexion Fallida", "Esta configuración NO es correcta\nNO se puede conectar al SGBD");  
+                    DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Conexión fallida", "Esta configuración es incorrecta\nNo se puede conectar al SGBD");  
                     dialogo.setVisible(true);
                 }
             }else{
@@ -840,7 +805,7 @@ public class Seguridad extends javax.swing.JPanel {
     private void cambiarMButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiarMButtonMouseClicked
         try{
             if(usuariosMCombo.getSelectedIndex()>-1){
-                DialogoOpcion dialogo= new DialogoOpcion(null,true,DialogoOpcion.ICONO_INTERROGANTE,"Modificar usuarios","Realmente desea modificar el usuario "+usuariosMCombo.getSelectedItem().toString());
+                DialogoOpcion dialogo= new DialogoOpcion(null,true,DialogoOpcion.ICONO_INTERROGANTE,"Modificar usuario","¿Está seguro de modificar el usuario "+usuariosMCombo.getSelectedItem().toString()+"?");
                 dialogo.setVisible(true);
                 if(dialogo.isAceptar()){
                     //Manda la orden de eliminación a la BD, devuelve el número de filas cambiadas
@@ -863,6 +828,9 @@ public class Seguridad extends javax.swing.JPanel {
 
     private void verUsModButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verUsModButtonMouseClicked
         try {
+            verUsInButton.setBackground(color_reset);
+            verUsElButton.setBackground(color_reset);
+            verUsModButton.setBackground(color_set);
             //Limpiamos la lista de usuarios en el combo
             int tamano=usuariosMCombo.getModel().getSize();
             for (int i = 0; i < tamano; i++) {
@@ -899,18 +867,76 @@ public class Seguridad extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_usuariosMComboItemStateChanged
+
+    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
+        //Borramos el contenido del archivo de logueo, para que no vuelva a iniciarse la sesión
+        BufferedWriter bw = null;
+        try {
+            bw = new BufferedWriter(new FileWriter(UsuarioG.LOGGED_USER_DEFAULT_FILE));
+            bw.write("");
+            bw.close();
+        } catch (IOException ex) {
+            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+            dialogo.setVisible(true);
+        } finally {
+            try {
+                bw.close();
+            } catch (IOException ex) {
+                DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Error:\n"+ex.toString());
+                dialogo.setVisible(true);
+            }
+        }
+        // (Comentar/Descomentar una opción) Despues de borrar el archivo, mostramos de nuevo la ventana de login, o cerramos el programa
+        //Opcion 1: cierra el programa
+        System.exit(0);
+        //Opcion 2: muestra de nuevo el login (aun infuncional)
+        //Login l= new Login();
+        //this.setVisible(false);
+        //l.setVisible(true);
+
+    }//GEN-LAST:event_logoutButtonMouseClicked
+
+    private void gesConButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gesConButtonMouseClicked
+        if(gesConButton.isEnabled()){
+            conexionPanel.setVisible(true);
+            gesUsuariosButton.setBackground(color_reset);
+            gesConButton.setBackground(color_set);
+            gesUsuariosButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_gesConButtonMouseClicked
+
+    private void gesUsuariosButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gesUsuariosButtonMouseClicked
+        if(gesUsuariosButton.isEnabled()){
+            //Mostramos el panel de gestión de usuarios, y deshabilitamos otras opciones
+            usuariosPanel1.setVisible(true);
+            gesUsuariosButton.setBackground(color_set);
+            gesConButton.setBackground(color_reset);
+            gesConButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_gesUsuariosButtonMouseClicked
+
+    private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_SalirMouseClicked
+
+    private void MinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizarMouseClicked
+        //Obtenemos los contenedores padres, hasta obtener el JFrame donde se está trabajando
+        JFrame padre= (JFrame)this.getParent().getParent().getParent().getParent().getParent();
+        //Se le manda la orden de minimizar
+        padre.setExtendedState(1);
+    }//GEN-LAST:event_MinimizarMouseClicked
     //Elimina un usuario, seleccionado en el combo
     private void eliminarUser(){
         //Verifica que haya un objeto seleccionado en el combo
         if(usuariosCombo1.getSelectedIndex()!=-1){
-            DialogoOpcion diag= new DialogoOpcion(null,true,DialogoOpcion.ICONO_INTERROGANTE,"Eliminar usuarios","Realmente desea eliminar el usuario "+usuariosCombo1.getSelectedItem().toString());
+            DialogoOpcion diag= new DialogoOpcion(null,true,DialogoOpcion.ICONO_INTERROGANTE,"Eliminar usuario","¿Está seguro de eliminar el usuario "+usuariosCombo1.getSelectedItem().toString()+"?");
             diag.setVisible(true);
             if(diag.isAceptar()){
                 try {
                     //Manda la orden de eliminación a la BD
                     conexion.eliminarUsuario((String) usuariosCombo1.getSelectedItem());
                     //Muestra mensaje de borrado, y pone todo en estado normal
-                    diag= new DialogoOpcion(null,true,DialogoOpcion.ICONO_INFORMACION,"Eliminar usuarios","Usuario eliminado");
+                    diag= new DialogoOpcion(null,true,DialogoOpcion.ICONO_INFORMACION,"Eliminar usuario","Usuario eliminado");
                     diag.setVisible(true);
                     limpiar();
                 } catch (SQLException|NoSePuedeConectar ex) {
@@ -961,7 +987,7 @@ public class Seguridad extends javax.swing.JPanel {
                 dialogo.setVisible(true);
             }
         }else{
-            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Ingrese adecuadamente los datos");
+            DialogoOpcion dialogo= new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "Error", "Ingrese los datos adecuadamente");
             dialogo.setVisible(true);
         }
     }
@@ -1044,6 +1070,8 @@ public class Seguridad extends javax.swing.JPanel {
     private javax.swing.JPasswordField passIField2;
     private javax.swing.JComboBox<String> permisosCombo;
     private javax.swing.JComboBox<String> permisosMCombo;
+    private javax.swing.JPanel pn_herramientas1;
+    private javax.swing.JPanel pn_herramientas2;
     private javax.swing.JLabel probarDBButton;
     private javax.swing.JComboBox<String> trabajadoresCombo;
     private javax.swing.JLabel userEButton;

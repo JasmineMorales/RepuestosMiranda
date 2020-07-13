@@ -59,14 +59,14 @@ public class selectorProveedor extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Aceptar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Aceptar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Aceptar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Aceptar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Aceptar.setText("ACEPTAR");
+        btn_Aceptar.setText("Aceptar");
         btn_Aceptar.setEnabled(false);
         btn_Aceptar.setOpaque(true);
         btn_Aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,19 +74,20 @@ public class selectorProveedor extends javax.swing.JFrame {
                 btn_AceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 160, 40));
+        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 100, 27));
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(96, 96, 96));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lbl_Titulo.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Titulo.setText("SELECCIONE UN PROVEEDOR");
-        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        lbl_Titulo.setText("SELECCIONAR PROVEEDOR");
+        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 1, 320, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 40));
 
         tabla_prov.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        tabla_prov.setForeground(new java.awt.Color(64, 64, 64));
         tabla_prov.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -95,10 +96,10 @@ public class selectorProveedor extends javax.swing.JFrame {
 
             }
         ));
-        tabla_prov.setGridColor(new java.awt.Color(0, 0, 0));
+        tabla_prov.setGridColor(new java.awt.Color(64, 64, 64));
         tabla_prov.setRowHeight(24);
-        tabla_prov.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        tabla_prov.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tabla_prov.setSelectionBackground(new java.awt.Color(192, 192, 192));
+        tabla_prov.setSelectionForeground(new java.awt.Color(64, 64, 64));
         tabla_prov.setShowVerticalLines(false);
         tabla_prov.getTableHeader().setReorderingAllowed(false);
         tabla_prov.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,18 +114,20 @@ public class selectorProveedor extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla_prov);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 650, 330));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 580, 300));
 
-        sep_Filtro.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(sep_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 650, 10));
+        sep_Filtro.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Filtro.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel1.add(sep_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 580, 10));
 
-        txt_Filtro.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Filtro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Filtro.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Filtro.setText("NOMBRE");
+        txt_Filtro.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Filtro.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Filtro.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Filtro.setText("Nombre");
         txt_Filtro.setBorder(null);
-        txt_Filtro.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Filtro.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Filtro.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Filtro.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Filtro.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Filtro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_FiltroFocusGained(evt);
@@ -143,20 +146,20 @@ public class selectorProveedor extends javax.swing.JFrame {
                 txt_FiltroActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 650, 20));
+        jPanel1.add(txt_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 580, 20));
 
-        btn_Cancelar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Cancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Cancelar.setText("CANCELAR");
+        btn_Cancelar.setText("Cancelar");
         btn_Cancelar.setOpaque(true);
         btn_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_CancelarMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 160, 40));
+        jPanel1.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 100, 27));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

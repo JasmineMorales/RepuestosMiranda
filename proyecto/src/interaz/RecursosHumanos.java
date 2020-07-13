@@ -17,6 +17,8 @@ import javax.swing.JLabel;
  */
 public class RecursosHumanos extends javax.swing.JPanel {
     private Conexion conexion;
+    Color color_reset = new Color(96,96,96);
+    Color color_set = new Color(128,128,128);
     /**
      * Creates new form Financiero
      */
@@ -26,11 +28,11 @@ public class RecursosHumanos extends javax.swing.JPanel {
     }
     public void desactivarBotonoes(JLabel exclusion)
     {
-        exclusion.setBackground(Color.red);
+        exclusion.setBackground(color_set);
         if(btn_deudas!=exclusion)
-            btn_deudas.setBackground(Color.black);
+            btn_deudas.setBackground(color_reset);
         if(btn_trabajadores!=exclusion)
-            btn_trabajadores.setBackground(Color.black);
+            btn_trabajadores.setBackground(color_reset);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,40 +44,48 @@ public class RecursosHumanos extends javax.swing.JPanel {
     private void initComponents() {
 
         pn_contenido = new javax.swing.JPanel();
-        btn_trabajadores = new javax.swing.JLabel();
-        btn_deudas = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         Salir = new javax.swing.JLabel();
+        btn_deudas = new javax.swing.JLabel();
+        btn_trabajadores = new javax.swing.JLabel();
+        Minimizar = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
+        setMinimumSize(new java.awt.Dimension(940, 690));
+        setPreferredSize(new java.awt.Dimension(940, 690));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pn_contenido.setBackground(new java.awt.Color(0, 0, 0));
-        pn_contenido.setPreferredSize(new java.awt.Dimension(940, 650));
+        pn_contenido.setPreferredSize(new java.awt.Dimension(939, 689));
 
         javax.swing.GroupLayout pn_contenidoLayout = new javax.swing.GroupLayout(pn_contenido);
         pn_contenido.setLayout(pn_contenidoLayout);
         pn_contenidoLayout.setHorizontalGroup(
             pn_contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 937, Short.MAX_VALUE)
         );
         pn_contenidoLayout.setVerticalGroup(
             pn_contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
 
-        btn_trabajadores.setBackground(new java.awt.Color(0, 0, 0));
-        btn_trabajadores.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        btn_trabajadores.setForeground(new java.awt.Color(255, 255, 255));
-        btn_trabajadores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_trabajadores.setText("TRABAJADORES");
-        btn_trabajadores.setName(""); // NOI18N
-        btn_trabajadores.setOpaque(true);
-        btn_trabajadores.addMouseListener(new java.awt.event.MouseAdapter() {
+        add(pn_contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 40, 937, 640));
+
+        jPanel3.setBackground(new java.awt.Color(96, 96, 96));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Salir.setBackground(new java.awt.Color(96, 96, 96));
+        Salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
+        Salir.setOpaque(true);
+        Salir.setPreferredSize(new java.awt.Dimension(40, 40));
+        Salir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_trabajadoresMouseClicked(evt);
+                SalirMouseClicked(evt);
             }
         });
+        jPanel3.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, 40, -1));
 
-        btn_deudas.setBackground(new java.awt.Color(0, 0, 0));
+        btn_deudas.setBackground(new java.awt.Color(96, 96, 96));
         btn_deudas.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_deudas.setForeground(new java.awt.Color(255, 255, 255));
         btn_deudas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -87,44 +97,27 @@ public class RecursosHumanos extends javax.swing.JPanel {
                 btn_deudasMouseClicked(evt);
             }
         });
+        jPanel3.add(btn_deudas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 140, 40));
 
-        Salir.setBackground(new java.awt.Color(0, 0, 0));
-        Salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
-        Salir.setOpaque(true);
-        Salir.setPreferredSize(new java.awt.Dimension(40, 40));
-        Salir.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_trabajadores.setBackground(new java.awt.Color(96, 96, 96));
+        btn_trabajadores.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        btn_trabajadores.setForeground(new java.awt.Color(255, 255, 255));
+        btn_trabajadores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_trabajadores.setText("TRABAJADORES");
+        btn_trabajadores.setName(""); // NOI18N
+        btn_trabajadores.setOpaque(true);
+        btn_trabajadores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SalirMouseClicked(evt);
+                btn_trabajadoresMouseClicked(evt);
             }
         });
+        jPanel3.add(btn_trabajadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pn_contenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_trabajadores, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(btn_deudas, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 580, Short.MAX_VALUE)
-                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_trabajadores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_deudas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(pn_contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        Minimizar.setForeground(new java.awt.Color(255, 255, 255));
+        Minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/minus-symbol.png"))); // NOI18N
+        jPanel3.add(Minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, -1, 30));
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_trabajadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_trabajadoresMouseClicked
@@ -157,9 +150,11 @@ public class RecursosHumanos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Minimizar;
     private javax.swing.JLabel Salir;
     private javax.swing.JLabel btn_deudas;
     private javax.swing.JLabel btn_trabajadores;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel pn_contenido;
     // End of variables declaration//GEN-END:variables
 }
