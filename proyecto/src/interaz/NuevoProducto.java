@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * 
  */
 public class NuevoProducto extends javax.swing.JPanel {
-    private Conexion conexion=new Conexion();
+    private Base conexion=new Base();
     private ArrayList[] sucursales_unidades;
     private ArrayList productoActual=new ArrayList(); 
     private boolean nuevo=false;
@@ -32,7 +32,7 @@ public class NuevoProducto extends javax.swing.JPanel {
     Color color_rojo = new Color(255,51,51);
     Color color_blanco = new Color(250,250,250);
 
-    public NuevoProducto(Conexion conexion) {
+    public NuevoProducto(Base conexion) {
         initComponents();
 //        pnContenido1.setVisible(false);
         this.conexion=conexion;

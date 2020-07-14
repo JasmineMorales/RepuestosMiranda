@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 import javax.swing.ListSelectionModel;
 
@@ -19,7 +19,7 @@ public class Proveedores extends javax.swing.JPanel {
     /**
      * Creates new form Proveedores
      */
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     private DialogodeMensaje Dialogo = new DialogodeMensaje();
     private DialogodeConfrimacion DialogoConfirmacion = new DialogodeConfrimacion();
     public Proveedores() {

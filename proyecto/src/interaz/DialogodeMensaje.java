@@ -5,7 +5,7 @@
  */
 package interaz;
 
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +22,7 @@ public class DialogodeMensaje extends javax.swing.JFrame {
     public static final int ICONO_ERROR = 1;
     public static final int ICONO_INFORMACION = 2;
     public static final int ICONO_INTERROGANTE = 3;
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
 //    private DialogodeMensaje Dialogo = new DialogodeMensaje();
     public DialogodeMensaje() {
         initComponents();

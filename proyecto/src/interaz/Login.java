@@ -35,7 +35,7 @@ import static interaz.Seguridad.claveCifrado;
 public class Login extends javax.swing.JFrame {
     
     private Server server;
-    private Conexion conexion;
+    private Base conexion;
     private UsuarioG user;
     /**
      * Creates new form Interfaz
@@ -59,7 +59,7 @@ public class Login extends javax.swing.JFrame {
                 aes.init(Cipher.DECRYPT_MODE,key);
                 // Se desencripta y se guarda en la variable de servidor
                 server.setPass(new String(aes.doFinal(server.getPassArray())));
-                conexion= new Conexion(server.getUser(), server.getIp(), server.getPass(), server.getBd());
+                conexion= new Base(server.getUser(), server.getIp(), server.getPass(), server.getBd());
                 //Comprobamos si hay una sesión guardada
                 File configDUser=UsuarioG.LOGGED_USER_DEFAULT_FILE;
                 if(configDUser.exists()&&configDUser.length()>0){

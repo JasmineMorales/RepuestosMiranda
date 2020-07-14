@@ -23,7 +23,7 @@ public class Ventas extends javax.swing.JPanel {
     private  Factura panel_Factura;
 
     private consultaFactura consulta;
-    private Conexion Conexion_DB;
+    private Base Conexion_DB;
     Color color_set = new Color(128,128,128);
     Color color_reset = new Color(96,96,96);
     public Ventas() {
@@ -37,7 +37,7 @@ public class Ventas extends javax.swing.JPanel {
         }
 
     }
-    public Ventas(Conexion conexion) {
+    public Ventas(Base conexion) {
         initComponents();
         this.Conexion_DB=conexion;
         try {

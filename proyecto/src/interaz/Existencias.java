@@ -7,7 +7,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 
 
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class Existencias extends javax.swing.JDialog {
 
     /** Creates new form Existencias */
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     public Existencias(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

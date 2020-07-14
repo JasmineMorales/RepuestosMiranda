@@ -17,7 +17,7 @@ import clases.*;
  * 
  */
 public class Principal extends javax.swing.JFrame {
-    private Conexion conexion;
+    private Base conexion;
     private Seguridad seguridad;
     private Clientes clientes;
     private Compras panel_Compras;
@@ -33,7 +33,7 @@ public class Principal extends javax.swing.JFrame {
         panel_Compras = new Compras();
         panel_Ventas = new Ventas();
     }
-    public Principal(Conexion con){
+    public Principal(Base con){
         initComponents();
         setLocationRelativeTo(null);
         this.conexion=con;

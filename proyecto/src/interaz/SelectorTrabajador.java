@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.NoSePuedeConectar;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 
 /**
@@ -18,7 +18,7 @@ public class SelectorTrabajador extends javax.swing.JDialog {
     /**
      * Creates new form SelectorTrabajador
      */
-    private Conexion Conexion_db = new Conexion();
+    private Base Conexion_db = new Base();
     
     public SelectorTrabajador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 
 /**
@@ -20,7 +20,7 @@ public class selectorProductofac extends javax.swing.JDialog {
      */
     private boolean Aceptar = false;
     private String Codigo; private float Cantidad;
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
 
     public boolean isAceptar() {
         return Aceptar;

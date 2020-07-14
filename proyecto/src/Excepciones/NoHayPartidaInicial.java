@@ -7,7 +7,7 @@ package Excepciones;
 
 /**
  * Clase para excepciones
- * @author Juampa
+ *
  */
 public class NoHayPartidaInicial extends Exception {
     /**

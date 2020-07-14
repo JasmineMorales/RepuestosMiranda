@@ -19,7 +19,7 @@ public class selectorSucursal extends javax.swing.JDialog {
     /**
      * Creates new form selectorSucursal
      */
-    private final Conexion Conexion_DB = new Conexion();
+    private final Base Conexion_DB = new Base();
     private ArrayList[] Sucursales;
     private DefaultTableModel Tabla;
     private String[] Sucursal;

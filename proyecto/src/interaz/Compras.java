@@ -5,7 +5,7 @@
  */
 package interaz;
 
-import clases.Conexion;
+import clases.Base;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * 
  */
 public class Compras extends javax.swing.JPanel {
-    Conexion conexion;
+    Base conexion;
     Color color_set = new Color(128,128,128);
     Color color_reset = new Color(96,96,96);
     /**
@@ -26,7 +26,7 @@ public class Compras extends javax.swing.JPanel {
         initComponents();
         inicializarPedido();
     }
-    public Compras(Conexion conexion) {
+    public Compras(Base conexion) {
         initComponents();
         inicializarPedido();
         this.conexion=conexion;

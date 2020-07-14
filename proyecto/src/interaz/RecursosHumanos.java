@@ -16,13 +16,13 @@ import javax.swing.JLabel;
  * @author Roberto
  */
 public class RecursosHumanos extends javax.swing.JPanel {
-    private Conexion conexion;
+    private Base conexion;
     Color color_reset = new Color(96,96,96);
     Color color_set = new Color(128,128,128);
     /**
      * Creates new form Financiero
      */
-    public RecursosHumanos(Conexion conexion) {
+    public RecursosHumanos(Base conexion) {
         initComponents();
         this.conexion=conexion;
     }

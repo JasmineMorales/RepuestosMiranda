@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 
 /**
@@ -19,7 +19,7 @@ public class DialogodeConfrimacion extends javax.swing.JFrame {
     public static final int ICONO_INFORMACION = 2;
     public static final int ICONO_INTERROGANTE = 3;
     private int seleccion;
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     private String Nombre;
     private DialogodeMensaje Dialogo = new DialogodeMensaje();
     public int estado = 0;

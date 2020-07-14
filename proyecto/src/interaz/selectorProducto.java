@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class selectorProducto extends javax.swing.JFrame {
     private DialogodeMensaje dialogo = new DialogodeMensaje();
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     private DefaultTableModel Productos;
     public selectorProducto() {
         initComponents();

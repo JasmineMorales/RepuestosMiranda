@@ -14,7 +14,7 @@ import java.text.ParseException;
  * 
  */
 public class Clientes extends javax.swing.JPanel {
-    Conexion conexion;
+    Base conexion;
     Color color_reset = new Color(128,128,128);
     Color color_set = new Color(96,96,96);
     /**
@@ -23,7 +23,7 @@ public class Clientes extends javax.swing.JPanel {
     public Clientes() {
         initComponents();
     }
-   public Clientes(Conexion conexion){
+   public Clientes(Base conexion){
         initComponents();
         this.conexion=conexion;
         //Inicia los paneles invisibles, para que se seleccione una opcion
