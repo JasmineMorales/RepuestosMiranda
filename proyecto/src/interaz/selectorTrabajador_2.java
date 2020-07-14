@@ -22,7 +22,7 @@ public class selectorTrabajador_2 extends javax.swing.JDialog {
     /**
      * Creates new form selectorCliente
      */
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     private String[] trabajador=null;
     public selectorTrabajador_2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

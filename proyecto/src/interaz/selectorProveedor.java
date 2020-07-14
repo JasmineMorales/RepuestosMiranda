@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 import javax.swing.JTextField;
 
@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 public class selectorProveedor extends javax.swing.JFrame {
 
 
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     private DialogodeMensaje Dialogo = new DialogodeMensaje();
     public String Nombre ;
     public JTextField campo ; 

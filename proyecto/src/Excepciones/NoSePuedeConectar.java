@@ -7,7 +7,7 @@ package Excepciones;
 
 /**
  * Clase para manejo de excepciones
- * @author Juampa
+ *
  */
 public class NoSePuedeConectar extends Exception{
     /**

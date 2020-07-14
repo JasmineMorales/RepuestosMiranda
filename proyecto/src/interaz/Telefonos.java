@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.NoSePuedeConectar;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 
 /**
@@ -18,7 +18,7 @@ public class Telefonos extends javax.swing.JDialog {
     /**
      * Creates new form Telefonos
      */
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     public Telefonos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

@@ -263,7 +263,7 @@ public class DialConexion extends javax.swing.JDialog {
     private void probarDBButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_probarDBButtonMouseClicked
         if(!ipField.getText().trim().equals("")&&!userField.getText().trim().equals("")&&!new String(passField.getPassword()).trim().equals("")&&!bdField.getText().equals("")){
             if(new String(passField.getPassword()).trim().equals(new String(passField1.getPassword()).trim())){
-                Conexion prueba= new Conexion(userField.getText(), ipField.getText(), new String(passField.getPassword()),bdField.getText());
+                Base prueba= new Base(userField.getText(), ipField.getText(), new String(passField.getPassword()),bdField.getText());
                 if(prueba.probarConexion()){
                     DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Conexion Exitosa", "Esta configuración es correcta\nSE PUEDE CONECTAR AL SGBD");
                     dialogo.setVisible(true);

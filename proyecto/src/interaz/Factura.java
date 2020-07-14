@@ -23,7 +23,7 @@ public class Factura extends javax.swing.JPanel implements movimientoProductos{
      * Creates new form Factura
      */
     
-    private final Conexion Conexion_DB = new Conexion();
+    private final Base Conexion_DB = new Base();
     private selectorSucursal Selector;
     private String numeroCotizacion;
     private String[] Sucursal;

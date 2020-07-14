@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import clases.controladorCompras;
 import clases.controladorVentas;
 import clases.manejoControlador;
@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class Pedidos extends javax.swing.JPanel implements movimientoProductos{
 
     private DefaultTableModel Productos;
-    private final Conexion Conexion_DB = new Conexion();
+    private final Base Conexion_DB = new Base();
     private final DialogodeMensaje dialogo = new DialogodeMensaje();
     public Pedidos() {
         initComponents();

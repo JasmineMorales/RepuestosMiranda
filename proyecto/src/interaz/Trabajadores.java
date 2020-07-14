@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class Trabajadores extends javax.swing.JPanel {
-    Conexion conexion;
+    Base conexion;
     GestorActualizaciones gestor = new GestorActualizaciones();
     ObservadorUsuario observador = new ObservadorUsuario();
     Color color_reset = new Color(96,96,96);
@@ -31,7 +31,7 @@ public class Trabajadores extends javax.swing.JPanel {
      * Crea un nuevo panel de Trabajadores
      * @param conexion objeto para conectarse a la BD
      */
-    public Trabajadores(Conexion conexion){
+    public Trabajadores(Base conexion){
         initComponents();
         this.conexion=conexion;
         //Inicia los paneles invisibles, para que se seleccione una opcion

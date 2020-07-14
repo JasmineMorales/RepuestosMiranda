@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Roberto
+ *
  */
-public class Conexion {
+public class Base {
     private static Connection conexion;//variable que servira para la conexión a la base de datos
     private static final String driver="com.mysql.jdbc.Driver", url="jdbc:mysql://"; //variables que serivran en la conexion, estas nunca deben ser modificados0
     private static String user="root", ip="localhost", pass="", nombreBD="sce"; //Variables que pueden ser modificadas y por defecto son las que se muestran
@@ -25,7 +25,7 @@ public class Conexion {
     /**
      * Crea un objeto conexión con datos predeterminados
      */
-    public Conexion (){}
+    public Base (){}
     /**
      * Construye un objeto conexión con datos especificos del servidor con el SGBD
      * @param user usuario de acceso
@@ -33,14 +33,14 @@ public class Conexion {
      * @param pass contraseña del usuario
      * @param db base de datos a conectarse
      */
-    public Conexion(String user, String ip, String pass, String db)
+    public Base(String user, String ip, String pass, String db)
     {
         this.user=user;
         this.ip=ip;
         this.pass=pass;
         this.nombreBD=db;
     }
-    public Conexion(String user, String pass, String db)
+    public Base(String user, String pass, String db)
     {
         this.user=user;
         this.pass=pass;

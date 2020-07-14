@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 
 /**
@@ -18,7 +18,7 @@ public class selectorCliente extends javax.swing.JDialog {
     /**
      * Creates new form selectorCliente
      */
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     private String[] Cliente;
     private int codigo;
     public selectorCliente(java.awt.Frame parent, boolean modal) {

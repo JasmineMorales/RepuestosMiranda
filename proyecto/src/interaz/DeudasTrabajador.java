@@ -20,7 +20,7 @@ import clases.*;
  * @author Roberto
  */
 public class DeudasTrabajador extends javax.swing.JPanel {
-    private Conexion conexion;
+    private Base conexion;
     private int trabajadorActual=0;
     private boolean adelanto=true, pago=false;
     int mes=0;
@@ -30,7 +30,7 @@ public class DeudasTrabajador extends javax.swing.JPanel {
      * Creates new form Planilla
      * @param conexion
      */
-    public DeudasTrabajador(Conexion conexion) {
+    public DeudasTrabajador(Base conexion) {
         initComponents();
         this.conexion=conexion;
         try {

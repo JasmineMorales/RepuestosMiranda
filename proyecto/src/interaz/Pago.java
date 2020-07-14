@@ -8,7 +8,7 @@ package interaz;
 import Excepciones.NoSePuedeConectar;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
-import clases.Conexion;
+import clases.Base;
 
 /**
  *
@@ -16,7 +16,7 @@ import clases.Conexion;
  */
 public class Pago extends javax.swing.JDialog {
     
-    private Conexion Conexion_DB; private boolean Seleccionado; private float TotalFac; private int Trabajador_id;
+    private Base Conexion_DB; private boolean Seleccionado; private float TotalFac; private int Trabajador_id;
     private float credito, efectivo, cheque1, cheque2, cheque3, otros;
     private String desCheque1, desCheque2, desCheque3, desOtros;
     public Pago(java.awt.Frame parent, boolean modal) {
@@ -40,7 +40,7 @@ public class Pago extends javax.swing.JDialog {
         return desOtros;
     }
 
-    public Pago(java.awt.Frame parent, boolean modal, Conexion Conexion_DB, float Total, boolean Credito, int trabajador_id) {
+    public Pago(java.awt.Frame parent, boolean modal, Base Conexion_DB, float Total, boolean Credito, int trabajador_id) {
         super(parent, modal);
         initComponents();
         this.Conexion_DB = Conexion_DB;

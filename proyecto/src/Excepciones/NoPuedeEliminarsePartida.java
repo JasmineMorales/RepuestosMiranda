@@ -7,7 +7,7 @@ package Excepciones;
 
 /**
  *
- * @author Roberto
+ * 
  */
 public class NoPuedeEliminarsePartida extends Exception {
     /**

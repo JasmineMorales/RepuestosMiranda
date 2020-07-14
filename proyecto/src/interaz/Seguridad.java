@@ -31,13 +31,13 @@ import javax.swing.JFrame;
 public class Seguridad extends javax.swing.JPanel {
     public final static String marcaInicio="SCE";
     public final static String claveCifrado = "Sistema de Control Empresarial";
-    private Conexion conexion;
+    private Base conexion;
     Color color_set = new Color(128,128,128);
     Color color_reset = new Color(96,96,96);
     /**
      * Creates new form Seguridad
      */
-    public Seguridad(Conexion conexion) {
+    public Seguridad(Base conexion) {
         initComponents();  
         this.conexion=conexion;
         //Hacemos invisibles todos lo paneles que no deben mostrarse desde el inicio
@@ -783,7 +783,7 @@ public class Seguridad extends javax.swing.JPanel {
     private void probarDBButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_probarDBButtonMouseClicked
         if(!ipField.getText().trim().equals("")&&!userField.getText().trim().equals("")&&!new String(passField.getPassword()).trim().equals("")&&!bdField.getText().equals("")){
             if(new String(passField.getPassword()).trim().equals(new String(passField1.getPassword()).trim())){
-                Conexion prueba= new Conexion(userField.getText(), ipField.getText(), new String(passField.getPassword()),bdField.getText());
+                Base prueba= new Base(userField.getText(), ipField.getText(), new String(passField.getPassword()),bdField.getText());
                 if(prueba.probarConexion()){
                     DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_INFORMACION, "Conexión exitosa", "Esta configuración es correcta\nSe puede conectar al SGBD");  
                     dialogo.setVisible(true);
