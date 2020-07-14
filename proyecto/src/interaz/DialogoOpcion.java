@@ -199,7 +199,7 @@ public class DialogoOpcion extends javax.swing.JDialog {
         txt_Filtro.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txt_Filtro.setForeground(new java.awt.Color(64, 64, 64));
         txt_Filtro.setText("Ingrese un comentario");
-        txt_Filtro.setBorder(null);
+        txt_Filtro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_Filtro.setCaretColor(new java.awt.Color(255, 255, 255));
         txt_Filtro.setDisabledTextColor(new java.awt.Color(96, 96, 96));
         txt_Filtro.setSelectedTextColor(new java.awt.Color(64, 64, 64));
@@ -265,6 +265,7 @@ public class DialogoOpcion extends javax.swing.JDialog {
             if (!txt_Filtro.getText().equals("INGRESE UN COMENTARIO") && !txt_Filtro.getText().equals("")) {
                 aceptar=true;
                 Coment = txt_Filtro.getText();
+                System.out.println(Coment);
                 this.setVisible(false);
             }else{
                 DialogoOpcion dialogo = new DialogoOpcion(null, true, DialogoOpcion.ICONO_ERROR, "ERROR", "INGRESE UN COMENTARIO");
