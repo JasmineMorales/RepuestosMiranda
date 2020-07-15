@@ -9,6 +9,7 @@ import Excepciones.NoSePuedeConectar;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import clases.Base;
+import clases.PagosStrategy;
 
 /**
  *
@@ -17,6 +18,7 @@ import clases.Base;
 public class Pago extends javax.swing.JDialog {
     
     private Base Conexion_DB; private boolean Seleccionado; private float TotalFac; private int Trabajador_id;
+    private PagosStrategy ps;
     private float credito, efectivo, cheque1, cheque2, cheque3, otros;
     private String desCheque1, desCheque2, desCheque3, desOtros;
     public Pago(java.awt.Frame parent, boolean modal) {
