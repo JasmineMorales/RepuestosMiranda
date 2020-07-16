@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.NoSePuedeConectar;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 
 /**
@@ -18,7 +18,7 @@ public class Telefonos extends javax.swing.JDialog {
     /**
      * Creates new form Telefonos
      */
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     public Telefonos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -60,24 +60,25 @@ public class Telefonos extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_Telefonos = new javax.swing.JTable();
         btn_Aceptar = new javax.swing.JLabel();
+        btn_Cancelar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(96, 96, 96));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lbl_Titulo.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Titulo.setText("TELEFONOS");
-        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        lbl_Titulo.setText("Teléfonos");
+        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 40));
 
-        tabla_Telefonos.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        tabla_Telefonos.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         tabla_Telefonos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -87,10 +88,10 @@ public class Telefonos extends javax.swing.JDialog {
             }
         ));
         tabla_Telefonos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tabla_Telefonos.setGridColor(new java.awt.Color(0, 0, 0));
+        tabla_Telefonos.setGridColor(new java.awt.Color(64, 64, 64));
         tabla_Telefonos.setRowHeight(24);
-        tabla_Telefonos.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        tabla_Telefonos.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tabla_Telefonos.setSelectionBackground(new java.awt.Color(192, 192, 192));
+        tabla_Telefonos.setSelectionForeground(new java.awt.Color(64, 64, 64));
         tabla_Telefonos.setShowVerticalLines(false);
         tabla_Telefonos.getTableHeader().setReorderingAllowed(false);
         tabla_Telefonos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,20 +106,33 @@ public class Telefonos extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tabla_Telefonos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 410, 180));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 350, 160));
 
-        btn_Aceptar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Aceptar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Aceptar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Aceptar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Aceptar.setText("ACEPTAR");
+        btn_Aceptar.setText("Aceptar");
         btn_Aceptar.setOpaque(true);
         btn_Aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_AceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 390, 40));
+        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 100, 27));
+
+        btn_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        btn_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Cancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_Cancelar.setText("Cancelar");
+        btn_Cancelar.setOpaque(true);
+        btn_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_CancelarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 100, 27));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,6 +161,10 @@ public class Telefonos extends javax.swing.JDialog {
     private void btn_AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AceptarMouseClicked
         this.setVisible(false);        
     }//GEN-LAST:event_btn_AceptarMouseClicked
+
+    private void btn_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_CancelarMouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_CancelarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -193,6 +211,7 @@ public class Telefonos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_Aceptar;
+    private javax.swing.JLabel btn_Cancelar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -35,7 +35,7 @@ import static interaz.Seguridad.claveCifrado;
 public class Login extends javax.swing.JFrame {
     
     private Server server;
-    private Conexion conexion;
+    private Base conexion;
     private UsuarioG user;
     /**
      * Creates new form Interfaz
@@ -59,7 +59,7 @@ public class Login extends javax.swing.JFrame {
                 aes.init(Cipher.DECRYPT_MODE,key);
                 // Se desencripta y se guarda en la variable de servidor
                 server.setPass(new String(aes.doFinal(server.getPassArray())));
-                conexion= new Conexion(server.getUser(), server.getIp(), server.getPass(), server.getBd());
+                conexion= new Base(server.getUser(), server.getIp(), server.getPass(), server.getBd());
                 //Comprobamos si hay una sesión guardada
                 File configDUser=UsuarioG.LOGGED_USER_DEFAULT_FILE;
                 if(configDUser.exists()&&configDUser.length()>0){
@@ -130,31 +130,33 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(96, 96, 96));
         jLabel4.setText("BIENVENIDO");
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(96, 96, 96));
         jLabel1.setText("Empresarial");
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(96, 96, 96));
         jLabel3.setText("Sistema de Control");
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setBackground(new java.awt.Color(96, 96, 96));
+        jSeparator1.setForeground(new java.awt.Color(96, 96, 96));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 48)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(96, 96, 96));
         jLabel6.setText("LOGO");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(96, 96, 96));
         jLabel2.setText("REPUESTOS PESADOS MQ, S.A.");
 
-        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator3.setBackground(new java.awt.Color(96, 96, 96));
+        jSeparator3.setForeground(new java.awt.Color(96, 96, 96));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -179,7 +181,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(jLabel2)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,44 +200,51 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 690));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(96, 96, 96));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(96, 96, 96)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator2.setBackground(new java.awt.Color(245, 245, 245));
+        jSeparator2.setForeground(new java.awt.Color(245, 245, 245));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 228, 166, -1));
 
+        jLabel5.setBackground(new java.awt.Color(245, 245, 245));
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 48)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(245, 245, 245));
         jLabel5.setText("LOG IN");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 162, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(245, 245, 245));
         jLabel7.setText("USUARIO");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(245, 245, 245));
         jLabel8.setText("CONTRASEÑA");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
 
-        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator4.setBackground(new java.awt.Color(245, 245, 245));
+        jSeparator4.setForeground(new java.awt.Color(245, 245, 245));
         jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 371, -1));
 
-        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setBackground(new java.awt.Color(245, 245, 245));
+        jSeparator5.setForeground(new java.awt.Color(245, 245, 245));
         jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 371, 6));
 
-        jTextField2.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setBackground(new java.awt.Color(96, 96, 96));
+        jTextField2.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(245, 245, 245));
         jTextField2.setText("INGRESE EL NOMBRE DE USUARIO");
         jTextField2.setBorder(null);
         jTextField2.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField2.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        jTextField2.setSelectionColor(new java.awt.Color(192, 192, 192));
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField2FocusGained(evt);
@@ -256,12 +265,14 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 371, 26));
 
-        jPasswordField1.setBackground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setBackground(new java.awt.Color(96, 96, 96));
+        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(245, 245, 245));
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setBorder(null);
         jPasswordField1.setCaretColor(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        jPasswordField1.setSelectionColor(new java.awt.Color(192, 192, 192));
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordField1FocusGained(evt);
@@ -274,7 +285,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 371, 30));
 
-        jLabel9.setBackground(new java.awt.Color(255, 0, 0));
+        jLabel9.setBackground(new java.awt.Color(255, 51, 51));
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("       LOG IN");
@@ -291,9 +302,9 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 513, 192, 84));
 
-        jCheckBox1.setBackground(new java.awt.Color(0, 0, 0));
+        jCheckBox1.setBackground(new java.awt.Color(96, 96, 96));
         jCheckBox1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setForeground(new java.awt.Color(245, 245, 245));
         jCheckBox1.setText("GUARDAR CONTRASEÑA");
         jCheckBox1.setBorder(null);
         jCheckBox1.setNextFocusableComponent(jLabel9);
@@ -304,7 +315,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel3.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
 
-        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel10.setBackground(new java.awt.Color(96, 96, 96));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
         jLabel10.setOpaque(true);
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -315,7 +326,7 @@ public class Login extends javax.swing.JFrame {
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 11, -1, -1));
 
         conexionProblema1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        conexionProblema1.setForeground(new java.awt.Color(255, 255, 255));
+        conexionProblema1.setForeground(new java.awt.Color(245, 245, 245));
         conexionProblema1.setText("¿No se puede conectar?");
         conexionProblema1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

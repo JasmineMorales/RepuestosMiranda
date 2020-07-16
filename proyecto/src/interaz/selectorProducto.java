@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class selectorProducto extends javax.swing.JFrame {
     private DialogodeMensaje dialogo = new DialogodeMensaje();
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     private DefaultTableModel Productos;
     public selectorProducto() {
         initComponents();
@@ -57,33 +57,34 @@ public class selectorProducto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(64, 64, 64)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Aceptar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Aceptar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Aceptar.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_Aceptar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Aceptar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Aceptar.setText("ACEPTAR");
+        btn_Aceptar.setText("Aceptar");
         btn_Aceptar.setOpaque(true);
         btn_Aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_AceptarMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 160, 40));
+        jPanel1.add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 100, 27));
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(96, 96, 96));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        lbl_Titulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lbl_Titulo.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Titulo.setText("ELECCIONE UN PRODUCTO");
-        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        lbl_Titulo.setText("SELECCIONAR PRODUCTO");
+        jPanel2.add(lbl_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 330, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 40));
 
         tabla_produc.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        tabla_produc.setForeground(new java.awt.Color(64, 64, 64));
         tabla_produc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -92,10 +93,10 @@ public class selectorProducto extends javax.swing.JFrame {
 
             }
         ));
-        tabla_produc.setGridColor(new java.awt.Color(0, 0, 0));
+        tabla_produc.setGridColor(new java.awt.Color(64, 64, 64));
         tabla_produc.setRowHeight(24);
-        tabla_produc.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        tabla_produc.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tabla_produc.setSelectionBackground(new java.awt.Color(192, 192, 192));
+        tabla_produc.setSelectionForeground(new java.awt.Color(64, 64, 64));
         tabla_produc.setShowVerticalLines(false);
         tabla_produc.getTableHeader().setReorderingAllowed(false);
         tabla_produc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,18 +111,21 @@ public class selectorProducto extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla_produc);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 650, 330));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 580, 300));
 
-        sep_Filtro.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(sep_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 650, 10));
+        sep_Filtro.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Filtro.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel1.add(sep_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 68, 580, -1));
 
-        txt_Filtro.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Filtro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Filtro.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Filtro.setText("BUSQUEDA");
+        txt_Filtro.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Filtro.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Filtro.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Filtro.setText("Búsqueda");
         txt_Filtro.setBorder(null);
-        txt_Filtro.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Filtro.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Filtro.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Filtro.setDisabledTextColor(new java.awt.Color(96, 96, 96));
+        txt_Filtro.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Filtro.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Filtro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_FiltroFocusGained(evt);
@@ -140,28 +144,31 @@ public class selectorProducto extends javax.swing.JFrame {
                 txt_FiltroActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 650, 20));
+        jPanel1.add(txt_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 580, 20));
 
-        btn_Cancelar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Cancelar.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Cancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Cancelar.setText("CANCELAR");
+        btn_Cancelar.setText("Cancelar");
         btn_Cancelar.setOpaque(true);
         btn_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_CancelarMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 160, 40));
+        jPanel1.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 100, 27));
 
-        txt_Cantidad.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Cantidad.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Cantidad.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Cantidad.setText("1.00");
+        txt_Cantidad.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Cantidad.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Cantidad.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Cantidad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_Cantidad.setText("1");
         txt_Cantidad.setBorder(null);
-        txt_Cantidad.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Cantidad.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Cantidad.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Cantidad.setDisabledTextColor(new java.awt.Color(96, 96, 96));
+        txt_Cantidad.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Cantidad.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Cantidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_CantidadFocusGained(evt);
@@ -180,15 +187,16 @@ public class selectorProducto extends javax.swing.JFrame {
                 txt_CantidadActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_Cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 160, 20));
+        jPanel1.add(txt_Cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 160, 20));
 
-        sep_Filtro1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(sep_Filtro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 160, 10));
+        sep_Filtro1.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Filtro1.setForeground(new java.awt.Color(64, 64, 64));
+        jPanel1.add(sep_Filtro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 160, 10));
 
-        lbl_Precio.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Precio.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Precio.setText("CANTIDAD");
-        jPanel1.add(lbl_Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 130, 20));
+        lbl_Precio.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        lbl_Precio.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Precio.setText("Cantidad:");
+        jPanel1.add(lbl_Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 110, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

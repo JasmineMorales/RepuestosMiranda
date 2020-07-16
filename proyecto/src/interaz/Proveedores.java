@@ -6,7 +6,7 @@
 package interaz;
 
 import Excepciones.*;
-import clases.Conexion;
+import clases.Base;
 import java.sql.SQLException;
 import javax.swing.ListSelectionModel;
 
@@ -19,7 +19,7 @@ public class Proveedores extends javax.swing.JPanel {
     /**
      * Creates new form Proveedores
      */
-    private Conexion Conexion_DB = new Conexion();
+    private Base Conexion_DB = new Base();
     private DialogodeMensaje Dialogo = new DialogodeMensaje();
     private DialogodeConfrimacion DialogoConfirmacion = new DialogodeConfrimacion();
     public Proveedores() {
@@ -50,7 +50,6 @@ public class Proveedores extends javax.swing.JPanel {
         btn_Guardar = new javax.swing.JLabel();
         txt_Nombre = new javax.swing.JTextField();
         sep_Nombre = new javax.swing.JSeparator();
-        jSeparator7 = new javax.swing.JSeparator();
         lbl_Nombre = new javax.swing.JLabel();
         lbl_Nit = new javax.swing.JLabel();
         sep_Deuda = new javax.swing.JSeparator();
@@ -70,7 +69,6 @@ public class Proveedores extends javax.swing.JPanel {
         rbtn_Credito = new javax.swing.JRadioButton();
         btn_Eliminar = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabla_prov.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -82,10 +80,10 @@ public class Proveedores extends javax.swing.JPanel {
 
             }
         ));
-        tabla_prov.setGridColor(new java.awt.Color(0, 0, 0));
+        tabla_prov.setGridColor(new java.awt.Color(64, 64, 64));
         tabla_prov.setRowHeight(24);
-        tabla_prov.setSelectionBackground(new java.awt.Color(255, 0, 0));
-        tabla_prov.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tabla_prov.setSelectionBackground(new java.awt.Color(192, 192, 192));
+        tabla_prov.setSelectionForeground(new java.awt.Color(64, 64, 64));
         tabla_prov.setShowVerticalLines(false);
         tabla_prov.getTableHeader().setReorderingAllowed(false);
         tabla_prov.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,15 +101,16 @@ public class Proveedores extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabla_prov);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 940, 330));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 860, 300));
 
-        txt_Nit.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Nit.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Nit.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Nit.setText("INGRESE EL NIT DEL PROVEEDOR (SI APLICA)");
+        txt_Nit.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Nit.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Nit.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Nit.setText("Ingrese el NIT del proveedor (si aplica)");
         txt_Nit.setBorder(null);
-        txt_Nit.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Nit.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Nit.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Nit.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Nit.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Nit.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_NitFocusGained(evt);
@@ -130,44 +129,47 @@ public class Proveedores extends javax.swing.JPanel {
                 txt_NitActionPerformed(evt);
             }
         });
-        add(txt_Nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 400, 26));
+        add(txt_Nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 400, 26));
 
-        sep_Nit.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 371, -1));
+        sep_Nit.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nit.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 371, 20));
 
-        btn_Nuevo.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Nuevo.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Nuevo.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Nuevo.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Nuevo.setForeground(new java.awt.Color(255, 255, 255));
         btn_Nuevo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Nuevo.setText("NUEVO");
+        btn_Nuevo.setText("Nuevo");
         btn_Nuevo.setOpaque(true);
         btn_Nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_NuevoMouseClicked(evt);
             }
         });
-        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 300, 84));
+        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 125, 35));
 
-        btn_Guardar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Guardar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Guardar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Guardar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Guardar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Guardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Guardar.setText("GUARDAR");
+        btn_Guardar.setText("Guardar");
         btn_Guardar.setOpaque(true);
         btn_Guardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_GuardarMouseClicked(evt);
             }
         });
-        add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 300, 84));
+        add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 125, 35));
 
-        txt_Nombre.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Nombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Nombre.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Nombre.setText("INGRESE EL NOMBRE DEL PROVEEDOR");
+        txt_Nombre.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Nombre.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Nombre.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Nombre.setText("Ingrese el nombre del proveedor");
+        txt_Nombre.setToolTipText("<html>\n<head>\n<style>\n.contenedor{background:#F0F0F0;color:#0A0A0A;margin:0;padding-left:5px;padding-right:5px;font-size:1.1em;font-family:century gothic;font-weight: lighter;}\n</style>\n</head>\n<body>\n<h4 class=\"contenedor\">Campo obligatorio</h4>\n</body>\n</html>");
         txt_Nombre.setBorder(null);
-        txt_Nombre.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Nombre.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Nombre.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Nombre.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Nombre.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Nombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_NombreFocusGained(evt);
@@ -186,36 +188,36 @@ public class Proveedores extends javax.swing.JPanel {
                 txt_NombreActionPerformed(evt);
             }
         });
-        add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 400, 26));
+        add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 360, 26));
 
-        sep_Nombre.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 400, 10));
+        sep_Nombre.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 380, 10));
 
-        jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
-        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 380, 10));
+        lbl_Nombre.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Nombre.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Nombre.setText("Nombre");
+        add(lbl_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        lbl_Nombre.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nombre.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Nombre.setText("NOMBRE");
-        add(lbl_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        lbl_Nit.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Nit.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_Nit.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Nit.setForeground(new java.awt.Color(64, 64, 64));
         lbl_Nit.setText("NIT");
-        add(lbl_Nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        add(lbl_Nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
-        sep_Deuda.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 220, -1));
+        sep_Deuda.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Deuda.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 200, 10));
 
-        txt_Deuda.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Deuda.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Deuda.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Deuda.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Deuda.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Deuda.setForeground(new java.awt.Color(64, 64, 64));
         txt_Deuda.setText("0.00");
         txt_Deuda.setBorder(null);
-        txt_Deuda.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Deuda.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txt_Deuda.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Deuda.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txt_Deuda.setEnabled(false);
-        txt_Deuda.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Deuda.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Deuda.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Deuda.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_DeudaFocusGained(evt);
@@ -234,25 +236,27 @@ public class Proveedores extends javax.swing.JPanel {
                 txt_DeudaActionPerformed(evt);
             }
         });
-        add(txt_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 220, 26));
+        add(txt_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 220, 26));
 
-        lbl_Deuda.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Deuda.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Deuda.setText("DEUDA");
-        add(lbl_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+        lbl_Deuda.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Deuda.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Deuda.setText("Deuda");
+        add(lbl_Deuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
 
-        sep_Abonos.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Abonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 220, -1));
+        sep_Abonos.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Abonos.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Abonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, 200, 10));
 
-        txt_abonos.setBackground(new java.awt.Color(0, 0, 0));
-        txt_abonos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_abonos.setForeground(new java.awt.Color(255, 255, 255));
+        txt_abonos.setBackground(new java.awt.Color(240, 240, 240));
+        txt_abonos.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_abonos.setForeground(new java.awt.Color(64, 64, 64));
         txt_abonos.setText("0.00");
         txt_abonos.setBorder(null);
-        txt_abonos.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_abonos.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txt_abonos.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_abonos.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txt_abonos.setEnabled(false);
-        txt_abonos.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_abonos.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_abonos.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_abonos.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_abonosFocusGained(evt);
@@ -271,25 +275,27 @@ public class Proveedores extends javax.swing.JPanel {
                 txt_abonosActionPerformed(evt);
             }
         });
-        add(txt_abonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 40, 220, 26));
+        add(txt_abonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 200, 26));
 
-        lbl_Abonos.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Abonos.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Abonos.setText("ABONOS");
-        add(lbl_Abonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, -1));
+        lbl_Abonos.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Abonos.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Abonos.setText("Abonos");
+        add(lbl_Abonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, -1));
 
-        sep_Saldo.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 160, 220, -1));
+        sep_Saldo.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Saldo.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 190, 10));
 
-        txt_Saldo.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Saldo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Saldo.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Saldo.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Saldo.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Saldo.setForeground(new java.awt.Color(64, 64, 64));
         txt_Saldo.setText("0.00");
         txt_Saldo.setBorder(null);
-        txt_Saldo.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Saldo.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txt_Saldo.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Saldo.setDisabledTextColor(new java.awt.Color(255, 51, 51));
         txt_Saldo.setEnabled(false);
-        txt_Saldo.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Saldo.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Saldo.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Saldo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_SaldoFocusGained(evt);
@@ -308,20 +314,22 @@ public class Proveedores extends javax.swing.JPanel {
                 txt_SaldoActionPerformed(evt);
             }
         });
-        add(txt_Saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 220, 26));
+        add(txt_Saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 220, 26));
 
-        lbl_Saldos.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_Saldos.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_Saldos.setText("SALDO");
-        add(lbl_Saldos, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, -1, -1));
+        lbl_Saldos.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbl_Saldos.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_Saldos.setText("Saldo");
+        add(lbl_Saldos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
 
-        txt_Filtro.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Filtro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Filtro.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Filtro.setText("NOMBRE");
+        txt_Filtro.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Filtro.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txt_Filtro.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Filtro.setText("Nombre");
+        txt_Filtro.setToolTipText("<html>\n<head>\n<style>\n.contenedor{background:#F0F0F0;color:#0A0A0A;margin:0;padding-left:5px;padding-right:5px;font-size:1.1em;font-family:century gothic;font-weight: lighter;}\n</style>\n</head>\n<body>\n<h4 class=\"contenedor\">Buscar proveedor</h4>\n</body>\n</html>");
         txt_Filtro.setBorder(null);
-        txt_Filtro.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_Filtro.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Filtro.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_Filtro.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Filtro.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Filtro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_FiltroFocusGained(evt);
@@ -340,46 +348,47 @@ public class Proveedores extends javax.swing.JPanel {
                 txt_FiltroActionPerformed(evt);
             }
         });
-        add(txt_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 920, 20));
+        add(txt_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 860, 20));
 
-        sep_Filtro.setForeground(new java.awt.Color(255, 255, 255));
-        add(sep_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 920, 10));
+        sep_Filtro.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Filtro.setForeground(new java.awt.Color(64, 64, 64));
+        add(sep_Filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 860, 10));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("*");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, -1, 20));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setText("*");
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, 20));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("CAMPOS OBLIGATORIOS");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, -1, 20));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("Campos obligatorios");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, -1, 20));
 
-        rbtn_Credito.setBackground(new java.awt.Color(0, 0, 0));
-        rbtn_Credito.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        rbtn_Credito.setForeground(new java.awt.Color(255, 255, 255));
+        rbtn_Credito.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        rbtn_Credito.setForeground(new java.awt.Color(64, 64, 64));
         rbtn_Credito.setSelected(true);
-        rbtn_Credito.setText("CREDITO");
+        rbtn_Credito.setText("Crédito");
         rbtn_Credito.setBorder(null);
-        add(rbtn_Credito, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 400, -1));
+        add(rbtn_Credito, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 100, -1));
 
-        btn_Eliminar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_Eliminar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btn_Eliminar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Eliminar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_Eliminar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Eliminar.setText("ELIMINAR");
+        btn_Eliminar.setText("Eliminar");
         btn_Eliminar.setOpaque(true);
         btn_Eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_EliminarMouseClicked(evt);
             }
         });
-        add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 300, 84));
+        add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 125, 35));
     }// </editor-fold>//GEN-END:initComponents
     private void filaSeleccionada(){
         int selecion = tabla_prov.getSelectedRow();
@@ -394,12 +403,12 @@ public class Proveedores extends javax.swing.JPanel {
     }
     private void txt_NitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NitFocusGained
         // TODO add your handling code here:
-        if(txt_Nit.getText().equals("INGRESE EL NIT DEL PROVEEDOR (SI APLICA)"))txt_Nit.setText("");
+        if(txt_Nit.getText().equals("Ingrese el NIT del proveedor (si aplica)"))txt_Nit.setText("");
     }//GEN-LAST:event_txt_NitFocusGained
 
     private void txt_NitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NitFocusLost
         // TODO add your handling code here:
-        if(txt_Nit.getText().equals("")) txt_Nit.setText("INGRESE EL NIT DEL PROVEEDOR (SI APLICA)");
+        if(txt_Nit.getText().equals("")) txt_Nit.setText("Ingrese el NIT del proveedor (si aplica)");
     }//GEN-LAST:event_txt_NitFocusLost
 
     private void txt_NitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_NitMousePressed
@@ -452,23 +461,23 @@ public class Proveedores extends javax.swing.JPanel {
 
     private void txt_DeudaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_DeudaFocusLost
         // TODO add your handling code here:
-        if(txt_Deuda.getText().equals("")) txt_Deuda.setText("INGRESE EL NOMBRE DE USUARIO");
+        if(txt_Deuda.getText().equals("")) txt_Deuda.setText("Ingrese el nombre de usuario");
     }//GEN-LAST:event_txt_DeudaFocusLost
 
     private void txt_DeudaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_DeudaFocusGained
         // TODO add your handling code here:
-        if(txt_Deuda.getText().equals("INGRESE EL NOMBRE DE USUARIO"))txt_Deuda.setText("");
+        if(txt_Deuda.getText().equals("Ingrese el nombre de usuario"))txt_Deuda.setText("");
     }//GEN-LAST:event_txt_DeudaFocusGained
 
     private void btn_GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_GuardarMouseClicked
        try {
-            if (!txt_Nombre.getText().equals("INGRESE EL NOMBRE DEL PROVEEDOR")){
+            if (!txt_Nombre.getText().equals("Ingrese el nombre del proveedor")){
                 Conexion_DB.crearProveedor(txt_Nombre.getText(), txt_Nit.getText(), rbtn_Credito.isSelected());
-                Dialogo.setContenido("INFORMACION", "EL PROVEEDOR FUE CREADO EXITOSAMENTE!", DialogodeMensaje.ICONO_INFORMACION);
+                Dialogo.setContenido("INFORMACIÓN", "El proveedor fue creado exitosamente", DialogodeMensaje.ICONO_INFORMACION);
                 Dialogo.setVisible(true);
                 tabla_prov.setModel(Conexion_DB.obtenerProceedores());
             } else{
-                Dialogo.setContenido("ERROR", "INGRESE UN NOMBRE DE PROVEEDOR", DialogodeMensaje.ICONO_ERROR);
+                Dialogo.setContenido("ERROR", "Ingrese un nombre de proveedor", DialogodeMensaje.ICONO_ERROR);
                 Dialogo.setVisible(true);
             }
         } catch (SQLException|NoSePuedeConectar ex) {
@@ -480,8 +489,8 @@ public class Proveedores extends javax.swing.JPanel {
     private void btn_NuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NuevoMouseClicked
         btn_Nuevo.setEnabled(false);
         btn_Guardar.setEnabled(true);
-        txt_Nit.setText("INGRESE EL NIT DEL PROVEEDOR (SI APLICA)");
-        txt_Nombre.setText("INGRESE EL NOMBRE DEL PROVEEDOR");
+        txt_Nit.setText("Ingrese el NIT del proveedor (si aplica)");
+        txt_Nombre.setText("Ingrese el nombre del proveedor");
         txt_Deuda.setText("0.00");
         txt_Saldo.setText("0.00");
         txt_abonos.setText("0.00");
@@ -502,11 +511,11 @@ public class Proveedores extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_NombreMousePressed
 
     private void txt_NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NombreFocusLost
-        if (txt_Nombre.getText().equals("")) txt_Nombre.setText("INGRESE EL NOMBRE DEL PROVEEDOR");
+        if (txt_Nombre.getText().equals("")) txt_Nombre.setText("Ingrese el nombre del proveedor");
     }//GEN-LAST:event_txt_NombreFocusLost
 
     private void txt_NombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NombreFocusGained
-        if (txt_Nombre.getText().equals("INGRESE EL NOMBRE DEL PROVEEDOR")) txt_Nombre.setText("");
+        if (txt_Nombre.getText().equals("Ingrese el nombre del proveedor")) txt_Nombre.setText("");
     }//GEN-LAST:event_txt_NombreFocusGained
 
     private void txt_FiltroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_FiltroFocusGained
@@ -529,7 +538,7 @@ public class Proveedores extends javax.swing.JPanel {
         int selccion = tabla_prov.getSelectedRow();
         if (selccion != -1) {
             try {
-                DialogoConfirmacion.setContenido("CONFIRMACION", "¿ESTA SEGURO QUE DESEA ELIMINAR EL PROVEEDOR?", DialogodeMensaje.ICONO_INTERROGANTE, tabla_prov.getValueAt(selccion, 0).toString());
+                DialogoConfirmacion.setContenido("CONFIRMACIÓN", "¿Está seguro de eliminar el proveedor?", DialogodeMensaje.ICONO_INTERROGANTE, tabla_prov.getValueAt(selccion, 0).toString());
                 DialogoConfirmacion.setVisible(true);
                 
                 tabla_prov.setModel(Conexion_DB.obtenerProceedores());
@@ -538,7 +547,7 @@ public class Proveedores extends javax.swing.JPanel {
                 Dialogo.setVisible(true);
             }
         }else {
-            Dialogo.setContenido("ERROR", "DEBE SELECCIONAR UN PROVEEDOR PARA PODER ELIMINARLO", DialogodeMensaje.ICONO_ERROR);
+            Dialogo.setContenido("ERROR", "Seleccionar un proveedor para eliminarlo", DialogodeMensaje.ICONO_ERROR);
                 Dialogo.setVisible(true);
         }
     }//GEN-LAST:event_btn_EliminarMouseClicked
@@ -568,7 +577,6 @@ public class Proveedores extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel lbl_Abonos;
     private javax.swing.JLabel lbl_Deuda;
     private javax.swing.JLabel lbl_Nit;

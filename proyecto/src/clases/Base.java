@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Roberto
+ *
  */
-public class Conexion {
+public class Base {
     private static Connection conexion;//variable que servira para la conexión a la base de datos
     private static final String driver="com.mysql.jdbc.Driver", url="jdbc:mysql://"; //variables que serivran en la conexion, estas nunca deben ser modificados0
     private static String user="root", ip="localhost", pass="", nombreBD="sce"; //Variables que pueden ser modificadas y por defecto son las que se muestran
@@ -25,7 +25,7 @@ public class Conexion {
     /**
      * Crea un objeto conexión con datos predeterminados
      */
-    public Conexion (){}
+    public Base (){}
     /**
      * Construye un objeto conexión con datos especificos del servidor con el SGBD
      * @param user usuario de acceso
@@ -33,14 +33,14 @@ public class Conexion {
      * @param pass contraseña del usuario
      * @param db base de datos a conectarse
      */
-    public Conexion(String user, String ip, String pass, String db)
+    public Base(String user, String ip, String pass, String db)
     {
         this.user=user;
         this.ip=ip;
         this.pass=pass;
         this.nombreBD=db;
     }
-    public Conexion(String user, String pass, String db)
+    public Base(String user, String pass, String db)
     {
         this.user=user;
         this.pass=pass;
@@ -1121,7 +1121,42 @@ public class Conexion {
         }
         conexion.close();
         return Productos;
-    }    
+    }
+    
+    public DefaultTableModel Nuevo_obtenerProductos(int filtro, String criterio) throws SQLException, NoSePuedeConectar{
+         Productos = null;
+         String texto_busqueda="";
+         if(!criterio.isEmpty())
+         {
+             texto_busqueda="and ";
+             switch(filtro){
+                 case 0:
+                     texto_busqueda+="codigo ";
+                     break;
+                 case 1:
+                     texto_busqueda+="codigo_barras ";
+                     break;
+                 default:
+                     texto_busqueda+="descripcion ";
+                     break;
+             }
+             texto_busqueda+="like concat('%','"+criterio+"','%')";
+                     
+         }
+         iniciarTablaProductos();
+        Productos.setColumnCount(11);
+        
+        conectar();
+        Statement instruccion = conexion.createStatement();
+        ResultSet resultado = instruccion.executeQuery("SELECT Codigo, Codigo_Barras, Descripcion, Precio_Venta, Precio_Costo, Estanteria, Columna, Fila, Marca_id, Unidad_id FROM producto where habilitado=1 "+texto_busqueda+";");
+        while(resultado.next()){
+            Productos.addRow(new String[] {resultado.getString("Codigo"), resultado.getString("Codigo_Barras"), resultado.getString("Descripcion"), resultado.getString("Precio_Venta"), resultado.getString("Precio_Costo"), resultado.getString("Estanteria"), resultado.getString("Columna"), resultado.getString("Fila")
+            , resultado.getString("Marca_id"), resultado.getString("Unidad_id")});
+        }
+        conexion.close();
+        return Productos;
+    }
+    
     public DefaultTableModel obtenerFacturasConsulta(String fecha,String nombre,String dpi) throws SQLException, NoSePuedeConectar
     {
         DefaultTableModel facturas=null;

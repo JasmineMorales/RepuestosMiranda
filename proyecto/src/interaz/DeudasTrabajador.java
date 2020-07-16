@@ -20,15 +20,17 @@ import clases.*;
  * @author Roberto
  */
 public class DeudasTrabajador extends javax.swing.JPanel {
-    private Conexion conexion;
+    private Base conexion;
     private int trabajadorActual=0;
     private boolean adelanto=true, pago=false;
     int mes=0;
+    Color color_reset = new Color(128,128,128);
+    Color color_set = new Color(96,96,96);
     /**
      * Creates new form Planilla
      * @param conexion
      */
-    public DeudasTrabajador(Conexion conexion) {
+    public DeudasTrabajador(Base conexion) {
         initComponents();
         this.conexion=conexion;
         try {
@@ -81,17 +83,17 @@ public class DeudasTrabajador extends javax.swing.JPanel {
     private void cambiarCampos()
     {
         if(!adelanto && !pago){
-            lbl_prestamo_adelantoMes.setText("PRESTAMO DEL MES");
-            lbl_nombre4.setText("PRESTAMO");
+            lbl_prestamo_adelantoMes.setText("Préstamo del mes:");
+            lbl_nombre4.setText("préstamo:");
         }
         else if (pago)
         {
-            lbl_prestamo_adelantoMes.setText("PRESTAMO DEL MES");
-            lbl_nombre4.setText("PAGO");
+            lbl_prestamo_adelantoMes.setText("Préstamo del mes: ");
+            lbl_nombre4.setText("pago:");
         }
         else{
-            lbl_nombre4.setText("ADELANTO");
-            lbl_prestamo_adelantoMes.setText("ADELANTO DEL MES");
+            lbl_nombre4.setText("adelanto:");
+            lbl_prestamo_adelantoMes.setText("Adelanto del mes:");
         }
         lbl_prestamoTotal.setVisible(!adelanto);
         ftx_prestamoTotal.setVisible(!adelanto);
@@ -157,7 +159,6 @@ public class DeudasTrabajador extends javax.swing.JPanel {
         ftx_prestamoTotal = new javax.swing.JFormattedTextField();
         btn_pagos = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
         setForeground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(930, 650));
         addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -166,16 +167,18 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        sep_Nombre.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre.setForeground(new java.awt.Color(64, 64, 64));
 
-        txt_Nit.setBackground(new java.awt.Color(0, 0, 0));
-        txt_Nit.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_Nit.setForeground(new java.awt.Color(255, 255, 255));
-        txt_Nit.setText("INGRESE EL NIT DEL CLIENTE");
+        txt_Nit.setBackground(new java.awt.Color(240, 240, 240));
+        txt_Nit.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        txt_Nit.setForeground(new java.awt.Color(64, 64, 64));
+        txt_Nit.setText("Ingrese el NIT del cliente");
         txt_Nit.setBorder(null);
-        txt_Nit.setCaretColor(new java.awt.Color(255, 255, 255));
+        txt_Nit.setCaretColor(new java.awt.Color(64, 64, 64));
         txt_Nit.setPreferredSize(new java.awt.Dimension(271, 16));
-        txt_Nit.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_Nit.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_Nit.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_Nit.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_NitFocusGained(evt);
@@ -195,15 +198,15 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        lbl_nit.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_nit.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_nit.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_nit.setForeground(new java.awt.Color(64, 64, 64));
         lbl_nit.setText("NIT");
 
-        btn_Seleccioncliente.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Seleccioncliente.setBackground(new java.awt.Color(255, 51, 51));
         btn_Seleccioncliente.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btn_Seleccioncliente.setForeground(new java.awt.Color(255, 255, 255));
         btn_Seleccioncliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_Seleccioncliente.setText("SELECCIONAR");
+        btn_Seleccioncliente.setText("Seleccionar");
         btn_Seleccioncliente.setOpaque(true);
         btn_Seleccioncliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -214,7 +217,7 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        btn_adelanto.setBackground(new java.awt.Color(255, 0, 0));
+        btn_adelanto.setBackground(new java.awt.Color(128, 128, 128));
         btn_adelanto.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_adelanto.setForeground(new java.awt.Color(255, 255, 255));
         btn_adelanto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -228,11 +231,11 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        btn_prestamo.setBackground(new java.awt.Color(0, 0, 0));
+        btn_prestamo.setBackground(new java.awt.Color(96, 96, 96));
         btn_prestamo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_prestamo.setForeground(new java.awt.Color(255, 255, 255));
         btn_prestamo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_prestamo.setText("PRESTAMO");
+        btn_prestamo.setText("PRÉSTAMO");
         btn_prestamo.setName(""); // NOI18N
         btn_prestamo.setOpaque(true);
         btn_prestamo.setPreferredSize(new java.awt.Dimension(160, 40));
@@ -242,15 +245,16 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        txt_nombre.setBackground(new java.awt.Color(0, 0, 0));
-        txt_nombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nombre.setBackground(new java.awt.Color(240, 240, 240));
+        txt_nombre.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        txt_nombre.setForeground(new java.awt.Color(32, 32, 32));
         txt_nombre.setBorder(null);
-        txt_nombre.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_nombre.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        txt_nombre.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_nombre.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         txt_nombre.setEnabled(false);
         txt_nombre.setPreferredSize(new java.awt.Dimension(271, 16));
-        txt_nombre.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_nombre.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_nombre.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_nombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_nombreFocusGained(evt);
@@ -270,25 +274,27 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        sep_Nombre1.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre1.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre1.setForeground(new java.awt.Color(64, 64, 64));
 
-        lbl_nombre.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_nombre.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_nombre.setText("NOMBRE");
+        lbl_nombre.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_nombre.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_nombre.setText("Nombre");
 
-        lbl_apellido.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_apellido.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_apellido.setText("APELLIDO");
+        lbl_apellido.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_apellido.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_apellido.setText("Apellido");
 
-        txt_apellido.setBackground(new java.awt.Color(0, 0, 0));
-        txt_apellido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txt_apellido.setForeground(new java.awt.Color(255, 255, 255));
+        txt_apellido.setBackground(new java.awt.Color(240, 240, 240));
+        txt_apellido.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        txt_apellido.setForeground(new java.awt.Color(32, 32, 32));
         txt_apellido.setBorder(null);
-        txt_apellido.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_apellido.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        txt_apellido.setCaretColor(new java.awt.Color(64, 64, 64));
+        txt_apellido.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         txt_apellido.setEnabled(false);
         txt_apellido.setPreferredSize(new java.awt.Dimension(271, 16));
-        txt_apellido.setSelectionColor(new java.awt.Color(255, 0, 0));
+        txt_apellido.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        txt_apellido.setSelectionColor(new java.awt.Color(192, 192, 192));
         txt_apellido.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_apellidoFocusGained(evt);
@@ -308,36 +314,42 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        sep_Nombre2.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre2.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre2.setForeground(new java.awt.Color(64, 64, 64));
 
-        lbl_nombre1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_nombre1.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_nombre1.setText("SALARIO BASE");
+        lbl_nombre1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_nombre1.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_nombre1.setText("Salario Base");
 
-        sep_Nombre3.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre3.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre3.setForeground(new java.awt.Color(64, 64, 64));
 
-        lbl_nombre2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_nombre2.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_nombre2.setText("BONO INCENTIVO");
+        lbl_nombre2.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_nombre2.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_nombre2.setText("Bono Incentivo");
 
-        sep_Nombre4.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre4.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre4.setForeground(new java.awt.Color(64, 64, 64));
 
-        lbl_nombre3.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_nombre3.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_nombre3.setText("COMISIÓN");
+        lbl_nombre3.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_nombre3.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_nombre3.setText("Comisión");
 
-        sep_Nombre5.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre5.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre5.setForeground(new java.awt.Color(64, 64, 64));
 
-        jFormattedTextField1.setBackground(new java.awt.Color(0, 0, 0));
+        jFormattedTextField1.setBackground(new java.awt.Color(240, 240, 240));
         jFormattedTextField1.setBorder(null);
-        jFormattedTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField1.setForeground(new java.awt.Color(32, 32, 32));
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
-        jFormattedTextField1.setCaretColor(new java.awt.Color(255, 255, 255));
-        jFormattedTextField1.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jFormattedTextField1.setCaretColor(new java.awt.Color(64, 64, 64));
+        jFormattedTextField1.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         jFormattedTextField1.setEnabled(false);
         jFormattedTextField1.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
-        jFormattedTextField1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jFormattedTextField1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jFormattedTextField1.setPreferredSize(new java.awt.Dimension(271, 16));
+        jFormattedTextField1.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        jFormattedTextField1.setSelectionColor(new java.awt.Color(192, 192, 192));
         jFormattedTextField1.setValue(0.00);
         jFormattedTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -345,16 +357,18 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        ftx_bono.setBackground(new java.awt.Color(0, 0, 0));
+        ftx_bono.setEditable(false);
         ftx_bono.setBorder(null);
-        ftx_bono.setForeground(new java.awt.Color(255, 255, 255));
+        ftx_bono.setForeground(new java.awt.Color(32, 32, 32));
         ftx_bono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
-        ftx_bono.setCaretColor(new java.awt.Color(255, 255, 255));
-        ftx_bono.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        ftx_bono.setCaretColor(new java.awt.Color(64, 64, 64));
+        ftx_bono.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         ftx_bono.setEnabled(false);
         ftx_bono.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
-        ftx_bono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        ftx_bono.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         ftx_bono.setPreferredSize(new java.awt.Dimension(271, 16));
+        ftx_bono.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        ftx_bono.setSelectionColor(new java.awt.Color(192, 192, 192));
         ftx_bono.setValue(0.00);
         ftx_bono.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -362,16 +376,18 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        jFormattedTextField3.setBackground(new java.awt.Color(0, 0, 0));
+        jFormattedTextField3.setBackground(new java.awt.Color(240, 240, 240));
         jFormattedTextField3.setBorder(null);
-        jFormattedTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField3.setForeground(new java.awt.Color(32, 32, 32));
         jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
-        jFormattedTextField3.setCaretColor(new java.awt.Color(255, 255, 255));
-        jFormattedTextField3.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jFormattedTextField3.setCaretColor(new java.awt.Color(64, 64, 64));
+        jFormattedTextField3.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         jFormattedTextField3.setEnabled(false);
         jFormattedTextField3.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
-        jFormattedTextField3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jFormattedTextField3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jFormattedTextField3.setPreferredSize(new java.awt.Dimension(271, 16));
+        jFormattedTextField3.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        jFormattedTextField3.setSelectionColor(new java.awt.Color(192, 192, 192));
         jFormattedTextField3.setValue(0.00);
         jFormattedTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -384,20 +400,21 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        lbl_nombre4.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_nombre4.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_nombre4.setText("ADELANTO");
+        lbl_nombre4.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_nombre4.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_nombre4.setText("adelanto:");
 
-        ftx_cantidad.setBackground(new java.awt.Color(0, 0, 0));
+        ftx_cantidad.setBackground(new java.awt.Color(240, 240, 240));
         ftx_cantidad.setBorder(null);
-        ftx_cantidad.setForeground(new java.awt.Color(255, 255, 255));
+        ftx_cantidad.setForeground(new java.awt.Color(32, 32, 32));
         ftx_cantidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
-        ftx_cantidad.setCaretColor(new java.awt.Color(255, 255, 255));
-        ftx_cantidad.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        ftx_cantidad.setCaretColor(new java.awt.Color(64, 64, 64));
+        ftx_cantidad.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         ftx_cantidad.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
-        ftx_cantidad.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        ftx_cantidad.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         ftx_cantidad.setPreferredSize(new java.awt.Dimension(271, 16));
-        ftx_cantidad.setSelectionColor(new java.awt.Color(255, 0, 0));
+        ftx_cantidad.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        ftx_cantidad.setSelectionColor(new java.awt.Color(192, 192, 192));
         ftx_cantidad.setValue(0.00);
         ftx_cantidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -408,17 +425,18 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        sep_Nombre6.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre6.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre6.setForeground(new java.awt.Color(64, 64, 64));
 
-        lbl_nombre5.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_nombre5.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_nombre5.setText("MONTO PARA EL");
+        lbl_nombre5.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_nombre5.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_nombre5.setText("Monto para el");
 
-        btn_guardar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_guardar.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        btn_guardar.setBackground(new java.awt.Color(255, 51, 51));
+        btn_guardar.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btn_guardar.setForeground(new java.awt.Color(255, 255, 255));
         btn_guardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_guardar.setText("GUARDAR");
+        btn_guardar.setText("Guardar");
         btn_guardar.setOpaque(true);
         btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -432,17 +450,18 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        ftx_deuda.setBackground(new java.awt.Color(0, 0, 0));
+        ftx_deuda.setBackground(new java.awt.Color(240, 240, 240));
         ftx_deuda.setBorder(null);
-        ftx_deuda.setForeground(new java.awt.Color(255, 255, 255));
+        ftx_deuda.setForeground(new java.awt.Color(64, 64, 64));
         ftx_deuda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
-        ftx_deuda.setCaretColor(new java.awt.Color(255, 255, 255));
-        ftx_deuda.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        ftx_deuda.setCaretColor(new java.awt.Color(64, 64, 64));
+        ftx_deuda.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         ftx_deuda.setEnabled(false);
         ftx_deuda.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
-        ftx_deuda.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        ftx_deuda.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         ftx_deuda.setPreferredSize(new java.awt.Dimension(271, 16));
-        ftx_deuda.setSelectionColor(new java.awt.Color(255, 0, 0));
+        ftx_deuda.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        ftx_deuda.setSelectionColor(new java.awt.Color(192, 192, 192));
         ftx_deuda.setValue(0.00);
         ftx_deuda.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -453,34 +472,36 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        sep_Nombre7.setForeground(new java.awt.Color(255, 255, 255));
+        sep_Nombre7.setBackground(new java.awt.Color(64, 64, 64));
+        sep_Nombre7.setForeground(new java.awt.Color(64, 64, 64));
 
-        lbl_nombre7.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_nombre7.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_nombre7.setText("MES");
+        lbl_nombre7.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_nombre7.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_nombre7.setText("Mes:");
 
-        lbl_prestamo_adelantoMes.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_prestamo_adelantoMes.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_prestamo_adelantoMes.setText("ADELANTO DEL MES");
+        lbl_prestamo_adelantoMes.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_prestamo_adelantoMes.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_prestamo_adelantoMes.setText("Adelanto del mes:");
 
-        lbl_nombre9.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_nombre9.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_nombre9.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        lbl_nombre9.setForeground(new java.awt.Color(64, 64, 64));
         lbl_nombre9.setText("MES");
 
-        lbl_prestamoTotal.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        lbl_prestamoTotal.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_prestamoTotal.setText("PRESTAMO TOTAL");
+        lbl_prestamoTotal.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        lbl_prestamoTotal.setForeground(new java.awt.Color(64, 64, 64));
+        lbl_prestamoTotal.setText("Préstamo total:");
 
-        ftx_prestamoTotal.setBackground(new java.awt.Color(0, 0, 0));
+        ftx_prestamoTotal.setBackground(new java.awt.Color(240, 240, 240));
         ftx_prestamoTotal.setBorder(null);
-        ftx_prestamoTotal.setForeground(new java.awt.Color(255, 255, 255));
+        ftx_prestamoTotal.setForeground(new java.awt.Color(32, 32, 32));
         ftx_prestamoTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
-        ftx_prestamoTotal.setCaretColor(new java.awt.Color(255, 255, 255));
-        ftx_prestamoTotal.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        ftx_prestamoTotal.setCaretColor(new java.awt.Color(64, 64, 64));
+        ftx_prestamoTotal.setDisabledTextColor(new java.awt.Color(64, 64, 64));
         ftx_prestamoTotal.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
-        ftx_prestamoTotal.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        ftx_prestamoTotal.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         ftx_prestamoTotal.setPreferredSize(new java.awt.Dimension(271, 16));
-        ftx_prestamoTotal.setSelectionColor(new java.awt.Color(255, 0, 0));
+        ftx_prestamoTotal.setSelectedTextColor(new java.awt.Color(64, 64, 64));
+        ftx_prestamoTotal.setSelectionColor(new java.awt.Color(192, 192, 192));
         ftx_prestamoTotal.setValue(0.00);
         ftx_prestamoTotal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -491,7 +512,7 @@ public class DeudasTrabajador extends javax.swing.JPanel {
             }
         });
 
-        btn_pagos.setBackground(new java.awt.Color(0, 0, 0));
+        btn_pagos.setBackground(new java.awt.Color(96, 96, 96));
         btn_pagos.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         btn_pagos.setForeground(new java.awt.Color(255, 255, 255));
         btn_pagos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -510,157 +531,162 @@ public class DeudasTrabajador extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(btn_adelanto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(btn_prestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(btn_pagos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(btn_Seleccioncliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbl_nit)
-                            .addComponent(sep_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_Nit, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_nombre1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(sep_Nombre3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lbl_nombre)
-                                .addComponent(sep_Nombre1)
-                                .addComponent(lbl_nombre2)
-                                .addComponent(sep_Nombre4, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                            .addComponent(ftx_bono, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbl_nombre3)
-                            .addComponent(lbl_apellido)
-                            .addComponent(txt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                            .addComponent(sep_Nombre2)
-                            .addComponent(jFormattedTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(sep_Nombre5)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbl_nombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_nombre5, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sep_Nombre6, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ftx_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(348, 348, 348))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(sep_Nombre3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_prestamo_adelantoMes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(51, 51, 51))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_prestamo_adelantoMes, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_prestamoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(ftx_prestamoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(lbl_nit)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_Seleccioncliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_nombre1)
+                            .addComponent(txt_Nit, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_prestamoTotal)
+                            .addComponent(sep_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_adelanto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(btn_prestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_pagos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sep_Nombre7, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ftx_deuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                                        .addComponent(lbl_nombre7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbl_nombre9, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(20, 20, 20)))))
-                .addGap(39, 39, 39))
+                                    .addComponent(lbl_nombre)
+                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sep_Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_nombre2)
+                                    .addComponent(ftx_bono, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sep_Nombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sep_Nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_apellido)
+                                    .addComponent(lbl_nombre3)
+                                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sep_Nombre5, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(sep_Nombre7, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ftx_deuda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ftx_prestamoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ftx_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sep_Nombre6, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(lbl_nombre7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_nombre9, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(sep_Nombre5, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_adelanto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_prestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_pagos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_adelanto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_prestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_pagos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_nit)
+                            .addComponent(btn_Seleccioncliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lbl_apellido)
-                                .addGap(38, 38, 38)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sep_Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sep_Nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btn_Seleccioncliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbl_nombre))
-                                    .addComponent(lbl_nit))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txt_Nit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, 0)
-                                .addComponent(sep_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_nombre1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbl_nombre2)
-                                .addComponent(lbl_nombre3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_Nit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(sep_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_apellido)
+                            .addComponent(lbl_nombre))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ftx_bono, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sep_Nombre3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sep_Nombre4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                            .addComponent(sep_Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sep_Nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_nombre7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ftx_deuda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_nombre3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbl_prestamo_adelantoMes)
+                        .addComponent(lbl_nombre2)
+                        .addComponent(lbl_nombre1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftx_bono, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 7, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sep_Nombre3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sep_Nombre5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sep_Nombre4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_prestamo_adelantoMes)
+                            .addComponent(ftx_deuda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addComponent(sep_Nombre7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_nombre7)
                         .addComponent(lbl_nombre9)))
-                .addGap(0, 0, 0)
-                .addComponent(sep_Nombre7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_prestamoTotal, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ftx_prestamoTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ftx_prestamoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3))
-                    .addComponent(lbl_prestamoTotal))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_nombre5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_nombre4))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_nombre5)
-                            .addComponent(ftx_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_nombre4)
-                            .addComponent(sep_Nombre6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(241, 241, 241))
+                        .addComponent(ftx_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sep_Nombre6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50)
+                .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_NitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NitFocusGained
-        if (txt_Nit.getText().equals("INGRESE EL NIT DEL CLIENTE")) txt_Nit.setText("");
+        if (txt_Nit.getText().equals("Ingrese el NIT del cliente")) txt_Nit.setText("");
     }//GEN-LAST:event_txt_NitFocusGained
 
     private void txt_NitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NitFocusLost
-        if (txt_Nit.getText().equals("")) txt_Nit.setText("INGRESE EL NIT DEL CLIENTE");
+        if (txt_Nit.getText().equals("")) txt_Nit.setText("Ingrese el NIT del cliente");
     }//GEN-LAST:event_txt_NitFocusLost
 
     private void txt_NitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_NitMousePressed
@@ -707,9 +733,9 @@ public class DeudasTrabajador extends javax.swing.JPanel {
     private void btn_adelantoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_adelantoMouseClicked
         adelanto=true;
         pago=false;
-        btn_adelanto.setBackground(Color.red);
-        btn_prestamo.setBackground(Color.black);
-        btn_pagos.setBackground(Color.black);
+        btn_adelanto.setBackground(color_reset);
+        btn_prestamo.setBackground(color_set);
+        btn_pagos.setBackground(color_set);
         cambiarCampos();
         try {
             recargarMontos();
@@ -725,9 +751,9 @@ public class DeudasTrabajador extends javax.swing.JPanel {
         // TODO add your handling code here:
         adelanto=false;
         pago=false;
-        btn_adelanto.setBackground(Color.black);
-        btn_prestamo.setBackground(Color.red);
-        btn_pagos.setBackground(Color.black);
+        btn_adelanto.setBackground(color_set);
+        btn_prestamo.setBackground(color_reset);
+        btn_pagos.setBackground(color_set);
         cambiarCampos();
         try {
             recargarMontos();
@@ -911,9 +937,9 @@ public class DeudasTrabajador extends javax.swing.JPanel {
         // TODO add your handling code here:
         pago=true;
         adelanto=false;
-        btn_pagos.setBackground(Color.red);
-        btn_prestamo.setBackground(Color.BLACK);
-        btn_adelanto.setBackground(Color.BLACK);
+        btn_pagos.setBackground(color_reset);
+        btn_prestamo.setBackground(color_set);
+        btn_adelanto.setBackground(color_set);
         cambiarCampos();
     }//GEN-LAST:event_btn_pagosMouseClicked
 

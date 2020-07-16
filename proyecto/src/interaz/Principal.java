@@ -17,11 +17,13 @@ import clases.*;
  * 
  */
 public class Principal extends javax.swing.JFrame {
-    private Conexion conexion;
+    private Base conexion;
     private Seguridad seguridad;
     private Clientes clientes;
     private Compras panel_Compras;
     private Ventas panel_Ventas;
+    Color color_reset = new Color(255,51,51);
+    Color color_set = new Color(240,102,102);
     /**
      * Creates new form Principal
      */
@@ -31,7 +33,7 @@ public class Principal extends javax.swing.JFrame {
         panel_Compras = new Compras();
         panel_Ventas = new Ventas();
     }
-    public Principal(Conexion con){
+    public Principal(Base con){
         initComponents();
         setLocationRelativeTo(null);
         this.conexion=con;
@@ -55,10 +57,10 @@ public class Principal extends javax.swing.JFrame {
         }
     }
     public void setEtiqueta(JLabel etiqueta){
-        etiqueta.setBackground(Color.BLACK);
+        etiqueta.setBackground(color_set);
     }
     public void resetEtiqueta(JLabel etiqueta){
-        etiqueta.setBackground(Color.RED);
+        etiqueta.setBackground(color_reset);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,11 +87,12 @@ public class Principal extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 51, 51));
 
-        btn_Inventario.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Inventario.setBackground(new java.awt.Color(255, 51, 51));
         btn_Inventario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/barcode (1).png"))); // NOI18N
+        btn_Inventario.setToolTipText("<html>\n<head>\n<style>\n.contenedor{background:#F0F0F0;color:#0A0A0A;margin:0;padding-left:5px;padding-right:5px;font-size:1.15em;font-family:century gothic;font-weight: lighter;}\n</style>\n</head>\n<body>\n<h4 class=\"contenedor\">Inventario</h4>\n</body>\n</html>");
         btn_Inventario.setOpaque(true);
         btn_Inventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,9 +100,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btn_Compras.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Compras.setBackground(new java.awt.Color(255, 51, 51));
         btn_Compras.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_Compras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/shopping-cart.png"))); // NOI18N
+        btn_Compras.setToolTipText("<html>\n<head>\n<style>\n.contenedor{background:#F0F0F0;color:#0A0A0A;margin:0;padding-left:5px;padding-right:5px;font-size:1.15em;font-family:century gothic;font-weight: lighter;}\n</style>\n</head>\n<body>\n<h4 class=\"contenedor\">Compras</h4>\n</body>\n</html>");
         btn_Compras.setOpaque(true);
         btn_Compras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,9 +111,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btn_Ventas.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Ventas.setBackground(new java.awt.Color(255, 51, 51));
         btn_Ventas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/price-tag.png"))); // NOI18N
+        btn_Ventas.setToolTipText("<html>\n<head>\n<style>\n.contenedor{background:#F0F0F0;color:#0A0A0A;margin:0;padding-left:5px;padding-right:5px;font-size:1.15em;font-family:century gothic;font-weight: lighter;}\n</style>\n</head>\n<body>\n<h4 class=\"contenedor\">Ventas</h4>\n</body>\n</html>");
         btn_Ventas.setOpaque(true);
         btn_Ventas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -117,9 +122,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setBackground(new java.awt.Color(255, 0, 0));
+        jLabel6.setBackground(new java.awt.Color(255, 51, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/locked.png"))); // NOI18N
+        jLabel6.setToolTipText("<html>\n<head>\n<style>\n.contenedor{background:#F0F0F0;color:#0A0A0A;margin:0;padding-left:5px;padding-right:5px;font-size:1.15em;font-family:century gothic;font-weight: lighter;}\n</style>\n</head>\n<body>\n<h4 class=\"contenedor\">Usuarios</h4>\n</body>\n</html>");
         jLabel6.setOpaque(true);
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -127,9 +133,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btn_Clientes.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Clientes.setBackground(new java.awt.Color(255, 51, 51));
         btn_Clientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_Clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/users.png"))); // NOI18N
+        btn_Clientes.setToolTipText("<html>\n<head>\n<style>\n.contenedor{background:#F0F0F0;color:#0A0A0A;margin:0;padding-left:5px;padding-right:5px;font-size:1.15em;font-family:century gothic;font-weight: lighter;}\n</style>\n</head>\n<body>\n<h4 class=\"contenedor\">Clientes</h4>\n</body>\n</html>");
         btn_Clientes.setOpaque(true);
         btn_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -137,9 +144,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btn_Usuarios.setBackground(new java.awt.Color(255, 0, 0));
+        btn_Usuarios.setBackground(new java.awt.Color(255, 51, 51));
         btn_Usuarios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_Usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/user.png"))); // NOI18N
+        btn_Usuarios.setToolTipText("<html>\n<head>\n<style>\n.contenedor{background:#F0F0F0;color:#0A0A0A;margin:0;padding-left:5px;padding-right:5px;font-size:1.15em;font-family:century gothic;font-weight: lighter;}\n</style>\n</head>\n<body>\n<h4 class=\"contenedor\">Trabajadores</h4>\n</body>\n</html>");
         btn_Usuarios.setOpaque(true);
         btn_Usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -177,16 +185,14 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 690));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
             }
         });
 
-        Salir.setBackground(new java.awt.Color(0, 0, 0));
         Salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (2).png"))); // NOI18N
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/cancel (3).png"))); // NOI18N
         Salir.setOpaque(true);
         Salir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,8 +200,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        Minimizar.setForeground(new java.awt.Color(255, 255, 255));
-        Minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/minus-symbol.png"))); // NOI18N
+        Minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconosSCE/minus-symbol (2).png"))); // NOI18N
         Minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MinimizarMouseClicked(evt);
@@ -242,7 +247,8 @@ public class Principal extends javax.swing.JFrame {
             resetEtiqueta(btn_Ventas);
             resetEtiqueta(jLabel6);
             resetEtiqueta(btn_Clientes);
-            JPanel j = new Productos(conexion);
+            resetEtiqueta(btn_Usuarios);
+            JPanel j = new NuevoProducto(conexion);
             j.setLocation(0, 0);
             j.setSize(jPanel2.getSize());
             jPanel2.removeAll();
@@ -260,6 +266,7 @@ public class Principal extends javax.swing.JFrame {
             resetEtiqueta(btn_Ventas);
             resetEtiqueta(jLabel6);
             resetEtiqueta(btn_Clientes);
+            resetEtiqueta(btn_Usuarios);
             panel_Compras.setLocation(0, 0);
             panel_Compras.setSize(jPanel2.getSize());
             jPanel2.removeAll();
@@ -277,6 +284,7 @@ public class Principal extends javax.swing.JFrame {
             resetEtiqueta(btn_Inventario);
             resetEtiqueta(jLabel6);
             resetEtiqueta(btn_Clientes);
+            resetEtiqueta(btn_Usuarios);
             panel_Ventas.setLocation(0, 0);
             panel_Ventas.setSize(jPanel2.getSize());
             jPanel2.removeAll();
@@ -294,6 +302,7 @@ public class Principal extends javax.swing.JFrame {
             resetEtiqueta(btn_Ventas);
             resetEtiqueta(btn_Inventario);
             resetEtiqueta(btn_Clientes);
+            resetEtiqueta(btn_Usuarios);
             if(seguridad==null)
                 seguridad= new Seguridad(conexion);
             seguridad.setLocation(0,0);
@@ -325,6 +334,7 @@ public class Principal extends javax.swing.JFrame {
             resetEtiqueta(btn_Ventas);
             resetEtiqueta(jLabel6);
             setEtiqueta(btn_Clientes);
+            resetEtiqueta(btn_Usuarios);
             clientes=new Clientes(conexion);
             clientes.setLocation(0,0);
             clientes.setSize(jPanel2.getSize());
